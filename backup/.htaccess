@@ -1,0 +1,5 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^sismaheshtala\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sismaheshtala\.com$
+RewriteRule ^/?$ "https\:\/\/sismaheshtala\.com\/" [R=301,L]

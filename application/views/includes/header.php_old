@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+  <meta charset="utf-8">
+  <title>Saini International School</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/slick/slick.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/animate/animate.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/aos/aos.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/plugins/venobox/venobox.css">
+  <link href="<?php echo base_url()?>assets/css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="<?php echo base_url()?>assets/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="<?php echo base_url()?>assets/images/favicon.png" type="image/x-icon">
+</head>
+<body>
+<?php $logo=$this->common_model->get_data_array(SETTINGS,array('id'=>1),'','','','','','');?>
+    <div class="preloader">
+        <img src="<?php echo base_url()?>assets/images/preloader.gif" alt="preloader">
+    </div>
+    <header class="fixed-top header">
+        <div class="top-header py-2 bg-white">
+            <div class="container">
+                <div class="row no-gutters">
+                    <div class="col-lg-4 text-center text-lg-left">
+                        <a class="text-color mr-3" href="callto:<?php echo $logo[0]['contact']?>"><strong>CALL : </strong><?php echo $logo[0]['contact']?></a>
+                        <ul class="list-inline d-inline">
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="<?php echo $logo[0]['facekbook_url'];?>"><i class="ti-facebook"></i></a></li>
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="<?php echo $logo[0]['twitter_link'];?>"><i class="ti-twitter-alt"></i></a></li>
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="<?php echo $logo[0]['linkedin_url'];?>"><i class="ti-linkedin"></i></a></li>
+                            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="<?php echo $logo[0]['instagram_url'];?>"><i class="ti-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-8 text-center text-lg-right">
+                        <ul class="list-inline">
+                            <!-- <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="notice.html">notice</a></li>
+                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="research.html">research</a></li>
+                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="scholarship.html">SCHOLARSHIP</a></li>
+                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">login</a></li>
+                            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal">register</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navigation w-100">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                    <a class="navbar-brand" href="<?php echo base_url()?>home"><img src="<?php echo base_url()?>assets/images/site_logo/<?php echo $logo[0]['profile_pic']?>" alt="logo"></a>
+                    <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navigation">
+                        <ul class="navbar-nav ml-auto text-center">
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">HOME</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/about-us">ABOUT US</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/mission-and-vision">MISSION AND VISION</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/spoken-english-classes-for-parents">OUR LOGO</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/affliation-and-certification">AFFILIATION & CERTIFICATION</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/awards-and-recognitions">AWARDS & RECOGNITIONS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/an-approach-towards-society">APPROACH TOWARDS SOCIETY</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/gallery">GALLERY</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">THE TEAM</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/from-the-desk-of-md">MANAGING DIRECTOR</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/from-the-desk-of-ceo">CEO</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/from-the-principal-desk">PRINCIPAL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/co-ordinators">CO-ORDINATORS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/admin-staff">ADMIN STAFF</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/teachers">TEACHERS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/students-council-members">STUDENTS COUNCIL MEMBERS</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">INFRASTRUTURE</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/infrastructure">DIGITAL CLASSROOMS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/labs">LABS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/premises">PREMISES</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/field">FIELD</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/swimming-pool">SWIMMING POOL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/amphitheatre">AMPHITHEATRE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/hostel">HOSTEL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/basket-ball-court">BASKET BALL COURT</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ACADEMICS</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/pre-primary">PRE-PRIMARY</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/primary">PRIMARY</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/middle-school">MIDDLE SCHOOL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/secondary">SENIOR SCHOOL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/senior-secondary">SENIOR SECONDARY SCHOOL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/exam-pattern">EXAM PATTERN</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/board-results">BOARD RESULTS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/competitive-exams">COMPETITIVE EXAMS</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SPORTS</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/football-and-basket-ball-ground">FOOTBALL AND BASKET BALL GROUND</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/cricket">CRICKET</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/volleyball">VOLLEYBALL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/swimming-pool">SWIMMING POOL</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/badminton">BADMINTON</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CO-CURRICULAR ACTIVITIES</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/dance">DANCE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/music">MUSIC</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/art-craft">ART & CRAFT</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/physical-education">PHYSICAL EDUCATION</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/yoga">YOGA</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/cbse-activities">CBSE ACTIVITIES</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/foreign-language-classes">FOREIGN LANGUAGE CLASSES</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/spoken-english-classes-for-parents">SPOKEN ENGLISH CLASSES FOR PARENTS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/international-school-award">INTERNATIONAL SCHOOL AWARD ACTIVITY</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">IN-SERVICE TRAININGS</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/cbse-capacity-building-programs-other-training-programs-by-cbse">CBSE CAPACITY BUILDING PROGRAMS & OTHER TRAINING PROGRAMS BY CBSE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/trainings-by-other-agencies">TRAININGS BY OTHER AGENCIES</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ADMISSION</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/admission-process">ADMISSION PROCESS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/school-timing">SCHOOL TIMING</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/age-criteria">AGE CRITERIA</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/transport">TRANSPORT</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/apply-online">APPLY ONLINE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/admission-form">ADMISSION FORM</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/prospectus">PROSPECTUS</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">HOUSES & COMMITTEES</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/committee-members-list">COMMITTEE MEMBERS LIST</a>
+                                    <!-- <a class="dropdown-item" href="<?php echo base_url()?>page/competitive-exams-rjs">ACADEMIC COMMITTEE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/spoken-english-classes-for-parents">ASSEMBLY COMMITTEE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/from-the-desk-of-md">PUBLICATION COMMITTEE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/from-the-desk-of-ceo">CULTURAL COMMITTEE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/awards-and-recognitions">SPORTS COMMITTEE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/competitive-exams-rjs">DISCIPLINE COMMITTEE</a> -->
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/red-house">RED HOUSE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/blue-house">BLUE HOUSE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/yellow-house">YELLOW HOUSE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/green-house">GREEN HOUSE</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown view">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PARENTS CORNER</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/fees-struture">FEES STRUTURE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/annual-calendar">ANNUAL CALENDAR</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/yearly-syllabus">YEARLY SYLLABUS</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/notice">NOTICE</a>
+                                    <a class="dropdown-item" href="<?php echo base_url()?>page/mandatory-disclosure">MANDATORY DISCLOSURE</a>
+                                </div>
+                            </li>
+                            <li class="nav-item @@contact">
+                                <a class="nav-link" href="https://www.cbse.gov.in/">CBSE WEBISTE</a>
+                            </li>
+                            <li class="nav-item @@contact">
+                                <a class="nav-link" href="https://ncert.nic.in/">NCERT WEBSITE</a>
+                            </li>
+                            <li class="nav-item @@contact <?php if($this->uri->segment(2)=="career"){ echo "active"; }?>">
+                                <a class="nav-link" href="<?php echo base_url()?>pages/contact">CAREER</a>
+                            </li>
+                            <li class="nav-item @@contact <?php if($this->uri->segment(2)=="contact"){ echo "active"; }?>">
+                                <a class="nav-link" href="<?php echo base_url()?>pages/contact">CONTACTS</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
