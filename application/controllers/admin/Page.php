@@ -4,14 +4,15 @@ class Page extends CI_Controller{
     public function __construct(){
         @parent::__construct();
         $this->load->library('image_lib');
-        if(!$this->session->userdata('uid')) {
+        session_start();
+        if($this->session->userdata('uid') == ''){
             redirect(base_url().'admin/');
         }
     }
     
     public function index() {
         $data['pages']=$this->common_model->get_data_array(PAGES,'','','','','','',PAGES.".id DESC",array('is_delete'=>1));
-        $data['page_title'] = "Admin Page Management";
+        $data['page_title'] = "Page Management";
         $data['header_scripts'] = $this->load->view('admin/includes/admin_header_scripts','',true);
         $data['header']=$this->load->view('admin/includes/admin_header','',true);
         $data['sidebar']=$this->load->view('admin/includes/admin_sidebar','',true);

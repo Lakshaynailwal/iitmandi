@@ -29,7 +29,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading" style="display: flow-root;">
                                 <h3 class="panel-title" style="float: left;"><?php echo $page_title; ?></h3>
-                                <a href="admin/ourteam/add_team" style="float: right;background: #3c8dbc;padding: 10px;color: #fff;">Add Team</a>
+                                <a href="admin/ourteam/add_team" style="float: right;background: #3c8dbc;padding: 10px;color: #fff;">Add User</a>
                             </div>
                             <div class="panel-body">
                                 <?php echo $this->utilitylib->showMsg();?>
@@ -40,6 +40,7 @@
                                                 <tr>
                                                     <th>Image</th>
                                                     <th>Name</th>
+                                                    <th>Email</th>
                                                     <th>Description</th>
                                                     <th style="width: 160px;">Action</th>
                                                 </tr>
@@ -51,12 +52,13 @@
                                                 <tr>
                                                     <td>
                                                     <?php if(@$row['team_image']){ ?>
-                                                    <img src="<?php echo base_url(); ?>assets/images/our_team/thumb/<?php echo $row['team_image']; ?>" alt="<?php echo $row['team_image']; ?>" width="116" height="87">
+                                                    <img src="<?php echo base_url(); ?>uploads/our_team/thumb/<?php echo $row['team_image']; ?>" alt="<?php echo $row['team_image']; ?>" width="116" height="87">
                                                     <?php } else { ?>
-                                                    <img src="<?php echo base_url(); ?>assets/images/no-img.jpg" alt="no-img.jpg">
+                                                    <img src="<?php echo base_url(); ?>uploads/no-img.jpg" alt="no-img.jpg">
                                                     <?php } ?>
                                                     </td>
                                                     <td><?php echo $row['fname']; ?></td>
+                                                    <td><?php echo $row['email']; ?></td>
                                                     <td><?php echo $row['designation']; ?></td>
                                                     <td>
                                                     <a href="admin/ourteam/add_team/<?php echo $row['id']; ?>" class="btn btn-inverse waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>

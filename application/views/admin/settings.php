@@ -84,7 +84,7 @@
                                             <label for="about_me" class="control-label col-lg-3 col-md-3 col-sm-4">Site Logo</label>
                                             <div class="col-lg-9 col-md-9 col-sm-8">
                                                 <?php if(@$result[0]['profile_pic']){ ?>
-                                                <img src="<?php echo base_url(); ?>assets/images/site_logo/thumb/<?php echo @$result[0]['profile_pic']; ?>" alt="<?php echo @$result[0]['profile_pic']; ?>">
+                                                <img src="<?php echo base_url(); ?>uploads/site_logo/thumb/<?php echo @$result[0]['profile_pic']; ?>" alt="<?php echo @$result[0]['profile_pic']; ?>">
                                                 <?php } else { ?>
                                                 <img src="<?php echo base_url(); ?>images/no-img.png" alt="no-img.png">
                                                 <?php } ?>

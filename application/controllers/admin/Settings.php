@@ -1,11 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Settings extends CI_Controller{
     public function __construct(){
         @parent::__construct();
         $this->load->library('image_lib');
-        if(!$this->session->userdata('uid')) {
-                redirect(base_url().'admin/');
+        session_start();
+        if($this->session->userdata('uid') == ''){
+            redirect(base_url().'admin/');
         }
     }
 
@@ -35,7 +37,7 @@ class Settings extends CI_Controller{
                 $updtarr['linkedin_url']=$this->input->post('linkedin_url');
                 if($_FILES['profile_pic']['size']!='') {
                     $config1=array();
-                    $config1['upload_path']='./assets/images/site_logo/';
+                    $config1['upload_path']='./uploads/site_logo/';
                     $random_number = substr(number_format(time() * rand(),0,'',''),0,6);
                     $config1['file_name']=time().$random_number;
                     $config1['allowed_types']='jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';
@@ -51,8 +53,8 @@ class Settings extends CI_Controller{
                         $suc_upload2=array();
                         $suc_upload2=$this->upload->data();
                         $config1['image_library']='gd2';
-                        $config1['source_image']='assets/images/site_logo/'.$suc_upload2['file_name'];
-                        $config1['new_image']='assets/images/site_logo/thumb/'.$suc_upload2['file_name'];
+                        $config1['source_image']='uploads/site_logo/'.$suc_upload2['file_name'];
+                        $config1['new_image']='uploads/site_logo/thumb/'.$suc_upload2['file_name'];
                         $config1['maintain_ratio']=TRUE;
                         $config1['width']=100;
                         $config1['height']=100;
@@ -82,11 +84,11 @@ class Settings extends CI_Controller{
                 if($_FILES['profile_pic']['size']!='') {
                     $data['result']=$this->common_model->get_data(SETTINGS,array('id'=>1));
                     if(@$data['result'][0]['profile_pic']) {
-                        unlink('./assets/images/site_logo/'.$data['result'][0]['profile_pic']);
-                        unlink('./assets/images/site_logo/thumb/'.$data['result'][0]['profile_pic']);
+                        unlink('./uploads/site_logo/'.$data['result'][0]['profile_pic']);
+                        unlink('./uploads/site_logo/thumb/'.$data['result'][0]['profile_pic']);
                     }
                     $config1=array();
-                    $config1['upload_path']='./assets/images/site_logo/';
+                    $config1['upload_path']='./uploads/site_logo/';
                     $random_number = substr(number_format(time() * rand(),0,'',''),0,6);
                     $config1['file_name']=time().$random_number;
                     $config1['allowed_types']='jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';
@@ -102,8 +104,8 @@ class Settings extends CI_Controller{
                         $suc_upload2=array();
                         $suc_upload2=$this->upload->data();
                         $config1['image_library']='gd2';
-                        $config1['source_image']='assets/images/site_logo/'.$suc_upload2['file_name'];
-                        $config1['new_image']='assets/images/site_logo/thumb/'.$suc_upload2['file_name'];
+                        $config1['source_image']='uploads/site_logo/'.$suc_upload2['file_name'];
+                        $config1['new_image']='uploads/site_logo/thumb/'.$suc_upload2['file_name'];
                         $config1['maintain_ratio']=TRUE;
                         $config1['width']=100;
                         $config1['height']=100;

@@ -88,14 +88,16 @@ define('ERROR_ICON','<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
 define('SUCCESS_ICON','<i class="fa fa-info-circle" aria-hidden="true"></i>');
 /*-----------icon--------*/
 //database table constants
-define('ADMIN', 'sismahesh_admin');
-define('SETTINGS', 'sismahesh_settings');
-define('BANNER', 'sismahesh_banner');
-define('PAGES', 'sismahesh_page');
-define('EVENTS', 'sismahesh_events');
-define('NOTICE', 'sismahesh_notice');
-define('STORAGES', 'sismahesh_newsstorages');
-define('TEAM', 'sismahesh_team');
-define('SYLLABUS', 'sismahesh_syllabus');
-define('DISCLOSURE', 'sismahesh_disclosure');
-define('COMMITTEES', 'sismahesh_committees');
+define('ADMIN', 'iitmandi_admin');
+define('SETTINGS', 'iitmandi_settings');
+define('BANNER', 'iitmandi_banner');
+define('HOMEABOUT', 'iitmandi_homeabout');
+define('HOMEMESSAGE', 'iitmandi_homemessage');
+define('PAGES', 'iitmandi_pages');
+define('EVENTS', 'iitmandi_events');
+define('NOTICE', 'iitmandi_notice');
+define('STORAGES', 'iitmandi_newsstorages');
+define('TEAM', 'iitmandi_team');
+define('SYLLABUS', 'iitmandi_syllabus');
+define('DISCLOSURE', 'iitmandi_disclosure');
+define('COMMITTEES', 'iitmandi_committees');

@@ -18,13 +18,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="login-page">
+<body class="login-page" style="background-image: url('<?php echo base_url();?>/uploads/bg.jpeg');">
     <div class="login-box">
         <div class="login-logo">
             <a href="<?php echo base_url(); ?>"><b>Admin</b>Panel</a>
         </div>
         <div class="login-box-body">
-            <img style="width:100%; height:140px;" src="<?php echo base_url();?>assets/images/site_logo/<?php echo $logo[0]['profile_pic']?>" alt="Logo" title="Logo"/>
+            <img style="width:100%; height:140px;" src="<?php echo base_url();?>uploads/site_logo/<?php echo $logo[0]['profile_pic']?>" alt="Logo" title="Logo"/>
             <p class="login-box-msg">Sign in to start your session</p>
             <form action="" method="post">
                 <div class="error"><?php echo $this->utilitylib->showMsg();?></div>

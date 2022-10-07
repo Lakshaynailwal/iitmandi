@@ -13,10 +13,10 @@ class Home extends CI_Controller {
     }
 
     public function index() { 
-        $data['banner']=$this->common_model->get_data_array(BANNER,array('status' =>1,'is_delete' =>1),'','','','','',BANNER.".id ASC");
-        $data['events']=$this->common_model->get_data_array(EVENTS,array('status' =>1,'is_delete' =>1),'','',3,'','',EVENTS.".id DESC");
-        $data['all_news']=$this->common_model->get_data_array(STORAGES,array('status' =>1,'is_delete' =>1),'','',3,'','',STORAGES.".id DESC",'','','');
-        $data['latest_news']=$this->common_model->get_data_array(STORAGES,array('status' =>1,'is_delete' =>1),'','',10,'','',STORAGES.".add_date DESC",'','','');
+        $data['banner'] = $this->common_model->get_data_array(BANNER,array('status' =>1,'is_delete' =>1),'','','','','',BANNER.".id ASC");
+        $data['home_about'] = $this->common_model->get_data(HOMEABOUT,array('id'=>1));
+        $data['home_message']=$this->common_model->get_data(HOMEMESSAGE,array('id'=>1));
+        //$data['latest_news']=$this->common_model->get_data_array(STORAGES,array('status' =>1,'is_delete' =>1),'','',10,'','',STORAGES.".add_date DESC",'','','');
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
         $data['title']='Home';

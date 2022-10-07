@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Login extends CI_Controller{
-    public function __construct(){
+class Login extends CI_Controller {
+    public function __construct() {
         @parent::__construct();
+        session_start();
     }
     
     public function index() {
-        if($this->session->userdata('uid') == '-1'){
+        if($this->session->userdata('uid') == '1'){
            redirect(base_url('admin/dashboard'));
         }
         if($this->input->post()) {
@@ -15,7 +16,7 @@ class Login extends CI_Controller{
             if(md5($this->input->post('password')) == $result[0]['password']) {
                 $this->session->set_userdata('uid',$result[0]['user_id']);
                 redirect(base_url()."admin/dashboard");
-            }else{
+            } else {
                 $this->utilitylib->setMsg('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Wrong email or password!','ERROR');
                 redirect(base_url()."admin/login");
             }
@@ -27,11 +28,9 @@ class Login extends CI_Controller{
         $this->load->view('admin/login',$data);
     } 
     
-    public function logout(){
+    public function logout() {
         $this->session->unset_userdata('uid');
-        session_regenerate_id();
         session_unset();  
-        ob_start();
         redirect(base_url()."admin");
     }	
 }

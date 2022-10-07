@@ -2,6 +2,7 @@
     $uid=$this->session->userdata('uid');
     $get_name = get_admin_name($uid);
     $get_logo = get_logo_name();
+    $footer_content=$this->common_model->get_data(SETTINGS,array('id'=>1));
 ?>
  <nav class="navbar navbar-static-top" role="navigation">
     <a href="javascript:void(0);" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -11,12 +12,12 @@
         <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="assets/images/users/thumb/<?php echo @$get_name[0]['profile_pic']; ?>" class="user-image" alt="User Image"/>
+                    <img src="<?php echo base_url(); ?>uploads/site_logo/thumb/<?php echo @$footer_content[0]['profile_pic']; ?>" class="user-image" alt="User Image"/>
                     <span class="hidden-xs"><?php echo ucwords($get_name[0]['fname'])." ".ucwords($get_name[0]['lname']); ?></span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="user-header">
-                        <img src="assets/images/users/thumb/<?php echo @$get_name[0]['profile_pic']; ?>" class="img-circle" alt="User Image" />
+                        <img src="<?php echo base_url(); ?>uploads/site_logo/thumb/<?php echo @$footer_content[0]['profile_pic']; ?>" class="img-circle" alt="User Image" />
                         <p><?php echo ucwords($get_name[0]['fname'])." ".ucwords($get_name[0]['lname']); ?></p>
                     </li>
                     <li class="user-footer">

@@ -32,15 +32,20 @@
                                 <div class="form">
                                     <form class="cmxform form-horizontal tasi-form" id="editForm" method="post" action=""  enctype="multipart/form-data">
                                     <div class="form-group">
-                                       <label for="banner_title" class="control-label col-lg-3 col-md-3 col-sm-4">Name(required)</label>
+                                       <label for="banner_title" class="control-label col-lg-3 col-md-3 col-sm-4">Name (Required)</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <input type="text" class="form-control required" id="fname" name="fname" placeholder="Full Name" value="<?php echo @$banner['fname']; ?>">
                                        </div>
                                     </div>
                                     <div class="form-group">
+                                       <label for="banner_title" class="control-label col-lg-3 col-md-3 col-sm-4">Email (Required)</label>
+                                       <div class="col-lg-9 col-md-9 col-sm-8">
+                                          <input type="email" class="form-control required" id="email" name="email" placeholder="User Email" value="<?php echo @$banner['email']; ?>">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
                                        <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Designation (required)</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
-                                          <!-- <textarea  class="form-control" id="designation" name="designation" placeholder="Designation"><?php echo @$banner['designation']; ?></textarea> -->
                                           <input type="text" class="form-control required" id="designation" name="designation" placeholder="Designation" value="<?php echo @$banner['designation']; ?>">
                                        </div>
                                     </div>
@@ -49,7 +54,7 @@
                                        <label for="about_me" class="control-label col-lg-3 col-md-3 col-sm-4">Team Image</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <?php if(@$banner['team_image']){ ?>
-                                          <img style="width: 200px" src="<?php echo base_url(); ?>assets/images/our_team/thumb/<?php echo @$banner['team_image']; ?>" alt="<?php echo @$banner['team_image']; ?>" />
+                                          <img style="width: 200px" src="<?php echo base_url(); ?>uploads/our_team/thumb/<?php echo @$banner['team_image']; ?>" alt="<?php echo @$banner['team_image']; ?>" />
                                           <?php } else { ?>
                                           <img src="<?php echo base_url(); ?>images/no-img.png" alt="no-img.png">
                                           <?php } ?>
@@ -68,15 +73,12 @@
                                        </div>
                                     </div>
                                     <div class="form-group">
-                                       <label class="col-lg-3 col-md-3 col-sm-4 control-label">Position</label>
+                                       <label class="col-lg-3 col-md-3 col-sm-4 control-label">User Type</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <select class="form-control" name="position">
-                                             <option value="1" <?php if(@$banner['position']==1){ echo "selected"; } ?>>ADMINISTRATOR</option>
-                                             <option value="2" <?php if(@$banner['position']==2){ echo "selected"; } ?>>ADMIN TEAM</option>
-                                             <option value="1" <?php if(@$banner['position']==3){ echo "selected"; } ?>>PGT</option>
-                                             <option value="2" <?php if(@$banner['position']==4){ echo "selected"; } ?>>TGT</option>
-                                             <option value="1" <?php if(@$banner['position']==5){ echo "selected"; } ?>>PRT</option>
-                                             <option value="2" <?php if(@$banner['position']==6){ echo "selected"; } ?>>NTT</option>
+                                             <option value="">Choose an Option</option>
+                                             <option value="1" <?php if(@$banner['position']==1){ echo "selected"; } ?>>Faculty</option>
+                                             <option value="2" <?php if(@$banner['position']==2){ echo "selected"; } ?>>Student</option>
                                           </select>
                                        </div>
                                     </div>

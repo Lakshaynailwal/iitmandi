@@ -51,9 +51,9 @@
                                                 <tr>
                                                     <td>
                                                     <?php if(@$row['banner_image']){ ?>
-                                                    <img src="<?php echo base_url(); ?>assets/images/banner/thumb/<?php echo $row['banner_image']; ?>" alt="<?php echo $row['banner_image']; ?>" width="116" height="87">
+                                                    <img src="<?php echo base_url(); ?>uploads/banner/thumb/<?php echo $row['banner_image']; ?>" alt="<?php echo $row['banner_image']; ?>" width="116" height="87">
                                                     <?php } else { ?>
-                                                    <img src="<?php echo base_url(); ?>assets/images/no-img.jpg" alt="no-img.jpg">
+                                                    <img src="<?php echo base_url(); ?>uploads/no-img.jpg" alt="no-img.jpg">
                                                     <?php } ?>
                                                     </td>
                                                     <td><?php echo $row['banner_title']; ?></td>

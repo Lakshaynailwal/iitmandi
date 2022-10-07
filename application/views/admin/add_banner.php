@@ -48,7 +48,7 @@
                                        <label for="about_me" class="control-label col-lg-3 col-md-3 col-sm-4">Banner Image</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <?php if(@$banner['banner_image']){ ?>
-                                          <img style="width: 200px" src="<?php echo base_url(); ?>assets/images/banner/thumb/<?php echo @$banner['banner_image']; ?>" alt="<?php echo @$banner['banner_image']; ?>" />
+                                          <img style="width: 200px" src="<?php echo base_url(); ?>uploads/banner/thumb/<?php echo @$banner['banner_image']; ?>" alt="<?php echo @$banner['banner_image']; ?>" />
                                           <?php } else { ?>
                                           <img src="<?php echo base_url(); ?>images/no-img.png" alt="no-img.png">
                                           <?php } ?>

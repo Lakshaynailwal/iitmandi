@@ -6,7 +6,8 @@ class News extends CI_Controller{
         @parent::__construct();
         $this->load->library('pagination');
         $this->load->library('image_lib');
-        if(!$this->session->userdata('uid')) {
+        session_start();
+        if($this->session->userdata('uid') == ''){
             redirect(base_url().'admin/');
         }
     }

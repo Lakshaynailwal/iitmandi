@@ -61,14 +61,14 @@
     //   tinycomments_mode: 'embedded',
     //   tinycomments_author: 'Author name',
     // });
-    CKEDITOR.replace('context');
-    CKEDITOR.replace('overview');
-    CKEDITOR.replace('description');
-    CKEDITOR.replace('conclusion');
-    CKEDITOR.replace('reference');
-    CKEDITOR.replace('page_description');
-    CKEDITOR.replace('aboutus');
-    CKEDITOR.replace('footer_cntnt');
+    // CKEDITOR.replace('context');
+    // CKEDITOR.replace('overview');
+    // CKEDITOR.replace('description');
+    // CKEDITOR.replace('conclusion');
+    // CKEDITOR.replace('reference');
+    // CKEDITOR.replace('page_description');
+    // CKEDITOR.replace('aboutus');
+    // CKEDITOR.replace('footer_cntnt');
 </script>
 <style type="text/css">
     /*.tox-statusbar{display: none !important;}*/
