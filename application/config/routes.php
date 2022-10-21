@@ -58,3 +58,5 @@ $route['page/(:any)'] = 'page/pageDetails/$1';
 $route['pages/contactus'] = 'home/contactus';
 $route['pages/payment'] = 'home/payment';
 $route['pages/committees'] = 'home/committees';
+
+$route['student'] = 'student/index';

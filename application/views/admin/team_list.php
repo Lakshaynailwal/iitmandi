@@ -41,7 +41,8 @@
                                                     <th>Image</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>Description</th>
+                                                    <th>Designation</th>
+                                                    <th>Type</th>
                                                     <th style="width: 160px;">Action</th>
                                                 </tr>
                                             </thead>
@@ -60,6 +61,7 @@
                                                     <td><?php echo $row['fname']; ?></td>
                                                     <td><?php echo $row['email']; ?></td>
                                                     <td><?php echo $row['designation']; ?></td>
+                                                    <td><?php if($row['position']== 1){ echo "Faculty"; } else { echo "Student"; } ?></td>
                                                     <td>
                                                     <a href="admin/ourteam/add_team/<?php echo $row['id']; ?>" class="btn btn-inverse waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     <?php if($row['status']==1) { ?>

@@ -41,13 +41,13 @@ class News extends CI_Controller{
                 if(!empty($id)){
                     $data['result']=$this->common_model->get_data_row(STORAGES,array('id'=>$id));
                     if(!empty($data['result']['cubrid_field_name(result, field_offset)'])) {
-                        unlink('./assets/images/news/'.$data['result']['file_name']);
-                        unlink('./assets/images/news/thumb/'.$data['result']['file_name']);
+                        unlink('./uploads/news/'.$data['result']['file_name']);
+                        unlink('./uploads/news/thumb/'.$data['result']['file_name']);
                         $this->common_model->tbl_record_del(STORAGES,array('table_id'=>$id));
                     }
                 }
                 $config1=array();
-                $config1['upload_path']='./assets/images/news/';
+                $config1['upload_path']='./uploads/news/';
                 $random_number = substr(number_format(time() * rand(),0,'',''),0,6);
                 $config1['file_name']=time().$random_number;
                 $config1['allowed_types']='jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';
@@ -63,8 +63,8 @@ class News extends CI_Controller{
                     $suc_upload2=array();
                     $suc_upload2=$this->upload->data();
                     $config2['image_library']='gd2';
-                    $config2['source_image']='assets/images/news/'.$suc_upload2['file_name'];
-                    $config2['new_image']='assets/images/news/thumb/'.$suc_upload2['file_name'];
+                    $config2['source_image']='uploads/news/'.$suc_upload2['file_name'];
+                    $config2['new_image']='uploads/news/thumb/'.$suc_upload2['file_name'];
                     $config2['maintain_ratio']=FALSE;
                     $config2['width']=350;
                     $config2['height']=200;

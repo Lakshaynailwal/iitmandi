@@ -50,7 +50,11 @@
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
                                                     <td>
-                                                        <img src="<?php echo base_url(); ?>assets/images/news/thumb/<?php echo $row['file_name']; ?>" alt="<?php echo $row['file_name']; ?>" width="116" height="87"> 
+                                                        <?php if(!empty($news['file_name'])) { ?>
+                                                            <img src="<?php echo base_url(); ?>assets/images/news/thumb/<?php echo $row['file_name']; ?>" alt="<?php $news['file_name']; ?>" width="116" height="87">
+                                                        <?php } else { ?>
+                                                            <img src="<?php echo base_url(); ?>assets/images/no-cover.png" alt="no-cover" width="116" height="87">
+                                                        <?php } ?>
                                                     </td>
                                                     <td><?php echo $row['title']; ?></td>
                                                     <td class="news_desc">
