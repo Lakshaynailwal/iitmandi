@@ -36,6 +36,7 @@ class News extends CI_Controller{
             $insert_array['title'] = $this->input->post('title');
             $insert_array['type']= "news";
             $insert_array['description']=$this->input->post('description');
+            $insert_array['a_link']=$this->input->post('a_link');
             $insert_array['status']=$this->input->post('status');
             if($_FILES['news_image']['size']!='') {
                 if(!empty($id)){

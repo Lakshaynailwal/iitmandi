@@ -44,6 +44,12 @@
                                                     <textarea class="form-control text_area" id="description" name="description"><?php echo @$news['description'] ?></textarea>
                                                </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="description" class="control-label col-lg-3 col-md-3 col-sm-4">Additional Link</label>
+                                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                                    <textarea class="form-control text_area" id="a_link" name="a_link"><?php echo @$news['a_link'] ?></textarea>
+                                               </div>
+                                            </div>
                                             <div class="image_post">
                                                 <div class="form-group">
                                                     <label for="image" class="control-label col-lg-3 col-md-3 col-sm-4">News Cover Picture</label>

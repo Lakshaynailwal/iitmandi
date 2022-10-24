@@ -38,7 +38,7 @@
                                                    <th>Sl No.</th>
                                                    <th>Image</th>
                                                    <th>Title</th>
-                                                   <th>Location</th>
+                                                   <th>Description</th>
                                                    <th>Date</th>
                                                    <th>Action</th>
                                                 </tr>
