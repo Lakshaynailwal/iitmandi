@@ -5,15 +5,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-sm-8 mb-4 mb-lg-0">
-                    <a class="logo-footer" href="<?php echo base_url()?>home">
-                        <img class="img-fluid mb-4" style="width: 100%; height: 100px" src="<?php echo base_url()?>uploads/site_logo/<?php echo $footer_content[0]['profile_pic'];?>" alt="logo">
-                    </a>
                     <ul class="list-unstyled" style="font-weight: 600;">
                         <li class="mb-2"><?php echo $footer_content[0]['gmap'];?></li>
                         <li class="mb-2"><?php echo $footer_content[0]['location1'];?></li>
                         <li class="mb-2"><?php echo $footer_content[0]['contact'];?></li>
                         <li class="mb-2"><?php echo $footer_content[0]['email'];?></li>
                     </ul>
+                    <a class="logo-footer" href="<?php echo base_url()?>home">
+                        <img class="img-fluid mb-4" style="width: 200px" src="<?php echo base_url()?>uploads/site_logo/<?php echo $footer_content[0]['profile_pic'];?>" alt="logo">
+                    </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
                     <h4 class="text-white mb-4">Explore</h4>
@@ -40,8 +40,9 @@
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-4 col-6 mb-5 mb-md-0">
-                    <div id="ww_36dfef63d496d" v='1.3' loc='auto' a='{"t":"horizontal","lang":"en","ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"image","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722"}'><a href="https://sharpweather.com/widgets/" id="ww_36dfef63d496d_u" target="_blank">Weather Widgets for Websites</a></div><script async src="https://app1.weatherwidget.org/js/?id=ww_36dfef63d496d"></script>
-                    <ul class="list-unstyled">
+                    <!-- <a class="weatherwidget-io" href="https://forecast7.com/en/31d7877d00/kamand/" data-label_1="IIT Mandi" data-label_2="WEATHER" data-icons="Climacons Animated" data-shadow="#c7c2c2" data-textcolor="#423434" data-highcolor="#e81d1d" data-lowcolor="#1b32cf" data-suncolor="#fba303" data-cloudcolor="#10c9fb" data-cloudfill="#ecf4f8" data-raincolor="#0407fc" data-snowcolor="#dcd9d9" >KAMAND WEATHER</a> -->
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/31d7877d00/kamand/" data-label_1="IIT Mandi" data-label_2="WEATHER" data-icons="Climacons Animated" data-textcolor="#fff" data-highcolor="#e81d1d" data-lowcolor="#C8C8DC" data-suncolor="#fba303" data-cloudcolor="#10c9fb" data-cloudfill="#ecf4f8" data-raincolor="#0407fc" data-snowcolor="#dcd9d9" >KAMAND WEATHER</a>
+                        <ul class="list-unstyled">
                         <li class="mb-2"><a class="text-color" href="">Meet the team</a></li>   
                     </ul>     
                 </div>
@@ -60,9 +61,6 @@
     <div class="container footer-bottom clearfix">
         <div class="copyright">
             &copy; Copyright . All Rights Reserved
-        </div>
-        <div class="credits">
-            Designed & Developed <a href="https://xentechsoft.com/">Xentechsoft</a>
         </div>
     </div>
 </footer><!-- End Footer -->
@@ -105,6 +103,9 @@
         });
         });
     })
+</script>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
 </body>
 </html>

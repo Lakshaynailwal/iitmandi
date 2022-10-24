@@ -55,7 +55,7 @@
                                                     foreach($events as $row) { ?>
                                                 <tr>
                                                     <td><?php echo $i; ?></td>
-                                                    <td><img src="<?php echo base_url()?>assets/images/events/thumb/<?php echo $row['event_image']; ?>"></td>
+                                                    <td><img src="<?php echo base_url()?>uploads/events/thumb/<?php echo $row['event_image']; ?>"></td>
                                                     <td><?php echo $row['title']; ?></td>
                                                     <td><?php echo $row['location']; ?></td>
                                                     <td>

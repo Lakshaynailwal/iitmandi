@@ -66,6 +66,9 @@ class Homemessage extends CI_Controller{
             $data['result']=$this->common_model->get_data(HOMEMESSAGE,array('id'=>1));
             if($this->input->post()) {
                 $updtarr=array();
+                $updtarr['name']=$this->input->post('cp_name');
+                $updtarr['designation']=$this->input->post('designation');
+                $updtarr['location']=$this->input->post('location');
                 $updtarr['description']=$this->input->post('description');
                 $this->common_model->tbl_update(HOMEMESSAGE,array('id'=>1),$updtarr);
                 if($_FILES['homemsg_img']['size']!='') {

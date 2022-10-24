@@ -49,6 +49,11 @@
                 </a>
             </li>
             <li class="treeview">
+                <a href="admin/events"><i class="fa fa-circle-o"></i>
+                    <span>Events Management</span>
+                </a>
+            </li>
+            <li class="treeview">
                 <a href="admin/ourteam"><i class="fa fa-user"></i>
                     <span>User Management</span>
                 </a>

@@ -29,6 +29,7 @@ class Events extends CI_Controller{
 			$insArr['title']=$this->input->post('event_name');
 			$insArr['location']=$this->input->post('event_venue');
 			$insArr['event_date']=$this->input->post('event_date');
+			$insArr['description']=$this->input->post('description');
 			$insArr['status']=$this->input->post('status');
 			if(!empty($id)){
 				$this->common_model->tbl_update(EVENTS,array('id'=>$id),$insArr);
@@ -38,12 +39,12 @@ class Events extends CI_Controller{
 			if($_FILES['events_image']['name']!='') {
 				$data['result']=$this->common_model->get_data(EVENTS,array('id'=>$id));
 				if(@$data['result'][0]['events_image']) {	
-					unlink('./assets/images/events/'.$data['result'][0]['events_image']);	
-					unlink('./assets/images/events/thumb/'.$data['result'][0]['events_image']);	
+					unlink('./uploads/events/'.$data['result'][0]['events_image']);	
+					unlink('./uploads/events/thumb/'.$data['result'][0]['events_image']);	
 				}
 				$config1=array();
-				$config1['upload_path']='./assets/images/events/thumb';
-				$config1['upload_path']='./assets/images/events/';
+				$config1['upload_path']='./uploads/events/thumb';
+				$config1['upload_path']='./uploads/events/';
 				$random_number = substr(number_format(time() * rand(),0,'',''),0,6);
 				$config1['file_name']=time().$random_number;
 				$config1['allowed_types']='jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF';
@@ -61,8 +62,8 @@ class Events extends CI_Controller{
 					$suc_upload2=array();
 					$suc_upload2=$this->upload->data();
 					$config1['image_library']='gd2';
-					$config1['source_image']='assets/images/events/'.$suc_upload2['file_name'];
-					$config1['new_image']='assets/images/events/thumb/'.$suc_upload2['file_name'];
+					$config1['source_image']='uploads/events/'.$suc_upload2['file_name'];
+					$config1['new_image']='uploads/events/thumb/'.$suc_upload2['file_name'];
 					$config1['maintain_ratio']=TRUE;
 					$config1['width']=150;
 					$config1['height']=97;

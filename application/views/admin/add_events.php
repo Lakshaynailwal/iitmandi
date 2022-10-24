@@ -52,12 +52,18 @@
                                                 </span>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="location1" class="control-label col-lg-3 col-md-3 col-sm-4">Event Description</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-8">
+                                                <textarea class="form-control" type="text" name="description" rows="15"><?php echo strip_tags(@$events[0]['description']); ?></textarea>
+                                            </div>
+                                        </div>
                                         <?php if(!empty($events)){ ?>
                                         <div class="form-group">
                                            <label for="about_me" class="control-label col-lg-3 col-md-3 col-sm-4">Event Image</label>
                                            <div class="col-lg-9 col-md-9 col-sm-8">
                                               <?php if(@$events['event_image']){ ?>
-                                              <img style="width: 200px" src="<?php echo base_url(); ?>assets/images/events/thumb/<?php echo @$events['event_image']; ?>" alt="<?php echo @$events['event_image']; ?>" />
+                                              <img style="width: 200px" src="<?php echo base_url(); ?>uploads/events/thumb/<?php echo @$events['event_image']; ?>" alt="<?php echo @$events['event_image']; ?>" />
                                               <?php } else { ?>
                                               <img src="<?php echo base_url(); ?>images/no-img.png" alt="no-img.png">
                                               <?php } ?>

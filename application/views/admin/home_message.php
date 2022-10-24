@@ -32,6 +32,24 @@
                                 <div class="form">
                                     <form class="cmxform form-horizontal tasi-form" id="editForm" method="post" action="admin/Homemessage/home_message" enctype="multipart/form-data">
                                         <div class="form-group">
+                                            <label for="Event Name" class="control-label col-lg-3 col-md-3 col-sm-4">Chair Person's Name</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-8">
+                                                <input type="text" class="form-control required" id="cp_name" name="cp_name" placeholder="Chair Person's Name" value="<?php echo @$result[0]['name']; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Event Name" class="control-label col-lg-3 col-md-3 col-sm-4">Designation</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-8">
+                                                <input type="text" class="form-control required" id="designation" name="designation" placeholder="designation" value="<?php echo @$result[0]['designation']; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Event Name" class="control-label col-lg-3 col-md-3 col-sm-4">Location</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <textarea class="form-control" type="text" name="location"><?php echo strip_tags(@$result[0]['location']); ?></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="location1" class="control-label col-lg-3 col-md-3 col-sm-4">Home Messege Content</label>
                                             <div class="col-lg-9 col-md-9 col-sm-8">
                                                 <textarea class="form-control" type="text" name="description" rows="15"><?php echo strip_tags(@$result[0]['description']); ?></textarea>

@@ -1,5 +1,5 @@
   <?php echo $header;?>
-  <!-- ======= Hero Section ======= -->
+  <!-- ======= Hero Banner Section ======= -->
   <section class="hero-section overlay"> 
 		<!-- <div class="container"> -->
   		<div class="hero-slider">
@@ -19,7 +19,7 @@
   <!-- End Hero -->
 
   <main id="main">
-    <!-- ======= About Section ======= -->
+    <!-- ======= Welcome Section ======= -->
     <section id="about" class="about section-bg">
       <div class="container">
         <div class="row gy-4">
@@ -33,9 +33,9 @@
         </div>
       </div>
     </section>
-    <!-- End About Section -->
+    <!-- End Welcome Section -->
 
-    <!-- ======= Clients Section ======= -->
+    <!-- ======= Count Section ======= -->
     <section id="clients" class="clients section-bg">
       <div class="container">
         <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
@@ -63,16 +63,25 @@
         </div>
       </div>
     </section>
-    <!-- End Clients Section -->
+    <!-- End Count Section -->
 
-    <!-- ======= Services Section ======= -->
+    <!-- ======= Announcement Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container">
         <div class="row">
           <div class="col-md-8 d-flex" data-aos="fade-right">
             <div class="card" style="border: 1px solid;">
-              <div class="card-img" style="text-align: center">
-                <img src="<?php echo base_url()?>uploads/homemessage/<?php echo $home_message[0]["homemsg_img"]?>" alt="">
+              <div class="card-img">
+                <div class="school_img">
+                  <img src="<?php echo base_url()?>uploads/homemessage/<?php echo $home_message[0]["homemsg_img"]?>" alt="director" height="385" width="385">
+                </div>
+                <div class="into-inner">
+                  <div class="intro">
+                  <h3><?php echo $home_message[0]["name"]?></h3>
+                  <p style="color: bluw;color: #002a5c;font-size: 25px !important;padding: 0 0 4px;"><?php echo $home_message[0]["designation"]?></p>
+                  <p style="color: black;/*! font-size: xx-large; */font-style: initial;"><?php echo $home_message[0]["location"]?></p>
+                  </div>
+                </div>
               </div>
               <div class="card-body">
                 <h5 class="card-title"><a href=javascript:void(0)>Message from the School Chair</a></h5>
@@ -85,45 +94,23 @@
               <div class="card-img">
               <h4 class="card-title">News & Announcement</h4>
                 <div class="Scroll">
+                <?php if(!empty($news)) {
+                foreach ($news as $row){ ?>
                   <div class="main" id="section1">
-                    <h5><a href="">Section 1</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                    <h5><a href=""><?php echo $row['title']?></a></h5>
+                    <p class="card-text"><?php echo $row['description']?></p>
                   </div>
-                  <div class="main" id="section1">
-                    <h5><a href="">Section 2</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                  </div>
-                  <div class="main" id="section1">
-                    <h5><a href="">Section 3</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                  </div>
-                  <div class="main" id="section1">
-                    <h5><a href="">Section 4</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                  </div>
-                  <div class="main" id="section1">
-                    <h5><a href="">Section 5</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                  </div>
-                  <div class="main" id="section1">
-                    <h5><a href="">Section 6</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                  </div>
-                  <div class="main" id="section1">
-                    <h5><a href="">Section 7</a></h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                  </div>
+                  <?php } } ?>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </section>
-    <!-- End Services Section -->
+    <!-- End Announcement Section -->
 
-    <!-- ======= Features Section ======= -->
+    <!-- ======= Research Section ======= -->
     <section id="features" class="features section-bg">
       <div class="container">
         <div class="section-title">
@@ -195,7 +182,38 @@
         </div>
       </div>
     </section>
-    <!-- End Features Section -->
+    <!-- End Research HIGHLIGHTS Section -->
+
+    <!-- ======= Events Section ======= -->
+    <section id="features" class="features section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2 data-aos="fade-in">Events</h2>
+        </div>
+        <div class="row justify-content-center">
+        <?php if(!empty($events)) {
+        foreach ($events as $row){ ?>
+          <div class="col-lg-3 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+              <img class="card-img-top rounded-0" src="<?php echo base_url()?>uploads/events/<?php echo $row['event_image']?>" alt="<?php echo $row['title']?>" style="width: 100%; height: 200px;">
+              <div class="card-body">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><?php echo $date = date("D, d M Y", strtotime($row['event_date']));?></li>
+                  <!-- <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li> -->
+                </ul>
+                <a href="#">
+                  <h4 class="card-title"><?php echo $row['title']?></h4>
+                </a>
+                <p class="card-text mb-4"><?php echo $row['location']?></p>
+                <a href="course-single.html" class="btn btn-primary btn-sm">Read More</a>
+              </div>
+            </div>
+          </div>
+        <?php } } ?>
+        </div>
+      </div>
+    </section>
+    <!-- End Events Section -->
   </main>
   <!-- End #main -->
   <?php echo $footer;?>
