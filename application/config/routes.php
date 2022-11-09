@@ -55,8 +55,13 @@ $route['logout'] = 'home/logout';
 $route['home_about'] = 'admin/homeabout';
 $route['home_message'] = 'admin/homemessage';
 $route['page/(:any)'] = 'page/pageDetails/$1';
+$route['pages/students'] = 'Students/index';
+$route['pages/student_details'] = 'Students/student_details';
 $route['pages/contactus'] = 'home/contactus';
 $route['pages/payment'] = 'home/payment';
 $route['pages/committees'] = 'home/committees';
 
-$route['student'] = 'student/index';
+$route['student'] = 'student/student/index';
+$route['student/login'] = 'student/student/login';
+$route['student/dashboard'] = 'student/student/dashboard';
+$route['student/save_aboutme'] = 'student/student/save_aboutme';

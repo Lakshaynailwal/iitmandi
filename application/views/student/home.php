@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
-                <form class="stlog_form" method="post" action="Student/login">
+                <form class="stlog_form" method="post" action="student/login">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form1Example1">Email address</label>

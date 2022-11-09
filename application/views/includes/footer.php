@@ -68,6 +68,7 @@
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 <!-- Vendor JS Files -->
 <script src="<?php echo base_url()?>assets/plugins/jQuery/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url()?>assets/fontend/vendor/aos/aos.js"></script>
 <script src="<?php echo base_url()?>assets/fontend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/slick/slick.min.js"></script>
@@ -77,33 +78,111 @@
 <script src="<?php echo base_url()?>assets/fontend/vendor/php-email-form/validate.js"></script>
 <!-- Template Main JS File -->
 <script src="<?php echo base_url()?>assets/fontend/js/main.js"></script>
-
+<script type="text/javascript" src="<?php echo base_url()?>assets/engine1/wowslider.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/engine1/script.js"></script>
+<script src="<?php echo base_url()?>ckeditor/ckeditor.js" type="text/javascript"></script>
 <!-- for menu -->
-<script src="<?php echo base_url();?>assets/fontend/js/js_nlm7XvIloyPDi0SaRBYmQtQBChCi536bF5OFGig-VRY.js"></script>
+<!-- <script src="<?php echo base_url();?>assets/fontend/js/js_nlm7XvIloyPDi0SaRBYmQtQBChCi536bF5OFGig-VRY.js"></script> -->
 <script src="<?php echo base_url();?>assets/fontend/js/primary-nav.nuKHgqPrYVsT.js?v=9.3.21" type="module"></script>
 <script>
     $(document).ready(function(){
-        $('.hero-slider').slick({
-            autoplay: false,
-            autoplaySpeed: 3000,
-            arrows : false,
-        });
+        // $('.hero-slider').slick({
+        //     autoplay: false,
+        //     autoplaySpeed: 3000,
+        //     arrows : false,
+        // });
         //var imageUrl = $(this).data('background');
         //console.log(imageUrl);
         //$('.slick-current').css('background-image', 'url(' + imageUrl + ')');
         $('.number').each(function () {
-        $(this).prop('Counter',0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 4000,
-            easing: 'swing',
-            step: function (now) {
-                $(this).text(Math.ceil(now));
-            }
+            $(this).prop('Counter',0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: 4000,
+                easing: 'swing',
+                step: function (now) {
+                    $(this).text(Math.ceil(now));
+                }
+            });
         });
+        $('#v-pills-tabContent1').show();
+        $("#v-pills-link1-tab").click(function() {
+            $('.slide_content .row').animate({
+                scrollTop: $("#v-pills-link1").offset().top},
+                'slow');
         });
-    })
+        $("#v-pills-link2-tab").click(function() {
+            $('.slide_content .row').animate({
+                scrollTop: $("#v-pills-link2").offset().top},
+                'slow');
+        });
+        $("#v-pills-link3-tab").click(function() {
+            $('.slide_content .row').animate({
+                scrollTop: $("#v-pills-link3").offset().top},
+                'slow');
+        });
+        $("#v-pills-link4-tab").click(function() {
+            $('.slide_content .row').animate({
+                scrollTop: $("#v-pills-link4").offset().top},
+                'slow');
+        });
+        $("#v-pills-link5-tab").click(function() {
+            $('.slide_content .row').animate({
+                scrollTop: $("#v-pills-link5").offset().top},
+                'slow');
+        });
+        $("#v-pills-link6-tab").click(function() {
+            $('.slide_content .row').animate({
+                scrollTop: $("#v-pills-link6").offset().top},
+                'slow');
+        });
+
+        $(".about_btn").click(function() {
+            $(".about_data").css("opacity", "1");
+        });
+
+        $("#form_aboutme").on('submit',(function(e) {
+            alert();
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>student/save_aboutme",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data=='invalid') {
+                        // invalid file format.
+                        $("#err").html("Invalid File !").fadeIn();
+                    } else {
+                        // view uploaded file.
+                        $("#preview").html(data).fadeIn();
+                        $("#form")[0].reset(); 
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        })); 
+    });
+    CKEDITOR.replace('aboutme');
 </script>
+<!-- <?php 
+for ($i = 0; $i <= 7; $i++) { ?>
+    <script>
+    $('#v-pills-link'+<?php echo $i; ?>+'-tab').on("click", function(){
+        $('#v-pills-link'+<?php echo $i; ?>+'').addClass("show active");
+        $('#v-pills-link'+<?php echo $i-1; ?>+'').removeClass("show active");
+    });
+    </script>
+<?php } ?> -->
+
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>

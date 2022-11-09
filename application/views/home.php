@@ -1,22 +1,19 @@
   <?php echo $header;?>
   <!-- ======= Hero Banner Section ======= -->
-  <section class="hero-section overlay"> 
-		<!-- <div class="container"> -->
-  		<div class="hero-slider">
-        <?php if(!empty($banner)) {
+   <div id="wowslider-container1">
+    <div class="ws_images">
+      <ul>
+      <?php if(!empty($banner)) {
         foreach ($banner as $row){ ?>
-  			<div class="hero-slider-item overlay" data-background="<?php echo base_url()?>uploads/banner/<?php echo $row['banner_image']?>" style="background-image: url('<?php echo base_url()?>uploads/banner/<?php echo $row["banner_image"]?>'); width: 1440px; height: 690px; position: relative; left: -1440px; top: 0px; z-index: 999; opacity: 1;">
-					<div class="row">
-				  	<div class="col-md-8">
-				    	<h1 class="hero-section1 text-white" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1"><?php echo $row['banner_title']?></h1>
-            </div>
-					</div>
-  			</div>
-        <?php } } ?>
-  		</div>
-		<!-- </div> -->
-	</section>
-  <!-- End Hero -->
+        <li>
+          <img src="<?php echo base_url()?>uploads/banner/<?php echo $row['banner_image']?>" alt="jquery slider" title="<?php echo $row['banner_title']?>" id="wows1_0"/>
+        </li>
+      <?php } } ?>
+      </ul>
+    </div>
+	  <div class="ws_shadow"></div>
+  </div>	
+  <!-- ======= Hero Banner Section ======= -->
 
   <main id="main">
     <!-- ======= Welcome Section ======= -->
