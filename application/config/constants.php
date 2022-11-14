@@ -89,15 +89,13 @@ define('SUCCESS_ICON','<i class="fa fa-info-circle" aria-hidden="true"></i>');
 /*-----------icon--------*/
 //database table constants
 define('ADMIN', 'iitmandi_admin');
-define('SETTINGS', 'iitmandi_settings');
 define('BANNER', 'iitmandi_banner');
+define('EVENTS', 'iitmandi_events');
 define('HOMEABOUT', 'iitmandi_homeabout');
 define('HOMEMESSAGE', 'iitmandi_homemessage');
-define('PAGES', 'iitmandi_pages');
-define('EVENTS', 'iitmandi_events');
-define('NOTICE', 'iitmandi_notice');
 define('STORAGES', 'iitmandi_newsstorages');
+define('PAGES', 'iitmandi_pages');
+define('SETTINGS', 'iitmandi_settings');
 define('TEAM', 'iitmandi_team');
-define('SYLLABUS', 'iitmandi_syllabus');
-define('DISCLOSURE', 'iitmandi_disclosure');
-define('COMMITTEES', 'iitmandi_committees');
+define('EDUCATION', 'iitmandi_user_education');
+define('EXPERIENCE', 'iitmandi_user_experience');

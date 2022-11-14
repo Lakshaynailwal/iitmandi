@@ -137,12 +137,12 @@
                 'slow');
         });
 
+        /* save about me */
         $(".about_btn").click(function() {
             $(".about_data").css("opacity", "1");
         });
 
         $("#form_aboutme").on('submit',(function(e) {
-            alert();
             e.preventDefault();
             $.ajax({
                 url: "<?php echo base_url()?>student/save_aboutme",
@@ -170,6 +170,67 @@
                 }          
             });
         })); 
+
+        /* save education */
+        $(".edu_add_btn").click(function() {
+            $(".edu_data").css("opacity", "1");
+        });
+
+        $("#form_edu").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>student/save_educate",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data !='invalid') {
+                        $("#form_edu")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
+
+        /* save experience */
+        $(".exp_add_btn").click(function() {
+            $(".exp_data").css("opacity", "1");
+        });
+
+        $("#form_exp").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>student/save_experience",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data !='invalid') {
+                        $("#form_exp")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
+
     });
     CKEDITOR.replace('aboutme');
 </script>

@@ -65,3 +65,5 @@ $route['student'] = 'student/student/index';
 $route['student/login'] = 'student/student/login';
 $route['student/dashboard'] = 'student/student/dashboard';
 $route['student/save_aboutme'] = 'student/student/save_aboutme';
+$route['student/save_educate'] = 'student/student/save_educate';
+$route['student/save_experience'] = 'student/student/save_experience';

@@ -1,6 +1,9 @@
 <?php 
-echo $header;
 $uid = $this->session->userdata('uid');
+$get_name = get_users_name($uid);
+// echo "<pre>";
+// print_r($get_name); die();
+echo $header;
 ?>
 <style>
     .nav-pills .nav-link{margin-bottom: 15px;}
@@ -37,7 +40,7 @@ $uid = $this->session->userdata('uid');
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <h3>Student Details</h3>
+                        <h3 style="text-align: center; text-transform: capitalize">Welcome <?php echo $get_name[0]['fname'];?></h3>                      
                         <div class="row">
                             <div class="col-3">
                                 <!-- Tab navs -->
@@ -61,18 +64,18 @@ $uid = $this->session->userdata('uid');
                                                     <div class="row">
                                                         <div class='col-sm-12'>
                                                             <div class="col-sm-6" style="text-align: right;float: left;display: inline-block;">
-                                                                <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/1667140703711760.jpg" alt=""/>
+                                                                <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/<?php echo $get_name[0]['team_image'];?>" alt=""/>
                                                             </div>
                                                             <div class="col-sm-6" style="float: left;display: inline-block;">
-                                                                <p class='bio_text'>Name:<?php echo $uid?></p>
-                                                                <p class='bio_text'>Enrolment No.:</p>
-                                                                <p class='bio_text'>Email:</p>
-                                                                <p class='bio_text'>Admission year:</p>
-                                                                <p class='bio_text'>Research Interests:</p>
+                                                                <p class='bio_text'>Name: <?php echo $get_name[0]['fname'];?></p>
+                                                                <p class='bio_text'>Enrolment No.: <?php echo $get_name[0]['enrollno'];?></p>
+                                                                <p class='bio_text'>Email: <?php echo $get_name[0]['email'];?></p>
+                                                                <p class='bio_text'>Admission year: <?php echo $get_name[0]['admissionyear'];?></p>
+                                                                <p class='bio_text'>Research Interests: <?php echo $get_name[0]['research_interest'];?></p>
                                                             </div>
                                                         </div>
                                                         <div class='col-sm-12'>
-                                                        <p class='bio_text1'>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                                        <p class='bio_text1'><?php echo $get_name[0]['aboutme'];?></p>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
@@ -103,8 +106,8 @@ $uid = $this->session->userdata('uid');
                                                                         <td>Demo</td>
                                                                         <td>Demo</td>
                                                                         <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -112,7 +115,7 @@ $uid = $this->session->userdata('uid');
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                        <button type="button" class="btn btn-primary"><a href=''>Add New Record</a></button>
+                                                        <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg">Add New Record</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,8 +139,8 @@ $uid = $this->session->userdata('uid');
                                                                         <td>Demo</td>
                                                                         <td>Demo</td>
                                                                         <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -145,7 +148,7 @@ $uid = $this->session->userdata('uid');
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                        <button type="button" class="btn btn-primary"><a href=''>Add New Record</a></button>
+                                                        <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg">Add New Record</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -487,6 +490,100 @@ $uid = $this->session->userdata('uid');
                     <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
                     <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
                     <input class="btn btn-primary about_save" type="submit" value="Update">
+                    <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg edu_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+    <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
+        <div class="modal-content">
+        <form id="form_edu" action="" method="post" enctype="multipart/form-data">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12" style="margin-bottom: 40px;">
+                        <div class="col-sm-12" style="float: left; display: inline-block;">
+                            <div class="form-group col-sm-4 cstm_details">
+                                <label for="Event Name" class="control-label">Degree</label>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <input type="text" class="form-control required" id="degree" name="degree" value="">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4 cstm_details">
+                                <label for="Event Name" class="control-label">University</label>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <input type="text" class="form-control required" id="university" name="university" value="">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4 cstm_details">
+                                <label for="Event Name" class="control-label">Year</label>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <input type="text" class="form-control required" id="year" name="year" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-3 col-md-3 col-sm-4 control-label">Status</label>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <select class="form-control" name="status">
+                                        <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
+                                        <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
+                    <div id="err"></div>
+                    <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
+                    <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
+                    <input class="btn btn-primary edu_save" type="submit" value="Submit">
+                    <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg exp_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+    <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
+        <div class="modal-content">
+        <form id="form_exp" action="" method="post" enctype="multipart/form-data">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12" style="margin-bottom: 40px;">
+                        <div class="col-sm-12" style="float: left; display: inline-block;">
+                            <div class="form-group col-sm-4 cstm_details">
+                                <label for="Event Name" class="control-label">Position</label>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <input type="text" class="form-control required" id="position" name="position" value="">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4 cstm_details">
+                                <label for="Event Name" class="control-label">Year</label>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <input type="text" class="form-control required" id="year" name="year" value="">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-4 cstm_details">
+                                <label for="Event Name" class="control-label">Status</label>
+                                <div class="col-lg-9 col-md-9 col-sm-8">
+                                    <select class="form-control" name="status">
+                                        <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
+                                        <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
+                    <div id="err"></div>
+                    <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
+                    <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
+                    <input class="btn btn-primary exp_save" type="submit" value="Submit">
                     <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
                 </div>
             </div>

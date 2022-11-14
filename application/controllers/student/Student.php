@@ -118,6 +118,49 @@ class Student extends CI_Controller {
 		}
 	}
 
+	public function save_educate() {
+		//print_r($this->input->post()); die();
+		if($this->input->post()) {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['degree']=$this->input->post('degree');
+			$insArr['university']=$this->input->post('university');
+			$insArr['year']=$this->input->post('year');
+			$insArr['status']=$this->input->post('status');
+			if(!empty($record_id)) {
+				$this->common_model->tbl_update(EDUCATION,array('id'=>$record_id),$insArr);
+			} else {
+				$banner_record_id=$this->common_model->tbl_insert(EDUCATION,$insArr);
+			}
+			if(!empty($record_id)) {
+				echo "Sucessfully Updated";
+			} else {
+				echo "Something went wrong. Please try again later!";
+			}
+		}
+	}
+
+	public function save_experience() {
+		//print_r($this->input->post()); die();
+		if($this->input->post()) {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['position']=$this->input->post('position');
+			$insArr['year']=$this->input->post('year');
+			$insArr['status']=$this->input->post('status');
+			if(!empty($record_id)) {
+				$this->common_model->tbl_update(EXPERIENCE,array('id'=>$record_id),$insArr);
+			} else {
+				$banner_record_id=$this->common_model->tbl_insert(EXPERIENCE,$insArr);
+			}
+			if(!empty($record_id)) {
+				echo "Sucessfully Updated";
+			} else {
+				echo "Something went wrong. Please try again later!";
+			}
+		}
+	}
+
     public function logout() {
         $this->session->unset_userdata('uid');
         session_unset();  
