@@ -29,7 +29,7 @@
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <h3 style="text-align:center">Student Details</h3>
+                        <h3 style="text-align: center; text-transform: capitalize">Welcome <?php echo $about_me[0]['fname'];?></h3>                      
                         <div class="row">
                             <div class="col-3">
                                 <!-- Tab navs -->
@@ -45,103 +45,398 @@
                             </div>
                             <div class="col-9">
                             <!-- Tab content -->
-                                <div class="tab-content" id="v-pills-tabContent">
-                                    <div class="tab-pane fade" id="v-pills-link1" role="tabpanel" aria-labelledby="v-pills-link1-tab">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class='col-sm-12'>
-                                                    <div class="col-sm-6" style="text-align: right;float: left;display: inline-block;">
-                                                        <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/1667140703711760.jpg" alt=""/>
+                                <div class="container slide_content">
+                                    <div class="row" style="overflow: scroll; height: 425px;">
+                                        <div class="tab-content1" id="v-pills-tabContent1">
+                                            <div class="tab-pane" id="v-pills-link1" role="tabpanel" aria-labelledby="v-pills-link1-tab">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <div class="col-sm-6" style="text-align: right;float: left;display: inline-block;">
+                                                                <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/<?php echo $about_me[0]['team_image'];?>" alt=""/>
+                                                            </div>
+                                                            <div class="col-sm-6" style="float: left;display: inline-block;">
+                                                                <p class='bio_text'>Name: <?php echo $about_me[0]['fname'];?></p>
+                                                                <p class='bio_text'>Enrolment No.: <?php echo $about_me[0]['enrollno'];?></p>
+                                                                <p class='bio_text'>Email: <?php echo $about_me[0]['email'];?></p>
+                                                                <p class='bio_text'>Admission year: <?php echo $about_me[0]['admissionyear'];?></p>
+                                                                <p class='bio_text'>Research Interests: <?php echo $about_me[0]['research_interest'];?></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                        <p class='bio_text1'><?php echo $about_me[0]['aboutme'];?></p>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-sm-6" style="float: left;display: inline-block;">
-                                                        <p class='bio_text'>Name:</p>
-                                                        <p class='bio_text'>Enrolment No.:</p>
-                                                        <p class='bio_text'>Email:</p>
-                                                        <p class='bio_text'>Admission year:</p>
-                                                        <p class='bio_text'>Research Interests:</p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="v-pills-link2" role="tabpanel" aria-labelledby="v-pills-link2-tab">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <h2 style="text-align: center;">Education</h2>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sl No.</th>
+                                                                        <th>Degree</th>
+                                                                        <th>University</th>
+                                                                        <th>Year</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <?php if(!empty($education)) {
+                                                                        $i=1; ?>
+                                                                    <?php foreach($education as $row1) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $i;?></td>
+                                                                        <td><?php echo $row1['degree']?></td>
+                                                                        <td><?php echo $row1['university']?></td>
+                                                                        <td><?php echo $row1['year']?></td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php $i++; } } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class='col-sm-12'>
-                                                <p class='bio_text1'>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                            </div>
+                                            <div class="tab-pane" id="v-pills-link3" role="tabpanel" aria-labelledby="v-pills-link3-tab">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <h2 style="text-align: center;">Professional Experience</h2>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sl No.</th>
+                                                                        <th>Position(Company name)</th>
+                                                                        <th>Year</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <?php if(!empty($experience)) {
+                                                                        $i=1; ?>
+                                                                    <?php foreach($experience as $row) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $i;?></td>
+                                                                        <td><?php echo $row['position'];?></td>
+                                                                        <td><?php echo $row['year'];?></td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <?php $i++; } } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="v-pills-link2" role="tabpanel" aria-labelledby="v-pills-link3-tab">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class='col-sm-12'>
-                                                    <h2 style="text-align: center;">Education</h2>
-                                                </div>
-                                                <div class='col-sm-12'>
-                                                    <table id="example" class="table table-striped" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Degree</th>
-                                                                <th>University</th>
-                                                                <th>Year</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Demo</td>
-                                                                <td>Demo</td>
-                                                                <td>Demo</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                            <div class="tab-pane" id="v-pills-link4" role="tabpanel" aria-labelledby="v-pills-link4-tab">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <h2 style="text-align: center;">Publications</h2>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <p>1. Journal article</p>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sl No.</th>
+                                                                        <th>Image</th>
+                                                                        <th>Authors Name</th>
+                                                                        <th>Title of Paper</th>
+                                                                        <th>Journal Name</th>
+                                                                        <th>Publised date</th>
+                                                                        <th>Publisher</th>
+                                                                        <th>DOI (External Link)</th>
+                                                                        <th>Page Number</th>
+                                                                        <th>Highlights</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <?php if(!empty($journal)) {
+                                                                        $i=1; ?>
+                                                                    <?php foreach($journal as $row) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $i;?></td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['journal_name'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['publisher'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php $i++; } } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <p>2. Conference paper</p>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sl No.</th>
+                                                                        <th>Image</th>
+                                                                        <th>Authors Name</th>
+                                                                        <th>Title of Paper</th>
+                                                                        <th>Conference name</th>
+                                                                        <th>Publised date</th>
+                                                                        <th>Organizer/Publisher</th>
+                                                                        <th>location</th>
+                                                                        <th>External Link</th>
+                                                                        <th>Page Number</th>
+                                                                        <th>Highlights</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <?php if(!empty($conference)) {
+                                                                        $i=1; ?>
+                                                                    <?php foreach($conference as $row) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $i;?></td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['conference_name'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['publisher'];?></td>
+                                                                        <td><?php echo $row['location'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php $i++; } } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <p>3. Book chapter</p>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sl No.</th>
+                                                                        <th>Image</th>
+                                                                        <th>Authors Name</th>
+                                                                        <th>Title</th>
+                                                                        <th>Book name</th>
+                                                                        <th>Publised date</th>
+                                                                        <th>Publisher</th>
+                                                                        <th>DOI (External Link)</th>
+                                                                        <th>Editors</th>
+                                                                        <th>Page Number</th>
+                                                                        <th>Highlights</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <?php if(!empty($book_chapter)) {
+                                                                        $i=1; ?>
+                                                                    <?php foreach($book_chapter as $row) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $i;?></td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['book_name'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['publisher'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php $i++; } } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <p>4. Book</p>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Sl No.</th>
+                                                                        <th>Image</th>
+                                                                        <th>Authors Name</th>
+                                                                        <th>Title</th>
+                                                                        <th>Publised date</th>
+                                                                        <th>Publisher</th>
+                                                                        <th>DOI (External Link)</th>
+                                                                        <th>Page Number</th>
+                                                                        <th>Highlights</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <?php if(!empty($book)) {
+                                                                        $i=1; ?>
+                                                                    <?php foreach($book as $row) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $i;?></td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['publisher'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php $i++; } } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <p>5. Patent</p>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Image</th>
+                                                                        <th>Authors Name</th>
+                                                                        <th>Title</th>
+                                                                        <th>Publised date</th>
+                                                                        <th>Patent Number</th>
+                                                                        <th>Highlights</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <?php if(!empty($patent)) {
+                                                                        $i=1; ?>
+                                                                    <?php foreach($patent as $row) { ?>
+                                                                    <tr>
+                                                                        <td><?php echo $i;?></td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['patient_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php $i++; } } ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                               </div>
+                                            </div>
+                                            <div class="tab-pane" id="v-pills-link5" role="tabpanel" aria-labelledby="v-pills-link5-tab">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <h2 style="text-align: center;">Awards and Honours</h2>
+                                                        </div>
+                                                        <div class='col-sm-12'>
+                                                            <table id="example" class="table table-striped" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Demo</th>
+                                                                        <th>Demo</th>
+                                                                        <th>Demo</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td>
+                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="v-pills-link3" role="tabpanel" aria-labelledby="v-pills-link4-tab">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class='col-sm-12'>
-                                                    <h2 style="text-align: center;">Professional Experience</h2>
+                                            <div class="tab-pane" id="v-pills-link6" role="tabpanel" aria-labelledby="v-pills-link6-tab">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class='col-sm-12'>
+                                                            <h2 style="text-align: center;">Photo Gallery</h2>
+                                                        </div>
+                                                        <div class="content">
+                                                            <div class='col-sm-12'>
+                                                                <div class="col-sm-3 cstm_gllery">
+                                                                    <a href=""><img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3 cstm_gllery">
+                                                                    <a href=""><img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3 cstm_gllery">
+                                                                    <a href=""><img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/></a>
+                                                                </div>
+                                                                <div class="col-sm-3 cstm_gllery">
+                                                                    <a href=""><img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12" style="text-align: right;">
+                                                        <button type="button" class="btn btn-primary"><a href=''>Add New Album</a></button>
+                                                    </div>
                                                 </div>
-                                                <div class='col-sm-12'>
-                                                    <table id="example" class="table table-striped" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Position(Company name)</th>
-                                                                <th>Year</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Demo</td>
-                                                                <td>Demo</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="v-pills-link4" role="tabpanel" aria-labelledby="v-pills-link5-tab">Publications Text</div>
-                                    <div class="tab-pane fade" id="v-pills-link5" role="tabpanel" aria-labelledby="v-pills-link6-tab">Awards and Honours Text</div>
-                                    <div class="tab-pane fade" id="v-pills-link6" role="tabpanel" aria-labelledby="v-pills-link7-tab">
-                                        <div class="container">
-                                            <div class="content">
-                                                <a class="elem" href="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 1" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                                    <span style="background-image: url(https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                                                    </a>
-                                                <a class="elem" href="https://images.unsplash.com/photo-1502082553048-f009c37129b9?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 2" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1502082553048-f009c37129b9?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                                    <span style="background-image: url(https://images.unsplash.com/photo-1502082553048-f009c37129b9?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                                                </a>
-                                                <a class="elem" href="https://images.unsplash.com/photo-1442850473887-0fb77cd0b337?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 3" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1442850473887-0fb77cd0b337?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                                    <span style="background-image: url(https://images.unsplash.com/photo-1442850473887-0fb77cd0b337?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                                                </a>
-                                                <a class="elem" href="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 4" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                                    <span style="background-image: url(https://images.unsplash.com/photo-1431794062232-2a99a5431c6c?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                                                </a>
-                                                <a class="elem" href="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 5" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                                    <span style="background-image: url(https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                                                </a>
-                                                <a class="elem" href="https://images.unsplash.com/photo-1482192505345-5655af888cc4?dpr=1&auto=format&fit=crop&w=2000&q=80&cs=tinysrgb" title="image 6" data-lcl-txt="lorem ipsum dolor sit amet" data-lcl-author="someone" data-lcl-thumb="https://images.unsplash.com/photo-1482192505345-5655af888cc4?dpr=1&auto=format&fit=crop&w=150&q=80&cs=tinysrgb">
-                                                    <span style="background-image: url(https://images.unsplash.com/photo-1482192505345-5655af888cc4?dpr=1&auto=format&fit=crop&w=400&q=80&cs=tinysrgb);"></span>
-                                                </a>
                                             </div>
                                         </div>
                                     </div>

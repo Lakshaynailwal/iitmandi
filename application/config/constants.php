@@ -99,3 +99,4 @@ define('SETTINGS', 'iitmandi_settings');
 define('TEAM', 'iitmandi_team');
 define('EDUCATION', 'iitmandi_user_education');
 define('EXPERIENCE', 'iitmandi_user_experience');
+define('PUBLICATION', 'iitmandi_publication');

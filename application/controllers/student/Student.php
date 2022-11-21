@@ -161,6 +161,40 @@ class Student extends CI_Controller {
 		}
 	}
 
+	public function save_publication() {
+		//print_r($this->input->post()); die();
+		if($this->input->post()) {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['publication_type']=$this->input->post('publication_type');
+			$insArr['attachment']=$this->input->post('attachment');
+			$insArr['author_name']=$this->input->post('author_name');
+			$insArr['paper_title'] = $this->input->post('paper_title');
+			$insArr['journal_name']=$this->input->post('journal_name');
+			$insArr['conference_name']=$this->input->post('conference_name');
+			$insArr['book_name']=$this->input->post('book_name');
+			$insArr['publish_date']=$this->input->post('publish_date');
+			$insArr['patient_number']=$this->input->post('patient_number');
+			$insArr['publisher']=$this->input->post('publisher');
+			$insArr['location']=$this->input->post('location');
+			$insArr['external_Link']=$this->input->post('external_Link');
+			$insArr['editors']=$this->input->post('editors');
+			$insArr['page_number']=$this->input->post('page_number');
+			$insArr['highlight']=$this->input->post('highlight');
+			$insArr['status']=$this->input->post('status');
+			if(!empty($record_id)) {
+				$this->common_model->tbl_update(PUBLICATION,array('id'=>$record_id),$insArr);
+			} else {
+				$banner_record_id=$this->common_model->tbl_insert(PUBLICATION,$insArr);
+			}
+			if(!empty($record_id)) {
+				echo "Sucessfully Updated";
+			} else {
+				echo "Something went wrong. Please try again later!";
+			}
+		}
+	}
+
     public function logout() {
         $this->session->unset_userdata('uid');
         session_unset();  

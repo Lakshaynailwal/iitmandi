@@ -231,6 +231,154 @@
             });
         }));
 
+        /* save publication */
+        $('.body_content').hide();
+        $("select.publication_type").change(function(){
+            var selectedPublication = $(this).children("option:selected").val();
+            if (selectedPublication == 'Journal Article') {
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').show();
+                $('.conference_name').hide();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').show();
+                $('.location').hide();
+                $('.external_Link').show();
+                $('.editors').hide();
+                $('.page_number').show();
+            } else if (selectedPublication == 'Conference Paper') {
+                $('.body_content').hide();
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').show();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').show();
+                $('.location').show();
+                $('.external_Link').show();
+                $('.editors').hide();
+                $('.page_number').show();
+            } else if (selectedPublication == 'Book Chapter') {
+                $('.body_content').hide();
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').hide();
+                $('.book_name').show();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').hide();
+                $('.location').hide();
+                $('.external_Link').show();
+                $('.editors').show();
+                $('.page_number').show();
+            } else if (selectedPublication == 'Book') {
+                $('.body_content').hide();
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').hide();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').show();
+                $('.location').hide();
+                $('.external_Link').show();
+                $('.editors').hide();
+                $('.page_number').show();
+            } else if (selectedPublication == 'Patent') {
+                $('.body_content').hide();
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').hide();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').show();
+                $('.publisher').hide();
+                $('.location').hide();
+                $('.external_Link').hide();
+                $('.editors').hide();
+                $('.page_number').hide();
+            } else {
+                $('.body_content').hide();
+            }
+        });
+
+        $(".pub_add_btn").click(function() {
+            $(".pub_data").css("opacity", "1");
+        });
+
+        $("#form_pub").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>student/save_publication",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data !='invalid') {
+                        $("#form_pub")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
+
+        /* save Award */
+        $(".awrd_add_btn").click(function() {
+            $(".awrd_data").css("opacity", "1");
+        });
+
+        $("#form_awrd").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>student/save_award",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data !='invalid') {
+                        $("#form_exp")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
+
+
     });
     CKEDITOR.replace('aboutme');
 </script>

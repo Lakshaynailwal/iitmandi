@@ -80,7 +80,7 @@ echo $header;
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
                                                         <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
-                                                        <button type="button" class="btn btn-primary about_btn" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Record</button>
+                                                        <button type="button" class="btn btn-primary about_btn" data-toggle="modal" data-target=".bd-example-modal-lg1">Edit Record</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,7 +115,7 @@ echo $header;
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                        <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg">Add New Record</button>
+                                                        <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2">Add New Record</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +148,7 @@ echo $header;
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                        <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg">Add New Record</button>
+                                                        <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,8 +189,8 @@ echo $header;
                                                                         <td>Demo</td>
                                                                         <td>Demo</td>
                                                                         <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -232,8 +232,8 @@ echo $header;
                                                                         <td>Demo</td>
                                                                         <td>Demo</td>
                                                                         <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -275,8 +275,8 @@ echo $header;
                                                                         <td>Demo</td>
                                                                         <td>Demo</td>
                                                                         <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -314,8 +314,8 @@ echo $header;
                                                                         <td>Demo</td>
                                                                         <td>Demo</td>
                                                                         <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -349,17 +349,16 @@ echo $header;
                                                                         <td>Demo</td>
                                                                         <td>Demo</td>
                                                                         <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
-
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                        <button type="button" class="btn btn-primary"><a href=''>Add New Record</a></button>
+                                                        <button type="button" class="btn btn-primary pub_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg4">Add New Record</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -394,7 +393,7 @@ echo $header;
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                        <button type="button" class="btn btn-primary"><a href=''>Add New Record</a></button>
+                                                        <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -438,7 +437,7 @@ echo $header;
         </div>
     </section><!-- End Portfolio Details Section -->
 </main><!-- End #main -->
-<div class="modal fade bd-example-modal-lg about_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+<div class="modal fade bd-example-modal-lg1 about_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
         <div class="modal-content">
         <form id="form_aboutme" action="" method="post" enctype="multipart/form-data">
@@ -497,7 +496,7 @@ echo $header;
         </div>
     </div>
 </div>
-<div class="modal fade bd-example-modal-lg edu_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+<div class="modal fade bd-example-modal-lg2 edu_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
         <div class="modal-content">
         <form id="form_edu" action="" method="post" enctype="multipart/form-data">
@@ -547,47 +546,220 @@ echo $header;
         </div>
     </div>
 </div>
-<div class="modal fade bd-example-modal-lg exp_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+<div class="modal fade bd-example-modal-lg3 exp_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
         <div class="modal-content">
-        <form id="form_exp" action="" method="post" enctype="multipart/form-data">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12" style="margin-bottom: 40px;">
-                        <div class="col-sm-12" style="float: left; display: inline-block;">
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Position</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="position" name="position" value="">
+            <form id="form_exp" action="" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-bottom: 40px;">
+                            <div class="col-sm-12" style="float: left; display: inline-block;">
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Position</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="position" name="position" value="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Year</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="year" name="year" value="">
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Year</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="year" name="year" value="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Status</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <select class="form-control" name="status">
-                                        <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
-                                        <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
-                                    </select>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Status</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <select class="form-control" name="status">
+                                            <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
+                                            <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
+                        <div id="err"></div>
+                        <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
+                        <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
+                        <input class="btn btn-primary exp_save" type="submit" value="Submit">
+                        <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                    </div>
                 </div>
-                <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
-                    <div id="err"></div>
-                    <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
-                    <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
-                    <input class="btn btn-primary exp_save" type="submit" value="Submit">
-                    <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg4 pub_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+    <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
+        <div class="modal-content">
+            <form id="form_pub" action="" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-bottom: 40px;">
+                            <div class="col-sm-12" style="float: left; display: inline-block;">
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Publications Type" class="control-label ">Publications Type</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <select class="form-control publication_type" name="publication_type" id="publication_type">
+                                            <option value="">Choose an option</option>
+                                            <option value="Journal Article">Journal Article</option>
+                                            <option value="Conference Paper">Conference Paper</option>
+                                            <option value="Book Chapter">Book Chapter</option>
+                                            <option value="Book">Book</option>
+                                            <option value="Patent">Patent</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 body_content" style="float: left; display: inline-block;">
+                                <div class="form-group col-sm-4 cstm_details attachment">
+                                    <label for="Event Name" class="control-label">Image</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="file" class="form-control required" id="attachment" name="attachment" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details author_name">
+                                    <label for="Event Name" class="control-label">Authors Name</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="author_name" name="author_name" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details paper_title">
+                                    <label for="Event Name" class="control-label">Title of Paper</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="paper_title" name="paper_title" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details journal_name">
+                                    <label for="Event Name" class="control-label">Journal Name</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="journal_name" name="journal_name" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details conference_name">
+                                    <label for="Event Name" class="control-label">Conference name</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="conference_name" name="conference_name" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details book_name">
+                                    <label for="Event Name" class="control-label">Book name</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="book_name" name="book_name" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details publish_date">
+                                    <label for="Event Name" class="control-label">Publised date</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="publish_date" name="publish_date" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details patient_number">
+                                    <label for="Event Name" class="control-label">Patent Number</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="patient_number" name="patient_number" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details publisher">
+                                    <label for="Event Name" class="control-label">Publisher</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="publisher" name="publisher" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details location">
+                                    <label for="Event Name" class="control-label">location</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="location" name="location" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details external_Link">
+                                    <label for="Event Name" class="control-label">DOI (External Link)</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="external_Link" name="external_Link" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details editors">
+                                    <label for="Event Name" class="control-label">Editors</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="editors" name="editors" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details page_number">
+                                    <label for="Event Name" class="control-label">Page Number</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="page_number" name="page_number" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Highlights</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="highlight" name="highlight" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Status</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
+                                            <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
+                        <div id="err"></div>
+                        <input class="btn btn-primary publication_save" type="submit" value="Submit">
+                        <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg5 awrd_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+    <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
+        <div class="modal-content">
+            <form id="form_awrd" action="" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-bottom: 40px;">
+                            <div class="col-sm-12" style="float: left; display: inline-block;">
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Position</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="position" name="position" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Year</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="year" name="year" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Status</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <select class="form-control" name="status">
+                                            <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
+                                            <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
+                        <div id="err"></div>
+                        <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
+                        <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
+                        <input class="btn btn-primary exp_save" type="submit" value="Submit">
+                        <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

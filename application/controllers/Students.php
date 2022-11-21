@@ -12,13 +12,26 @@ class Students extends CI_Controller {
     }
 
     public function index() { 
+        $data['students'] = $this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('status'=>1, 'is_delete'=>1, 'position'=>2,));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
-        $data['title']='Students';
+        $data['title']='Student List';
         $this->load->view('student_list',$data);
     }
 
-    public function student_details() { 
+    public function student_details($id='') { 
+        //echo base64_decode($id); die;
+        $data['about_me']=$data['result']=$this->common_model->get_data(TEAM,array('id'=>base64_decode($id)));
+        $data['education']=$this->common_model->get_data_array(EDUCATION,array('user_id'=>base64_decode($id),' status'=>1, 'is_delete'=>1));
+        $data['experience']=$this->common_model->get_data_array(EXPERIENCE,array('user_id'=>base64_decode($id), 'status'=>1, 'is_delete'=>1));
+        $data['journal']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Journal Article', 'status'=>1, 'is_delete'=>1));
+        $data['conference']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Conference Paper', 'status'=>1, 'is_delete'=>1));
+        $data['book_chapter']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Book Chapter', 'status'=>1, 'is_delete'=>1));
+        $data['book']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Book', 'status'=>1, 'is_delete'=>1));
+        $data['patent']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Patent', 'status'=>1, 'is_delete'=>1));
+
+        //$data['student_details']=$this->common_model->get_data_row(TEAM,array('id'=>base64_decode($id)));
+        //$data['student_details']=$this->common_model->get_data_row(TEAM,array('id'=>base64_decode($id)));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
         $data['title']='Student Detais';
