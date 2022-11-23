@@ -61,6 +61,7 @@ $route['pages/contactus'] = 'home/contactus';
 $route['pages/payment'] = 'home/payment';
 $route['pages/committees'] = 'home/committees';
 
+/* Students */
 $route['student'] = 'student/student/index';
 $route['student/login'] = 'student/student/login';
 $route['student/dashboard'] = 'student/student/dashboard';
@@ -68,3 +69,4 @@ $route['student/save_aboutme'] = 'student/student/save_aboutme';
 $route['student/save_educate'] = 'student/student/save_educate';
 $route['student/save_experience'] = 'student/student/save_experience';
 $route['student/save_publication'] = 'student/student/save_publication';
+$route['student/logout'] = 'student/student/logout';

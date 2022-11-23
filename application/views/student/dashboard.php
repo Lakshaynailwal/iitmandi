@@ -1,5 +1,5 @@
 <?php 
-$uid = $this->session->userdata('uid');
+$uid = $this->session->userdata('user_id');
 $get_name = get_users_name($uid);
 // echo "<pre>";
 // print_r($get_name); die();
@@ -40,7 +40,7 @@ echo $header;
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <h3 style="text-align: center; text-transform: capitalize">Welcome <?php echo $get_name[0]['fname'];?></h3>                      
+                        <h3 style="text-align: center; text-transform: capitalize">Welcome <?php echo $get_name[0]['fname'];?></h3>
                         <div class="row">
                             <div class="col-3">
                                 <!-- Tab navs -->
@@ -51,6 +51,7 @@ echo $header;
                                     <a class="nav-link active" id="v-pills-link4-tab" data-mdb-toggle="pill" role="tab">Publications</a>
                                     <a class="nav-link active" id="v-pills-link5-tab" data-mdb-toggle="pill" role="tab">Awards and Honours</a>
                                     <a class="nav-link active" id="v-pills-link6-tab" data-mdb-toggle="pill" role="tab">Photo Gallery</a>
+                                    <a href="<?php echo base_url()?>student/logout" class="nav-link active" id="v-pills-link6-tab" data-mdb-toggle="pill" role="tab">Logout</a>
                                 </div>
                                 <!-- Tab navs -->
                             </div>
@@ -613,97 +614,117 @@ echo $header;
                                 </div>
                             </div>
                             <div class="col-sm-12 body_content" style="float: left; display: inline-block;">
-                                <div class="form-group col-sm-4 cstm_details attachment">
-                                    <label for="Event Name" class="control-label">Image</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="file" class="form-control required" id="attachment" name="attachment" value="">
+                                <div>
+                                    <div class="form-group col-sm-4 cstm_details attachment">
+                                        <label for="Event Name" class="control-label">Image</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="file" class="form-control required" id="attachment" name="attachment" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details author_name">
+                                        <label for="Event Name" class="control-label">Authors Name</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="author_name" name="author_name" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details paper_title">
+                                        <label for="Event Name" class="control-label">Title of Paper</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="paper_title" name="paper_title" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details journal_name">
+                                        <label for="Event Name" class="control-label">Journal Name</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="journal_name" name="journal_name" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details conference_name">
+                                        <label for="Event Name" class="control-label">Conference name</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="conference_name" name="conference_name" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details book_name">
+                                        <label for="Event Name" class="control-label">Book name</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="book_name" name="book_name" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details publish_date">
+                                        <label for="Event Name" class="control-label">Publised date</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="publish_date" name="publish_date" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details patient_number">
+                                        <label for="Event Name" class="control-label">Patent Number</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="patient_number" name="patient_number" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details publisher">
+                                        <label for="Event Name" class="control-label">Publisher</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="publisher" name="publisher" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details location">
+                                        <label for="Event Name" class="control-label">location</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="location" name="location" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details external_Link">
+                                        <label for="Event Name" class="control-label">DOI (External Link)</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="external_Link" name="external_Link" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details editors">
+                                        <label for="Event Name" class="control-label">Editors</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="editors" name="editors" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4 cstm_details page_number">
+                                        <label for="Event Name" class="control-label">Page Number</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="page_number" name="page_number" value="">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-4 cstm_details author_name">
-                                    <label for="Event Name" class="control-label">Authors Name</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="author_name" name="author_name" value="">
+                                <div>
+                                    <div class="form-group col-sm-12 cstm_details page_number">
+                                        <label for="Event Name" class="control-label">Short Summary</label>
+                                        <div class="col-sm-12">
+                                            <!-- <input type="text" class="form-control required" id="page_number" name="page_number" value=""> -->
+                                            <textarea id="short_summery" name="short_summery"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-12 cstm_details page_number">
+                                        <label for="Event Name" class="control-label">Key points</label>
+                                        <div class="col-sm-12">
+                                            <!-- <input type="text" class="form-control required" id="page_number" name="page_number" value=""> -->
+                                            <textarea id="key_points" name="key_points"></textarea>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-4 cstm_details paper_title">
-                                    <label for="Event Name" class="control-label">Title of Paper</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="paper_title" name="paper_title" value="">
+                                <div>
+                                    <div class="form-group col-sm-4 cstm_details">
+                                        <label for="Event Name" class="control-label">Highlights</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <input type="text" class="form-control required" id="highlight" name="highlight" value="">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details journal_name">
-                                    <label for="Event Name" class="control-label">Journal Name</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="journal_name" name="journal_name" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details conference_name">
-                                    <label for="Event Name" class="control-label">Conference name</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="conference_name" name="conference_name" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details book_name">
-                                    <label for="Event Name" class="control-label">Book name</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="book_name" name="book_name" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details publish_date">
-                                    <label for="Event Name" class="control-label">Publised date</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="publish_date" name="publish_date" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details patient_number">
-                                    <label for="Event Name" class="control-label">Patent Number</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="patient_number" name="patient_number" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details publisher">
-                                    <label for="Event Name" class="control-label">Publisher</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="publisher" name="publisher" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details location">
-                                    <label for="Event Name" class="control-label">location</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="location" name="location" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details external_Link">
-                                    <label for="Event Name" class="control-label">DOI (External Link)</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="external_Link" name="external_Link" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details editors">
-                                    <label for="Event Name" class="control-label">Editors</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="editors" name="editors" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details page_number">
-                                    <label for="Event Name" class="control-label">Page Number</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="page_number" name="page_number" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details">
-                                    <label for="Event Name" class="control-label">Highlights</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="highlight" name="highlight" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details">
-                                    <label for="Event Name" class="control-label">Status</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <select class="form-control" id="status" name="status">
-                                            <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
-                                            <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
-                                        </select>
+                                    <div class="form-group col-sm-4 cstm_details">
+                                        <label for="Event Name" class="control-label">Status</label>
+                                        <div class="col-lg-9 col-md-9 col-sm-8">
+                                            <select class="form-control" id="status" name="status">
+                                                <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
+                                                <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

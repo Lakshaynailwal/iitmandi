@@ -250,6 +250,8 @@
                 $('.external_Link').show();
                 $('.editors').hide();
                 $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
             } else if (selectedPublication == 'Conference Paper') {
                 $('.body_content').hide();
                 $('.body_content').show();
@@ -266,6 +268,8 @@
                 $('.external_Link').show();
                 $('.editors').hide();
                 $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
             } else if (selectedPublication == 'Book Chapter') {
                 $('.body_content').hide();
                 $('.body_content').show();
@@ -282,6 +286,8 @@
                 $('.external_Link').show();
                 $('.editors').show();
                 $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
             } else if (selectedPublication == 'Book') {
                 $('.body_content').hide();
                 $('.body_content').show();
@@ -298,6 +304,8 @@
                 $('.external_Link').show();
                 $('.editors').hide();
                 $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
             } else if (selectedPublication == 'Patent') {
                 $('.body_content').hide();
                 $('.body_content').show();
@@ -314,6 +322,8 @@
                 $('.external_Link').hide();
                 $('.editors').hide();
                 $('.page_number').hide();
+                $('.short_summery').show();
+                $('.key_points').show();
             } else {
                 $('.body_content').hide();
             }
@@ -377,10 +387,11 @@
                 }          
             });
         }));
-
-
     });
+
     CKEDITOR.replace('aboutme');
+    CKEDITOR.replace('short_summery');
+    CKEDITOR.replace('key_points');
 </script>
 <!-- <?php 
 for ($i = 0; $i <= 7; $i++) { ?>

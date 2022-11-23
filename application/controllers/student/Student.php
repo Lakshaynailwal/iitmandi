@@ -11,9 +11,9 @@ class Student extends CI_Controller {
         $this->load->library('email');
         date_default_timezone_set('Asia/Calcutta');
         session_start();
-        if($this->session->userdata('uid') == ''){
-            redirect(base_url().'student/');
-        }
+        // if($this->session->userdata('uid') == ''){
+        //     redirect(base_url().'student/');
+        // }
     }
 
     public function index() {
@@ -24,33 +24,38 @@ class Student extends CI_Controller {
 	}
 
     public function login() {
-        if($this->session->userdata('uid') != ''){
+		//echo "inside function"; die;
+        if($this->session->userdata('user_id') != ''){
             redirect(base_url('student/dashboard'));
-         }
-         if($this->input->post()) {
-             $sql="`email` ='".$this->input->post('email')."' AND (`user_type`=1)";
-             $result=$this->common_model->get_data(ADMIN,$sql);
-             if(md5($this->input->post('password')) == $result[0]['password']) {
-                $this->session->set_userdata('uid',$result[0]['user_id']);
-                redirect(base_url()."student/dashboard");
-             } else {
-                 $this->utilitylib->setMsg('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Wrong email or password!','ERROR');
-                 redirect(base_url()."student/");
-             }
-         }
-         $data['page_title'] = "Login";
-         $data['logo']=$this->common_model->get_data_array(SETTINGS,array('id'=>1),'','','','','','');
-         $data['header_scripts'] = $this->load->view('includes/header_scripts','',true);
-         $data['footer_scripts'] = $this->load->view('includes/footer_scripts','',true);
-         $this->load->view('student/login',$data);
+		}
+		if($this->input->post()) {
+			$sql="`email` ='".$this->input->post('email')."' AND (`position`=2)";
+			$result=$this->common_model->get_data(TEAM,$sql);
+			if(md5($this->input->post('password')) == $result[0]['password']) {
+			$this->session->set_userdata('user_id',$result[0]['id']);
+			redirect(base_url()."student/dashboard");
+			} else {
+				$this->utilitylib->setMsg('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Wrong email or password!','ERROR');
+				redirect(base_url()."student/");
+			}
+		}
+		$data['page_title'] = "Login";
+		//$data['logo']=$this->common_model->get_data_array(SETTINGS,array('id'=>1),'','','','','','');
+		$data['header']=$this->load->view('includes/header','',true);
+        $data['footer']=$this->load->view('includes/footer','',true);
+		$this->load->view('student/home',$data);
     }
 
     public function dashboard() {
-        $data['page_title'] = "Dashboard";
-        $data['logo']=$this->common_model->get_data_array(SETTINGS,array('id'=>1),'','','','','','');
-        $data['header']=$this->load->view('includes/header','',true);
-        $data['footer']=$this->load->view('includes/footer','',true);
-        $this->load->view('student/dashboard',$data);
+		if($this->session->userdata('user_id') != ''){
+			$data['page_title'] = "Dashboard";
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('student/dashboard',$data);
+		} else {
+			redirect(base_url()."student/");
+		}
+        
     }
 
     public function save_aboutme() {
@@ -181,6 +186,8 @@ class Student extends CI_Controller {
 			$insArr['editors']=$this->input->post('editors');
 			$insArr['page_number']=$this->input->post('page_number');
 			$insArr['highlight']=$this->input->post('highlight');
+			$insArr['short_summery']=$this->input->post('short_summery');
+			$insArr['key_points']=$this->input->post('key_points');
 			$insArr['status']=$this->input->post('status');
 			if(!empty($record_id)) {
 				$this->common_model->tbl_update(PUBLICATION,array('id'=>$record_id),$insArr);
@@ -198,6 +205,6 @@ class Student extends CI_Controller {
     public function logout() {
         $this->session->unset_userdata('uid');
         session_unset();  
-        redirect(base_url()."admin");
+        redirect(base_url()."student/");
     }
 }
