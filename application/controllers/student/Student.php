@@ -24,7 +24,6 @@ class Student extends CI_Controller {
 	}
 
     public function login() {
-		//echo "inside function"; die;
         if($this->session->userdata('user_id') != ''){
             redirect(base_url('student/dashboard'));
 		}
@@ -40,7 +39,6 @@ class Student extends CI_Controller {
 			}
 		}
 		$data['page_title'] = "Login";
-		//$data['logo']=$this->common_model->get_data_array(SETTINGS,array('id'=>1),'','','','','','');
 		$data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
 		$this->load->view('student/home',$data);
@@ -55,7 +53,6 @@ class Student extends CI_Controller {
 		} else {
 			redirect(base_url()."student/");
 		}
-        
     }
 
     public function save_aboutme() {

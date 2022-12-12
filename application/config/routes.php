@@ -57,6 +57,8 @@ $route['home_message'] = 'admin/homemessage';
 $route['page/(:any)'] = 'page/pageDetails/$1';
 $route['pages/students'] = 'Students/index';
 $route['pages/student_details/(:any)'] = 'Students/student_details/$1';
+$route['pages/faculty_list'] = 'Facult/index';
+$route['pages/faculty_details/(:any)'] = 'Faculty/faculty_details/$1';
 $route['pages/contactus'] = 'home/contactus';
 $route['pages/payment'] = 'home/payment';
 $route['pages/committees'] = 'home/committees';
@@ -70,3 +72,14 @@ $route['student/save_educate'] = 'student/student/save_educate';
 $route['student/save_experience'] = 'student/student/save_experience';
 $route['student/save_publication'] = 'student/student/save_publication';
 $route['student/logout'] = 'student/student/logout';
+
+/* Faculty */
+$route['faculty'] = 'facultys/facultys/index';
+$route['faculty/login'] = 'facultys/facultys/login';
+$route['faculty/dashboard'] = 'facultys/facultys/dashboard';
+$route['faculty/research'] = 'facultys/facultys/research';
+$route['faculty/publication'] = 'facultys/facultys/publication';
+$route['faculty/projects'] = 'facultys/facultys/projects';
+$route['faculty/lab_members'] = 'facultys/facultys/lab_members';
+$route['faculty/current_opening'] = 'facultys/facultys/current_opening';
+$route['faculty/miscellaneous'] = 'facultys/facultys/miscellaneous';
