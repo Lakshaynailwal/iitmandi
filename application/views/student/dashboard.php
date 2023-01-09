@@ -36,13 +36,13 @@ echo $header;
 
     <!-- ======= Portfolio Details Section ======= -->
     <section id="portfolio-details" class="portfolio-details">
-        <div class="container">
+        <!-- <div class="container"> -->
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
                         <h3 style="text-align: center; text-transform: capitalize">Welcome <?php echo $get_name[0]['fname'];?></h3>
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-2">
                                 <!-- Tab navs -->
                                 <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical" >
                                     <a class="nav-link active" id="v-pills-link1-tab" data-mdb-toggle="pill" role="tab">About me</a>
@@ -55,10 +55,10 @@ echo $header;
                                 </div>
                                 <!-- Tab navs -->
                             </div>
-                            <div class="col-9">
+                            <div class="col-10">
                             <!-- Tab content -->
                                 <div class="container slide_content">
-                                    <div class="row" style="overflow: scroll; height: 425px;">
+                                    <div class="row" style="overflow: scroll; height: 480px;">
                                         <div class="tab-content1" id="v-pills-tabContent1">
                                             <div class="tab-pane" id="v-pills-link1" role="tabpanel" aria-labelledby="v-pills-link1-tab">
                                                 <div class="container">
@@ -102,15 +102,20 @@ echo $header;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if(!empty($education)) {
+                                                                    $i=1; ?>
+                                                                <?php foreach($education as $row) { ?>
                                                                     <tr>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
+                                                                        <td><?php echo $row['degree'];?></td>
+                                                                        <td><?php echo $row['university'];?></td>
+                                                                        <td><?php echo $row['year'];?></td>
                                                                         <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="EditEduID(<?php echo $row['id']?>)">Edit</button>
+                                                                            <input type="hidden" id="data_id" name="data_id" value="<?php echo $row['id'];?>">
+                                                                            <button type="button" class="btn btn-danger edu_add_btn" onclick="DtlEduID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -136,14 +141,18 @@ echo $header;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if(!empty($experience)) {
+                                                                    $i=1; ?>
+                                                                    <?php foreach($experience as $row) { ?>
                                                                     <tr>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
+                                                                        <td><?php echo $row['position'];?></td>
+                                                                        <td><?php echo $row['year'];?></td>
                                                                         <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3" onclick="EditExpID(<?php echo $row['id']?>)">Edit</button>
+                                                                            <button type="button" class="btn btn-danger exp_add_btn" onclick="DtlExpID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -179,21 +188,25 @@ echo $header;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if(!empty($journal)) {
+                                                                    $i=1; ?>
+                                                                    <?php foreach($journal as $row) { ?>
                                                                     <tr>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['journal_name'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['publisher'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
                                                                         <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <button type="button" class="btn btn-primary pub_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg4" onclick="EditjorID(<?php echo $row['id']?>)">Edit</button>
+                                                                            <button type="button" class="btn btn-danger exp_add_btn" onclick="DtljorID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -221,22 +234,26 @@ echo $header;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if(!empty($conference)) {
+                                                                    $i=1; ?>
+                                                                    <?php foreach($conference as $row) { ?>
                                                                     <tr>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['conference_name'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['publisher'];?></td>
+                                                                        <td><?php echo $row['location'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
                                                                         <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <button type="button" class="btn btn-primary pub_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg4" onclick="EditconID(<?php echo $row['id']?>)">Edit</button>
+                                                                            <button type="button" class="btn btn-danger exp_add_btn" onclick="DtlconID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -255,7 +272,6 @@ echo $header;
                                                                         <th>Title</th>
                                                                         <th>Book name</th>
                                                                         <th>Publised date</th>
-                                                                        <th>Publisher</th>
                                                                         <th>DOI (External Link)</th>
                                                                         <th>Editors</th>
                                                                         <th>Page Number</th>
@@ -264,22 +280,25 @@ echo $header;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if(!empty($book_chapter)) {
+                                                                    $i=1; ?>
+                                                                    <?php foreach($book_chapter as $row) { ?>
                                                                     <tr>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['book_name'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['editors'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
                                                                         <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <button type="button" class="btn btn-primary pub_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg4" onclick="EditBcID(<?php echo $row['id']?>)">Edit</button>
+                                                                            <button type="button" class="btn btn-danger exp_add_btn" onclick="DtlBcID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -305,20 +324,24 @@ echo $header;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if(!empty($book)) {
+                                                                    $i=1; ?>
+                                                                    <?php foreach($book as $row) { ?>
                                                                     <tr>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['publisher'];?></td>
+                                                                        <td><?php echo $row['external_Link'];?></td>
+                                                                        <td><?php echo $row['page_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
                                                                         <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <button type="button" class="btn btn-primary pub_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg4" onclick="EditBkID(<?php echo $row['id']?>)">Edit</button>
+                                                                            <button type="button" class="btn btn-danger exp_add_btn" onclick="DtlBkID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -342,18 +365,22 @@ echo $header;
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
+                                                                <?php if(!empty($patent)) {
+                                                                    $i=1; ?>
+                                                                    <?php foreach($patent as $row) { ?>
                                                                     <tr>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
-                                                                        <td>Demo</td>
+                                                                        <td><?php echo $row['attachment'];?></td>
+                                                                        <td><?php echo $row['author_name'];?></td>
+                                                                        <td><?php echo $row['paper_title'];?></td>
+                                                                        <td><?php echo $row['publish_date'];?></td>
+                                                                        <td><?php echo $row['patient_number'];?></td>
+                                                                        <td><?php echo $row['highlight'];?></td>
                                                                         <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                                            <button type="button" class="btn btn-primary pub_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg4" onclick="EditPtID(<?php echo $row['id']?>)">Edit</button>
+                                                                            <button type="button" class="btn btn-danger exp_add_btn" onclick="DtlPtID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -372,6 +399,9 @@ echo $header;
                                                         <div class='col-sm-12'>
                                                             <table id="example" class="table table-striped" style="width:100%">
                                                                 <thead>
+                                                                <?php if(!empty($award)) {
+                                                                    $i=1; ?>
+                                                                    <?php foreach($award as $row) { ?>
                                                                     <tr>
                                                                         <th>Demo</th>
                                                                         <th>Demo</th>
@@ -389,6 +419,7 @@ echo $header;
                                                                             <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                                         </td>
                                                                     </tr>
+                                                                <?php $i++; } } ?>
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -435,9 +466,11 @@ echo $header;
                     </div>
                 </div>
             </div>
-        </div>
-    </section><!-- End Portfolio Details Section -->
-</main><!-- End #main -->
+        <!-- </div> -->
+    </section>
+    <!-- End Portfolio Details Section -->
+</main>
+<!-- End #main -->
 <div class="modal fade bd-example-modal-lg1 about_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
         <div class="modal-content">
@@ -452,37 +485,38 @@ echo $header;
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Name</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="fname" name="fname" value="">
+                                    <input type="text" class="form-control required" id="fname" name="fname" value="<?php echo $get_name[0]['fname'];?>">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Enrolment No.</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="enrollno" name="enrollno" value="">
+                                    <input type="text" class="form-control required" id="enrollno" name="enrollno" value="<?php echo $get_name[0]['enrollno'];?>">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Email</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="email" class="form-control required" id="email" name="email" value="">
+                                    <input type="email" class="form-control required" id="email" name="email" value="<?php echo $get_name[0]['email'];?>">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Admission year</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="admissionyear" name="admissionyear" value="">
+                                    <input type="text" class="form-control required" id="admissionyear" name="admissionyear" value="<?php echo $get_name[0]['admissionyear'];?>">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Research Interests</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="research_interest" name="research_interest" value="">
+                                    <input type="text" class="form-control required" id="research_interest" name="research_interest" value="<?php echo $get_name[0]['research_interest'];?>">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class='col-sm-12'>
-                        <textarea id="aboutme" name="aboutme">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+                        <textarea id="aboutme" name="aboutme"><?php echo $get_name[0]['aboutme'];?></textarea>
+                        <!-- <input type="text" class="form-control required ckeditor" id="aboutme" name="aboutme" value="<?php echo $get_name[0]['aboutme'];?>"> -->
                     </div>
                 </div>
                 <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
@@ -508,25 +542,25 @@ echo $header;
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Degree</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="degree" name="degree" value="">
+                                    <input type="text" class="form-control required" id="degree" name="degree">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">University</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="university" name="university" value="">
+                                    <input type="text" class="form-control required" id="university" name="university">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Year</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="year" name="year" value="">
+                                    <input type="text" class="form-control required" id="year" name="year">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-3 col-md-3 col-sm-4 control-label">Status</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <select class="form-control" name="status">
+                                    <select class="form-control" id="status" name="status">
                                         <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
                                         <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
                                     </select>
@@ -541,6 +575,7 @@ echo $header;
                     <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
                     <input class="btn btn-primary edu_save" type="submit" value="Submit">
                     <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                    <input type="hidden" id="dataid" name="dataid">
                 </div>
             </div>
         </form>
@@ -558,13 +593,13 @@ echo $header;
                                 <div class="form-group col-sm-4 cstm_details">
                                     <label for="Event Name" class="control-label">Position</label>
                                     <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="position" name="position" value="">
+                                        <input type="text" class="form-control required" id="position" name="position">
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-4 cstm_details">
                                     <label for="Event Name" class="control-label">Year</label>
                                     <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="year" name="year" value="">
+                                        <input type="text" class="form-control required" id="exp_year" name="exp_year">
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-4 cstm_details">
@@ -585,6 +620,7 @@ echo $header;
                         <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
                         <input class="btn btn-primary exp_save" type="submit" value="Submit">
                         <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                        <input type="hidden" id="expid" name="expid">
                     </div>
                 </div>
             </form>
@@ -618,79 +654,79 @@ echo $header;
                                     <div class="form-group col-sm-4 cstm_details attachment">
                                         <label for="Event Name" class="control-label">Image</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="file" class="form-control required" id="attachment" name="attachment" value="">
+                                            <input type="file" class="form-control required" id="attachment" name="attachment">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details author_name">
                                         <label for="Event Name" class="control-label">Authors Name</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="author_name" name="author_name" value="">
+                                            <input type="text" class="form-control required" id="author_name" name="author_name">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details paper_title">
                                         <label for="Event Name" class="control-label">Title of Paper</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="paper_title" name="paper_title" value="">
+                                            <input type="text" class="form-control required" id="paper_title" name="paper_title">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details journal_name">
                                         <label for="Event Name" class="control-label">Journal Name</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="journal_name" name="journal_name" value="">
+                                            <input type="text" class="form-control required" id="journal_name" name="journal_name">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details conference_name">
                                         <label for="Event Name" class="control-label">Conference name</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="conference_name" name="conference_name" value="">
+                                            <input type="text" class="form-control required" id="conference_name" name="conference_name">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details book_name">
                                         <label for="Event Name" class="control-label">Book name</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="book_name" name="book_name" value="">
+                                            <input type="text" class="form-control required" id="book_name" name="book_name">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details publish_date">
                                         <label for="Event Name" class="control-label">Publised date</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="publish_date" name="publish_date" value="">
+                                            <input type="text" class="form-control required" id="publish_date" name="publish_date">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details patient_number">
                                         <label for="Event Name" class="control-label">Patent Number</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="patient_number" name="patient_number" value="">
+                                            <input type="text" class="form-control required" id="patient_number" name="patient_number">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details publisher">
                                         <label for="Event Name" class="control-label">Publisher</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="publisher" name="publisher" value="">
+                                            <input type="text" class="form-control required" id="publisher" name="publisher">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details location">
                                         <label for="Event Name" class="control-label">location</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="location" name="location" value="">
+                                            <input type="text" class="form-control required" id="location" name="location">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details external_Link">
                                         <label for="Event Name" class="control-label">DOI (External Link)</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="external_Link" name="external_Link" value="">
+                                            <input type="text" class="form-control required" id="external_Link" name="external_Link">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details editors">
                                         <label for="Event Name" class="control-label">Editors</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="editors" name="editors" value="">
+                                            <input type="text" class="form-control required" id="editors" name="editors">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details page_number">
                                         <label for="Event Name" class="control-label">Page Number</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="page_number" name="page_number" value="">
+                                            <input type="text" class="form-control required" id="page_number" name="page_number">
                                         </div>
                                     </div>
                                 </div>
@@ -714,7 +750,12 @@ echo $header;
                                     <div class="form-group col-sm-4 cstm_details">
                                         <label for="Event Name" class="control-label">Highlights</label>
                                         <div class="col-lg-9 col-md-9 col-sm-8">
-                                            <input type="text" class="form-control required" id="highlight" name="highlight" value="">
+                                            <select class="form-control" id="highlight" name="highlight">
+                                                <option value="On My Page">On My Page</option>
+                                                <option value="On Supervisor Page">On Supervisor Page</option>
+                                                <option value="On School Page">On School Page</option>
+                                                <option value="All of Above">All of Above</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4 cstm_details">
@@ -734,54 +775,12 @@ echo $header;
                         <div id="err"></div>
                         <input class="btn btn-primary publication_save" type="submit" value="Submit">
                         <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                        <input type="hidden" id="pubid" name="pubid">
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<div class="modal fade bd-example-modal-lg5 awrd_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
-    <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
-        <div class="modal-content">
-            <form id="form_awrd" action="" method="post" enctype="multipart/form-data">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12" style="margin-bottom: 40px;">
-                            <div class="col-sm-12" style="float: left; display: inline-block;">
-                                <div class="form-group col-sm-4 cstm_details">
-                                    <label for="Event Name" class="control-label">Position</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="position" name="position" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details">
-                                    <label for="Event Name" class="control-label">Year</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="year" name="year" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-4 cstm_details">
-                                    <label for="Event Name" class="control-label">Status</label>
-                                    <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <select class="form-control" name="status">
-                                            <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
-                                            <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
-                        <div id="err"></div>
-                        <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
-                        <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
-                        <input class="btn btn-primary exp_save" type="submit" value="Submit">
-                        <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 <?php echo $footer?>

@@ -28,7 +28,7 @@ class Student extends CI_Controller {
             redirect(base_url('student/dashboard'));
 		}
 		if($this->input->post()) {
-			$sql="`email` ='".$this->input->post('email')."' AND (`position`=2)";
+			$sql= "`email` ='".$this->input->post('email')."' AND (`position` = 2) AND (`status`= 1) AND (`is_delete`= 1)";
 			$result=$this->common_model->get_data(TEAM,$sql);
 			if(md5($this->input->post('password')) == $result[0]['password']) {
 			$this->session->set_userdata('user_id',$result[0]['id']);
@@ -47,6 +47,14 @@ class Student extends CI_Controller {
     public function dashboard() {
 		if($this->session->userdata('user_id') != ''){
 			$data['page_title'] = "Dashboard";
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'status'=>1,'is_delete'=>1));
+			//$data['publication']=$this->common_model->get_data_array(PUBLICATION,'','','','','','',PUBLICATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'status'=>1,'is_delete'=>1));
+			$data['journal']=$this->common_model->get_data_array(PUBLICATION,'','','','','','',PUBLICATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'publication_type'=>'Journal Article','status'=>1,'is_delete'=>1));
+			$data['conference']=$this->common_model->get_data_array(PUBLICATION,'','','','','','',PUBLICATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'publication_type'=>'Conference Paper','status'=>1,'is_delete'=>1));
+			$data['book_chapter']=$this->common_model->get_data_array(PUBLICATION,'','','','','','',PUBLICATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'publication_type'=>'Book Chapter','status'=>1,'is_delete'=>1));
+			$data['book']=$this->common_model->get_data_array(PUBLICATION,'','','','','','',PUBLICATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'status'=>1,'publication_type'=>'Book','is_delete'=>1));
+			$data['patent']=$this->common_model->get_data_array(PUBLICATION,'','','','','','',PUBLICATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'status'=>1,'publication_type'=>'Patent','is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('student/dashboard',$data);
@@ -121,51 +129,86 @@ class Student extends CI_Controller {
 	}
 
 	public function save_educate() {
-		//print_r($this->input->post()); die();
-		if($this->input->post()) {
+		$record_id = $this->input->post('dataid');
+		if($record_id != '') {
 			$insArr=array();
 			$insArr['user_id'] = $this->input->post('uid');
 			$insArr['degree']=$this->input->post('degree');
 			$insArr['university']=$this->input->post('university');
 			$insArr['year']=$this->input->post('year');
 			$insArr['status']=$this->input->post('status');
-			if(!empty($record_id)) {
-				$this->common_model->tbl_update(EDUCATION,array('id'=>$record_id),$insArr);
-			} else {
-				$banner_record_id=$this->common_model->tbl_insert(EDUCATION,$insArr);
-			}
-			if(!empty($record_id)) {
-				echo "Sucessfully Updated";
-			} else {
-				echo "Something went wrong. Please try again later!";
-			}
+			$this->common_model->tbl_update(EDUCATION,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['degree']=$this->input->post('degree');
+			$insArr['university']=$this->input->post('university');
+			$insArr['year']=$this->input->post('year');
+			$insArr['status']=$this->input->post('status');
+			$banner_record_id=$this->common_model->tbl_insert(EDUCATION,$insArr);
+			echo "Sucessfully Added";
 		}
+	}
+
+	public function edit_educate() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data_row(EDUCATION,array('id'=>$id));
+		echo json_encode($edication);
+	}
+
+	public function dlt_educate() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data(EDUCATION,array('id'=>$id));
+		if($edication[0]['is_delete']==1) {
+			$status = array('is_delete'=>2);
+		} else {
+			$status = array('is_delete'=>1);
+		}
+		$this->common_model->tbl_update(EDUCATION,array('id'=>$id),$status);
 	}
 
 	public function save_experience() {
-		//print_r($this->input->post()); die();
-		if($this->input->post()) {
+		$record_id = $this->input->post('expid');
+		if($record_id != '') {
 			$insArr=array();
 			$insArr['user_id'] = $this->input->post('uid');
 			$insArr['position']=$this->input->post('position');
-			$insArr['year']=$this->input->post('year');
+			$insArr['year']=$this->input->post('exp_year');
 			$insArr['status']=$this->input->post('status');
-			if(!empty($record_id)) {
-				$this->common_model->tbl_update(EXPERIENCE,array('id'=>$record_id),$insArr);
-			} else {
-				$banner_record_id=$this->common_model->tbl_insert(EXPERIENCE,$insArr);
-			}
-			if(!empty($record_id)) {
-				echo "Sucessfully Updated";
-			} else {
-				echo "Something went wrong. Please try again later!";
-			}
+			$this->common_model->tbl_update(EXPERIENCE,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['position']=$this->input->post('position');
+			$insArr['year']=$this->input->post('exp_year');
+			$insArr['status']=$this->input->post('status');
+			$banner_record_id=$this->common_model->tbl_insert(EXPERIENCE,$insArr);
+			echo "Sucessfully Added";
 		}
 	}
 
+	public function edit_experience() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data_row(EXPERIENCE,array('id'=>$id));
+		echo json_encode($edication);
+	}
+
+	public function dlt_experience() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data(EXPERIENCE,array('id'=>$id));
+		if($edication[0]['is_delete']==1) {
+			$status = array('is_delete'=>2);
+		} else {
+			$status = array('is_delete'=>1);
+		}
+		$this->common_model->tbl_update(EXPERIENCE,array('id'=>$id),$status);
+	}
+
 	public function save_publication() {
-		//print_r($this->input->post()); die();
-		if($this->input->post()) {
+		$record_id = $this->input->post('pubid');
+		if($record_id != '') {
 			$insArr=array();
 			$insArr['user_id'] = $this->input->post('uid');
 			$insArr['publication_type']=$this->input->post('publication_type');
@@ -186,17 +229,49 @@ class Student extends CI_Controller {
 			$insArr['short_summery']=$this->input->post('short_summery');
 			$insArr['key_points']=$this->input->post('key_points');
 			$insArr['status']=$this->input->post('status');
-			if(!empty($record_id)) {
-				$this->common_model->tbl_update(PUBLICATION,array('id'=>$record_id),$insArr);
-			} else {
-				$banner_record_id=$this->common_model->tbl_insert(PUBLICATION,$insArr);
-			}
-			if(!empty($record_id)) {
-				echo "Sucessfully Updated";
-			} else {
-				echo "Something went wrong. Please try again later!";
-			}
+			$this->common_model->tbl_update(PUBLICATION,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['publication_type']=$this->input->post('publication_type');
+			$insArr['attachment']=$this->input->post('attachment');
+			$insArr['author_name']=$this->input->post('author_name');
+			$insArr['paper_title'] = $this->input->post('paper_title');
+			$insArr['journal_name']=$this->input->post('journal_name');
+			$insArr['conference_name']=$this->input->post('conference_name');
+			$insArr['book_name']=$this->input->post('book_name');
+			$insArr['publish_date']=$this->input->post('publish_date');
+			$insArr['patient_number']=$this->input->post('patient_number');
+			$insArr['publisher']=$this->input->post('publisher');
+			$insArr['location']=$this->input->post('location');
+			$insArr['external_Link']=$this->input->post('external_Link');
+			$insArr['editors']=$this->input->post('editors');
+			$insArr['page_number']=$this->input->post('page_number');
+			$insArr['highlight']=$this->input->post('highlight');
+			$insArr['short_summery']=$this->input->post('short_summery');
+			$insArr['key_points']=$this->input->post('key_points');
+			$insArr['status']=$this->input->post('status');
+			$banner_record_id=$this->common_model->tbl_insert(PUBLICATION,$insArr);
+			echo "Sucessfully Added";
 		}
+	}
+
+	public function edit_publication() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data_row(PUBLICATION,array('id'=>$id));
+		echo json_encode($edication);
+	}
+
+	public function dlt_publication() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data(PUBLICATION,array('id'=>$id));
+		if($edication[0]['is_delete']==1) {
+			$status = array('is_delete'=>2);
+		} else {
+			$status = array('is_delete'=>1);
+		}
+		$this->common_model->tbl_update(PUBLICATION,array('id'=>$id),$status);
 	}
 
     public function logout() {

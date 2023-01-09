@@ -25,11 +25,11 @@ class Ourteam extends CI_Controller{
 	
 	public function add_team($id='') {
 		if($this->input->post()) {
-			$verify_email = $this->common_model->get_data(TEAM,array('email'=>$this->input->post('email')));
-			//print_r($verify_email); die();
-			if($verify_email[0]['email'] != '') {
-				$this->utilitylib->setMsg('<i class="fa fa-info-circle" aria-hidden="true"></i>Email ID is already registered.','ERROR');
-			} else {
+			// $verify_email = $this->common_model->get_data(TEAM,array('email'=>$this->input->post('email')));
+			// //print_r($verify_email); die();
+			// if($verify_email[0]['email'] != '') {
+			// 	$this->utilitylib->setMsg('<i class="fa fa-info-circle" aria-hidden="true"></i>Email ID is already registered.','ERROR');
+			// } else {
 				$insArr=array();
 				$insArr['fname']=$this->input->post('fname');
 				$insArr['email']=$this->input->post('email');
@@ -64,7 +64,7 @@ class Ourteam extends CI_Controller{
 						$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);
 					}
 				}
-				if($_FILES['team_image']['name'] != '') {
+				if ($_FILES['team_image']['name'] != '') {
 					$data['result']=$this->common_model->get_data(TEAM,array('id'=>$id));
 					if(@$data['result'][0]['team_image']) {	
 						unlink('./uploads/our_team/'.$data['result'][0]['team_image']);	
@@ -104,7 +104,7 @@ class Ourteam extends CI_Controller{
 						} else {
 							$banner_id=$this->common_model->tbl_insert(TEAM,$insArr);
 						}
-						$this->common_model->tbl_update(TEAM,array('id'=>$banner_id),$insArr);
+						//$this->common_model->tbl_update(TEAM,array('id'=>$banner_id),$insArr);
 					}
 				}
 				if(!empty($id)) {
@@ -114,7 +114,7 @@ class Ourteam extends CI_Controller{
 					$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully saved','SUCCESS');
 					redirect(base_url()."admin/ourteam/add_team");
 				}
-			}
+			//}
 		}
 		$data['banner']=$this->common_model->get_data_row(TEAM,array('id'=>$id));
 		if(!empty($id)){

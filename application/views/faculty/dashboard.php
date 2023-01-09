@@ -93,15 +93,19 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php if(!empty($education)) {
+                                                $i=1; ?>
+                                            <?php foreach($education as $row) { ?>
                                                 <tr>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
+                                                    <td><?php echo $row['degree'];?></td>
+                                                    <td><?php echo $row['university'];?></td>
+                                                    <td><?php echo $row['year'];?></td>
                                                     <td>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
                                                 </tr>
+                                            <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -126,6 +130,9 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php if(!empty($education)) {
+                                                $i=1; ?>
+                                                <?php foreach($education as $row) { ?>
                                                 <tr>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
@@ -135,6 +142,7 @@ echo $header;
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
                                                 </tr>
+                                            <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
@@ -253,48 +261,16 @@ echo $header;
 <div class="modal fade bd-example-modal-lg1 about_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
         <div class="modal-content">
-        <form id="form_aboutme" action="" method="post" enctype="multipart/form-data">
+        <form id="formf_aboutme" action="" method="post" enctype="multipart/form-data">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12" style="margin-bottom: 40px;">
                         <div class="col-sm-2" style="text-align: right;float: left;display: inline-block;">
                             <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/1667140703711760.jpg" alt=""/>
                         </div>
-                        <div class="col-sm-10" style="float: left; display: inline-block;">
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Name</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="fname" name="fname" value="">
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Enrolment No.</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="enrollno" name="enrollno" value="">
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Email</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="email" class="form-control required" id="email" name="email" value="">
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Admission year</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="admissionyear" name="admissionyear" value="">
-                                </div>
-                            </div>
-                            <div class="form-group col-sm-4 cstm_details">
-                                <label for="Event Name" class="control-label">Research Interests</label>
-                                <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="research_interest" name="research_interest" value="">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class='col-sm-12'>
-                        <textarea id="aboutme" name="aboutme">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+                        <input type="text" id="aboutme" name="aboutme" value="<?php echo $get_name[0]['aboutme'];?>"/>
                     </div>
                 </div>
                 <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
@@ -312,7 +288,7 @@ echo $header;
 <div class="modal fade bd-example-modal-lg2 edu_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
         <div class="modal-content">
-        <form id="form_edu" action="" method="post" enctype="multipart/form-data">
+        <form id="formf_edu" action="" method="post" enctype="multipart/form-data">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12" style="margin-bottom: 40px;">

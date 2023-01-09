@@ -144,25 +144,27 @@
 
         $("#form_aboutme").on('submit',(function(e) {
             e.preventDefault();
+            var uid = $("#uid").val();
+            var fname = $("#fname").val();
+            var email = $("#email").val();
+            var enrollno = $("#enrollno").val();
+            var admissionyear = $("#admissionyear").val();
+            var research_interest = $("#research_interest").val();
+            var aboutme = CKEDITOR.instances['aboutme'].getData();
             $.ajax({
                 url: "<?php echo base_url()?>student/save_aboutme",
                 type: "POST",
-                data:  new FormData(this),
-                contentType: false,
-                cache: false,
-                processData:false,
+                data:  {uid: uid,fname: fname, email: email, enrollno: enrollno, admissionyear: admissionyear, research_interest: research_interest, aboutme: aboutme},
                 beforeSend : function() {
-                    //$("#preview").fadeOut();
                     $("#err").fadeOut();
                 },
                 success: function(data) {
                     if(data=='invalid') {
-                        // invalid file format.
                         $("#err").html("Invalid File !").fadeIn();
                     } else {
-                        // view uploaded file.
                         $("#preview").html(data).fadeIn();
-                        $("#form")[0].reset(); 
+                        $("#form_aboutme")[0].reset(); 
+                        location.reload();
                     }
                 },
                 error: function(e) {
@@ -387,7 +389,532 @@
                 }          
             });
         }));
+
+        $("#formf_aboutme").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>faculty/save_aboutme",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data=='invalid') {
+                        // invalid file format.
+                        $("#err").html("Invalid File !").fadeIn();
+                    } else {
+                        // view uploaded file.
+                        $("#preview").html(data).fadeIn();
+                        $("#formf_aboutme")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
+
+        $("#formf_edu").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>faculty/save_educate",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data !='invalid') {
+                        $("#formf_edu")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
+
+        $("#formf_exp").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>student/save_experience",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data !='invalid') {
+                        $("#formf_exp")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
     });
+
+    /* Edit education */
+    function EditEduID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>student/student/edit_educate",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $("#dataid").val(response.id);
+	            $("#degree").val(response.degree);
+	            $("#university").val(response.university);
+	            $("#year").val(response.year);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete education */
+    function DtlEduID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_educate",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit Experience */
+    function EditExpID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>student/student/edit_experience",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $("#expid").val(response.id);
+                $("#position").val(response.position);
+                $("#exp_year").val(response.year);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete Experience */
+    function DtlExpID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_experience",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit Journal */
+    function EditjorID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>student/student/edit_publication",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').show();
+                $('.conference_name').hide();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').show();
+                $('.location').hide();
+                $('.external_Link').show();
+                $('.editors').hide();
+                $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
+                $("#pubid").val(response.id);
+                $("#publication_type").val(response.publication_type);
+                $("#author_name").val(response.author_name);
+                $("#paper_title").val(response.paper_title);
+                $("#journal_name").val(response.journal_name);
+                $("#publish_date").val(response.journal_name);
+                $("#publisher").val(response.publisher);
+                $("#external_Link").val(response.external_Link);
+                $("#page_number").val(response.page_number);
+                $("#highlight").val(response.highlight);
+                $("#short_summery").val(response.short_summery);
+                $("#key_points").val(response.key_points);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete Journal */
+    function DtljorID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_publication",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit Conference paper */
+    function EditconID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>student/student/edit_publication",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').show();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').show();
+                $('.location').show();
+                $('.external_Link').show();
+                $('.editors').hide();
+                $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
+                $("#pubid").val(response.id);
+                $("#publication_type").val(response.publication_type);
+                $("#author_name").val(response.author_name);
+                $("#paper_title").val(response.paper_title);
+                $("#conference_name").val(response.conference_name);
+                $("#publish_date").val(response.publish_date);
+                $("#publisher").val(response.publisher);
+                $("#location").val(response.location);
+                $("#external_Link").val(response.external_Link);
+                $("#page_number").val(response.page_number);
+                $("#highlight").val(response.highlight);
+                $("#short_summery").val(response.short_summery);
+                $("#key_points").val(response.key_points);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete Conference paper */
+    function DtlconID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_publication",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit Book Chapter */
+    function EditBcID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>student/student/edit_publication",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').hide();
+                $('.book_name').show();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').hide();
+                $('.location').hide();
+                $('.external_Link').show();
+                $('.editors').show();
+                $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
+                $("#pubid").val(response.id);
+                $("#publication_type").val(response.publication_type);
+                $("#author_name").val(response.author_name);
+                $("#paper_title").val(response.paper_title);
+                $("#book_name").val(response.book_name);
+                $("#publish_date").val(response.publish_date);
+                $("#external_Link").val(response.external_Link);
+                $("#editors").val(response.editors);
+                $("#page_number").val(response.page_number);
+                $("#highlight").val(response.highlight);
+                $("#short_summery").val(response.short_summery);
+                $("#key_points").val(response.key_points);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete Book Chapter */
+    function DtlBcID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_publication",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit Book */
+    function EditBkID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>student/student/edit_publication",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').hide();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').hide();
+                $('.publisher').show();
+                $('.location').hide();
+                $('.external_Link').show();
+                $('.editors').hide();
+                $('.page_number').show();
+                $('.short_summery').show();
+                $('.key_points').show();
+                $("#pubid").val(response.id);
+                $("#publication_type").val(response.publication_type);
+                $("#author_name").val(response.author_name);
+                $("#paper_title").val(response.paper_title);
+                $("#publish_date").val(response.publish_date);
+                $("#publisher").val(response.publisher);
+                $("#external_Link").val(response.external_Link);
+                $("#page_number").val(response.page_number);
+                $("#highlight").val(response.highlight);
+                $("#short_summery").val(response.short_summery);
+                $("#key_points").val(response.key_points);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete Book */
+    function DtlBkID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_publication",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit Patent */
+    function EditPtID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>student/student/edit_publication",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $('.body_content').show();
+                $('.attachment').show();
+                $('.author_name').show();
+                $('.paper_title').show();
+                $('.journal_name').hide();
+                $('.conference_name').hide();
+                $('.book_name').hide();
+                $('.publish_date').show();
+                $('.patient_number').show();
+                $('.publisher').hide();
+                $('.location').hide();
+                $('.external_Link').hide();
+                $('.editors').hide();
+                $('.page_number').hide();
+                $('.short_summery').show();
+                $('.key_points').show();
+                $("#pubid").val(response.id);
+                $("#publication_type").val(response.publication_type);
+                $("#author_name").val(response.author_name);
+                $("#paper_title").val(response.paper_title);
+                $("#publish_date").val(response.publish_date);
+                $("#patient_number").val(response.patient_number);
+                $("#highlight").val(response.highlight);
+                $("#short_summery").val(response.short_summery);
+                $("#key_points").val(response.key_points);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete Patent */
+    function DtlPtID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_publication",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
 
     CKEDITOR.replace('aboutme');
     CKEDITOR.replace('short_summery');

@@ -83,7 +83,6 @@
                                                                         <th>Degree</th>
                                                                         <th>University</th>
                                                                         <th>Year</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -95,10 +94,6 @@
                                                                         <td><?php echo $row1['degree']?></td>
                                                                         <td><?php echo $row1['university']?></td>
                                                                         <td><?php echo $row1['year']?></td>
-                                                                        <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                     <?php $i++; } } ?>
                                                                 </tbody>
@@ -120,7 +115,6 @@
                                                                         <th>Sl No.</th>
                                                                         <th>Position(Company name)</th>
                                                                         <th>Year</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -131,10 +125,6 @@
                                                                         <td><?php echo $i;?></td>
                                                                         <td><?php echo $row['position'];?></td>
                                                                         <td><?php echo $row['year'];?></td>
-                                                                        <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                     <?php $i++; } } ?>
                                                                 </tbody>
@@ -166,7 +156,6 @@
                                                                         <th>DOI (External Link)</th>
                                                                         <th>Page Number</th>
                                                                         <th>Highlights</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -184,10 +173,6 @@
                                                                         <td><?php echo $row['external_Link'];?></td>
                                                                         <td><?php echo $row['page_number'];?></td>
                                                                         <td><?php echo $row['highlight'];?></td>
-                                                                        <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                 <?php $i++; } } ?>
                                                                 </tbody>
@@ -214,7 +199,6 @@
                                                                         <th>External Link</th>
                                                                         <th>Page Number</th>
                                                                         <th>Highlights</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -233,10 +217,6 @@
                                                                         <td><?php echo $row['external_Link'];?></td>
                                                                         <td><?php echo $row['page_number'];?></td>
                                                                         <td><?php echo $row['highlight'];?></td>
-                                                                        <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                 <?php $i++; } } ?>
                                                                 </tbody>
@@ -263,7 +243,6 @@
                                                                         <th>Editors</th>
                                                                         <th>Page Number</th>
                                                                         <th>Highlights</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -281,10 +260,6 @@
                                                                         <td><?php echo $row['external_Link'];?></td>
                                                                         <td><?php echo $row['page_number'];?></td>
                                                                         <td><?php echo $row['highlight'];?></td>
-                                                                        <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                 <?php $i++; } } ?>
                                                                 </tbody>
@@ -309,7 +284,6 @@
                                                                         <th>DOI (External Link)</th>
                                                                         <th>Page Number</th>
                                                                         <th>Highlights</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -326,10 +300,6 @@
                                                                         <td><?php echo $row['external_Link'];?></td>
                                                                         <td><?php echo $row['page_number'];?></td>
                                                                         <td><?php echo $row['highlight'];?></td>
-                                                                        <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                 <?php $i++; } } ?>
                                                                 </tbody>
@@ -351,7 +321,6 @@
                                                                         <th>Publised date</th>
                                                                         <th>Patent Number</th>
                                                                         <th>Highlights</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -366,10 +335,6 @@
                                                                         <td><?php echo $row['publish_date'];?></td>
                                                                         <td><?php echo $row['patient_number'];?></td>
                                                                         <td><?php echo $row['highlight'];?></td>
-                                                                        <td>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                 <?php $i++; } } ?>
                                                                 </tbody>
@@ -391,7 +356,6 @@
                                                                         <th>Demo</th>
                                                                         <th>Demo</th>
                                                                         <th>Demo</th>
-                                                                        <th>Action</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -399,10 +363,6 @@
                                                                         <td></td>
                                                                         <td></td>
                                                                         <td></td>
-                                                                        <td>
-                                                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -432,9 +392,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-sm-12" style="text-align: right;">
-                                                        <button type="button" class="btn btn-primary"><a href=''>Add New Album</a></button>
                                                     </div>
                                                 </div>
                                             </div>
