@@ -23,6 +23,7 @@ echo $header;
     .cstmf_gllery img {padding: 12px;}
     .profile_menu a {color: #FFF; text-decoration: none;}
     .active {background: #032851 !important; color: #fff !important;}
+    .btn {padding: 15px 35px !important;}
 </style>
 <main id="main">
     <!-- ======= Breadcrumbs Section ======= -->
@@ -58,6 +59,7 @@ echo $header;
                                 <a href="<?php echo base_url()?>faculty/lab_members"><button type="button" class="btn btn-primary">Lab Members</button></a>
                                 <a href="<?php echo base_url()?>faculty/current_opening"><button type="button" class="btn btn-primary">Current Openings</button></a>
                                 <a href="<?php echo base_url()?>faculty/miscellaneous"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
                                 <!-- Tab navs -->
                             </div>
                             <!-- Home Start -->
@@ -68,10 +70,9 @@ echo $header;
                                             <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/<?php echo $get_name[0]['team_image'];?>" alt=""/>
                                         </div>
                                         <div class="col-sm-9" style="float: left;display: inline-block;">
-                                            <p class='bio_text1'><?php echo $get_name[0]['aboutme'];?></p>
+                                            <div class='bio_text1'><?php echo $get_name[0]['aboutme'];?></div>
                                         </div>
                                         <div class="col-sm-12" style="text-align: right;">
-                                            <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
                                             <button type="button" class="btn btn-primary about_btn" data-toggle="modal" data-target=".bd-example-modal-lg1">Edit Record</button>
                                         </div>
                                     </div>
@@ -101,8 +102,8 @@ echo $header;
                                                     <td><?php echo $row['university'];?></td>
                                                     <td><?php echo $row['year'];?></td>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                        <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="EditFEduID(<?php echo $row['id']?>)">Edit</button>
+                                                        <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="DtlFEduID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                     </td>
                                                 </tr>
                                             <?php $i++; } } ?>
@@ -130,16 +131,16 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php if(!empty($education)) {
+                                            <?php if(!empty($experience)) {
                                                 $i=1; ?>
-                                                <?php foreach($education as $row) { ?>
+                                                <?php foreach($experience as $row) { ?>
                                                 <tr>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
+                                                    <td><?php echo $row['organization'];?></td>
+                                                    <td><?php echo $row['position'];?></td>
+                                                    <td><?php echo $row['year'];?></td>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                        <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3" onclick="EditFExpID(<?php echo $row['id']?>)">Edit</button>
+                                                        <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="DtlFExpID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                     </td>
                                                 </tr>
                                             <?php $i++; } } ?>
@@ -270,13 +271,11 @@ echo $header;
                         </div>
                     </div>
                     <div class='col-sm-12'>
-                        <input type="text" id="aboutme" name="aboutme" value="<?php echo $get_name[0]['aboutme'];?>"/>
+                        <textarea id="aboutme" name="aboutme"><?php echo $get_name[0]['aboutme'];?></textarea>
                     </div>
                 </div>
                 <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
                     <div id="err"></div>
-                    <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
-                    <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
                     <input class="btn btn-primary about_save" type="submit" value="Update">
                     <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
                 </div>
@@ -296,19 +295,19 @@ echo $header;
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Degree</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="degree" name="degree" value="">
+                                    <input type="text" class="form-control required" id="degree" name="degree">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">University</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="university" name="university" value="">
+                                    <input type="text" class="form-control required" id="university" name="university">
                                 </div>
                             </div>
                             <div class="form-group col-sm-4 cstm_details">
                                 <label for="Event Name" class="control-label">Year</label>
                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                    <input type="text" class="form-control required" id="year" name="year" value="">
+                                    <input type="text" class="form-control required" id="year" name="year">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -329,6 +328,7 @@ echo $header;
                     <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
                     <input class="btn btn-primary edu_save" type="submit" value="Submit">
                     <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                    <input type="hidden" id="acaid" name="acaid">
                 </div>
             </div>
         </form>
@@ -338,21 +338,27 @@ echo $header;
 <div class="modal fade bd-example-modal-lg3 exp_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
         <div class="modal-content">
-            <form id="form_exp" action="" method="post" enctype="multipart/form-data">
+            <form id="formf_exp" action="" method="post" enctype="multipart/form-data">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12" style="margin-bottom: 40px;">
                             <div class="col-sm-12" style="float: left; display: inline-block;">
                                 <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Organization</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="organization" name="organization">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
                                     <label for="Event Name" class="control-label">Position</label>
                                     <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="position" name="position" value="">
+                                        <input type="text" class="form-control required" id="position" name="position">
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-4 cstm_details">
                                     <label for="Event Name" class="control-label">Year</label>
                                     <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="year" name="year" value="">
+                                        <input type="text" class="form-control required" id="exp_year" name="exp_year">
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-4 cstm_details">
@@ -373,6 +379,7 @@ echo $header;
                         <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
                         <input class="btn btn-primary exp_save" type="submit" value="Submit">
                         <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                        <input type="hidden" id="expid" name="expid">
                     </div>
                 </div>
             </form>

@@ -86,3 +86,5 @@ $route['faculty/current_opening'] = 'facultys/facultys/current_opening';
 $route['faculty/miscellaneous'] = 'facultys/facultys/miscellaneous';
 $route['faculty/save_aboutme'] = 'facultys/facultys/save_aboutme';
 $route['faculty/save_educate'] = 'facultys/facultys/save_educate';
+$route['faculty/save_experience'] = 'facultys/facultys/save_experience';
+$route['faculty/logout'] = 'facultys/facultys/logout';

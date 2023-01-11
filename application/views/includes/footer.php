@@ -392,23 +392,19 @@
 
         $("#formf_aboutme").on('submit',(function(e) {
             e.preventDefault();
+            var uid = $("#uid").val();
+            var aboutme = CKEDITOR.instances['aboutme'].getData();
             $.ajax({
                 url: "<?php echo base_url()?>faculty/save_aboutme",
                 type: "POST",
-                data:  new FormData(this),
-                contentType: false,
-                cache: false,
-                processData:false,
+                data:  {uid: uid, aboutme: aboutme},
                 beforeSend : function() {
-                    //$("#preview").fadeOut();
                     $("#err").fadeOut();
                 },
                 success: function(data) {
                     if(data=='invalid') {
-                        // invalid file format.
                         $("#err").html("Invalid File !").fadeIn();
                     } else {
-                        // view uploaded file.
                         $("#preview").html(data).fadeIn();
                         $("#formf_aboutme")[0].reset(); 
                         location.reload();
@@ -448,7 +444,7 @@
         $("#formf_exp").on('submit',(function(e) {
             e.preventDefault();
             $.ajax({
-                url: "<?php echo base_url()?>student/save_experience",
+                url: "<?php echo base_url()?>faculty/save_experience",
                 type: "POST",
                 data:  new FormData(this),
                 contentType: false,
@@ -900,6 +896,100 @@
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url()?>student/student/dlt_publication",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit faculty Academic */
+    function EditFEduID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>facultys/facultys/edit_educate",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $("#acaid").val(response.id);
+	            $("#degree").val(response.degree);
+	            $("#university").val(response.university);
+	            $("#year").val(response.year);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete faculty Academic */
+    function DtlFEduID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_educate",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit faculty Experience */
+    function EditFExpID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>facultys/facultys/edit_experience",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $("#expid").val(response.id);
+	            $("#organization").val(response.organization);
+	            $("#position").val(response.position);
+	            $("#exp_year").val(response.year);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete faculty Experience */
+    function DtlFExpID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>student/student/dlt_experience",
                 data: {id:e_id},
                 beforeSend: function () {
                     //$("#preview").fadeOut();

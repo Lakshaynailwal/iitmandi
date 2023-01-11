@@ -76,11 +76,10 @@ echo $header;
                                                             </div>
                                                         </div>
                                                         <div class='col-sm-12'>
-                                                        <p class='bio_text1'><?php echo $get_name[0]['aboutme'];?></p>
+                                                        <div class='bio_text1'><?php echo $get_name[0]['aboutme'];?></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-12" style="text-align: right;">
-                                                        <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
                                                         <button type="button" class="btn btn-primary about_btn" data-toggle="modal" data-target=".bd-example-modal-lg1">Edit Record</button>
                                                     </div>
                                                 </div>
@@ -516,13 +515,10 @@ echo $header;
                     </div>
                     <div class='col-sm-12'>
                         <textarea id="aboutme" name="aboutme"><?php echo $get_name[0]['aboutme'];?></textarea>
-                        <!-- <input type="text" class="form-control required ckeditor" id="aboutme" name="aboutme" value="<?php echo $get_name[0]['aboutme'];?>"> -->
                     </div>
                 </div>
                 <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
                     <div id="err"></div>
-                    <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
-                    <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
                     <input class="btn btn-primary about_save" type="submit" value="Update">
                     <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
                 </div>

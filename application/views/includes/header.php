@@ -29,7 +29,7 @@
   <style>
   .navbar ul {align-items: unset !important;}.l-nav-horizontal__brand {padding: 0 2rem !important;}.clients {padding: 0;background: linear-gradient(180deg, #032851 0%, #032851 100%);color: #fdc134;}.Scroll {height:600px;overflow-y: scroll;}.services .card-img img {margin-top: 30px;width: 100%;height : 250px;border-radius: 50%}.services .card-body {margin-top: 10px;text-align: justify;}#footer .footer-top {padding: 25px 0;}#footer .footer-bottom{padding-top: 5px;padding-bottom: 5px}.services .card-title {margin-top: 20px;}#footer .footer-top .social-links {margin-top: -50px;}.text-color {color: #fdc134;}.hover-shadow {transition: .3s ease;}.card {position: relative;display: -ms-flexbox;display: flex;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: 0.25rem;}.rounded-0 {border-radius: 0!important;}.p-0 {padding: 0!important;}.border-primary {border-color: #ededf1 !important;}.mb-5, .my-5 {margin-bottom: 3rem!important;}.rounded-0 {border-radius: 0!important;}.card-img-top {width: 100%;border-top-left-radius: calc(0.25rem - 1px);border-top-right-radius: calc(0.25rem - 1px);}.card-body {-ms-flex: 1 1 auto;flex: 1 1 auto;padding: 1.25rem;}.mb-2, .my-2 {margin-bottom: 0.5rem!important;}.list-inline {padding-left: 0;list-style: none;}.list-inline-item:not(:last-child) {margin-right: 0.5rem;}.list-inline-item {display: inline-block;}.text-color {color: #5c5c77;}class^="ti-"], [class*=" ti-"] {font-family: 'themify';speak: none;font-style: normal;font-weight: normal;font-variant: normal;text-transform: none;line-height: 1;-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}.mr-1, .mx-1 {margin-right: 0.25rem!important;}.mb-4, .my-4 {margin-bottom: 1.5rem!important;}p, .paragraph {font-weight: 400;color: #5c5c77;font-size: 15px;line-height: 1.9;font-family: 'Raleway';}.btn:not(:disabled):not(.disabled) {cursor: pointer;}.btn-primary {background: #ffbc3b;color: #fff;}.btn-sm {font-size: 14px;padding: 10px 35px;}.btn {font-size: 16px;font-family: "Poppins", sans-serif;text-transform: capitalize;padding: 15px 40px;border-radius: 0;font-weight: 500;border: 0;position: relative;z-index: 1;transition: .2s ease;overflow: hidden;}.hover-shadow:hover {box-shadow: 0px 4px 25px 0px rgb(27 39 71 / 15%);}.school_img {width: 35%;float: left;position: relative;z-index: 9;margin-left: 2%;}.school_img img {width: 100%;float: left;}.into-inner {width: 60%;float: left;margin-top: 100px;}.intro {background: #ebebeb;padding: 10px 20px;position: relative;border-top-right-radius: 20px;border-bottom-right-radius: 20px;}.intro h3 {font-size: 35px !important;text-align: left;padding: 0;font-family: 'Raleway';font-weight: 700;color: #000;letter-spacing: 1px;margin: 0 !important;padding: 0;text-align: center;line-height: normal !important;}.intro p {color: #002a5c;font-size: 18px !important;padding: 0 0 4px;max-width: 900px;margin: 0 auto;text-align: center;}.intro p:nth-child(3) {color: black;font-style: initial;font-size: 18px;padding: 10px 0 0;max-width: 900px;margin: 0 auto;font-family: 'Helvetica', sans-serif;line-height: 25px;text-transform: capitalize;}.primary-nav li {width: 177px;}.about .content p {text-align: justify; font-family: 'Raleway';}.services .card img {transform: scale(1.1) !important;}.about .content h3{font-size: 32px !important;text-align: center;}#wowslider-container1 .ws-title{text-align: center;}
     @media (min-width: 1500px) and (max-width: 2560px)  {
-      .primary-nav li {width: 202px;}
+      .primary-nav li {width: 190px;}
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -64,7 +64,7 @@
       <div class="l-container--navigation off-canvas off-canvas--left">
         <div class="off-canvas__container l-nav-horizontal">
           <div class="l-nav-horizontal__brand">
-            <a href="/"><img src="<?php echo base_url()?>uploads/site_logo/<?php echo $footer_content[0]['profile_pic'];?>" class="ucd-logo1" alt="IIT Mandi Logo" width="95" height="58" /></a>
+            <a href="<?php echo base_url()?>"><img src="<?php echo base_url()?>uploads/site_logo/<?php echo $footer_content[0]['profile_pic'];?>" class="ucd-logo1" alt="IIT Mandi Logo" width="95" height="58" /></a>
           </div>
           <div class="l-nav-horizontal__search-popup">
             <div class="region region-search">
@@ -88,7 +88,7 @@
                     <ul class="menu">
                       <li class="menu-item menu-item--expanded">
                         <div class="submenu-toggle__wrapper ">
-                          <a href="/about/administration" data-drupal-link-system-path="node/49915">Faculty<span class="primary-nav__submenu-indicator"></span>
+                          <a href="<?php echo base_url()?>pages/faculty_list" data-drupal-link-system-path="node/49915">Faculty<span class="primary-nav__submenu-indicator"></span>
                           </a>
                           <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                         </div>
@@ -193,6 +193,21 @@
                       </li>
                       <li class="menu-item">
                         <a href="/news/student-life" data-drupal-link-system-path="taxonomy/term/24">Consultancy</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="menu-item menu-item--expanded">
+                    <div class="submenu-toggle__wrapper primary-nav__top-link">
+                      <a href="javascript:void(0)" data-drupal-link-system-path="node/2343">Log In<span class="primary-nav__submenu-indicator"></span>
+                      </a>
+                      <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
+                    </div>
+                    <ul class="menu">
+                      <li class="menu-item">
+                        <a href="<?php echo base_url()?>student" data-drupal-link-system-path="student">Student Login</a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="<?php echo base_url()?>faculty" data-drupal-link-system-path="faculty">Faculty Login</a>
                       </li>
                     </ul>
                   </li>

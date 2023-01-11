@@ -181,51 +181,88 @@ class Facultys extends CI_Controller {
 	}
 
 	public function save_educate() {
-		//print_r($this->input->post()); die();
-		if($this->input->post()) {
+		$record_id = $this->input->post('acaid');
+		if($record_id != '') {
 			$insArr=array();
 			$insArr['user_id'] = $this->input->post('uid');
 			$insArr['degree']=$this->input->post('degree');
 			$insArr['university']=$this->input->post('university');
 			$insArr['year']=$this->input->post('year');
 			$insArr['status']=$this->input->post('status');
-			if(!empty($record_id)) {
-				$this->common_model->tbl_update(EDUCATION,array('id'=>$record_id),$insArr);
-			} else {
-				$banner_record_id=$this->common_model->tbl_insert(EDUCATION,$insArr);
-			}
-			if(!empty($record_id)) {
-				echo "Sucessfully Updated";
-			} else {
-				echo "Something went wrong. Please try again later!";
-			}
+			$this->common_model->tbl_update(EDUCATION,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['degree']=$this->input->post('degree');
+			$insArr['university']=$this->input->post('university');
+			$insArr['year']=$this->input->post('year');
+			$insArr['status']=$this->input->post('status');
+			$banner_record_id=$this->common_model->tbl_insert(EDUCATION,$insArr);
+			echo "Sucessfully Added";
 		}
 	}
 
+	public function edit_educate() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data_row(EDUCATION,array('id'=>$id));
+		echo json_encode($edication);
+	}
+
+	public function dlt_educate() {
+		$id = $this->input->post('id');
+		$edication=$this->common_model->get_data(EDUCATION,array('id'=>$id));
+		if($edication[0]['is_delete']==1) {
+			$status = array('is_delete'=>2);
+		} else {
+			$status = array('is_delete'=>1);
+		}
+		$this->common_model->tbl_update(EDUCATION,array('id'=>$id),$status);
+	}
+
 	public function save_experience() {
-		//print_r($this->input->post()); die();
-		if($this->input->post()) {
+		$record_id = $this->input->post('expid');
+		if($record_id != '') {
 			$insArr=array();
 			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['organization']=$this->input->post('organization');
 			$insArr['position']=$this->input->post('position');
-			$insArr['year']=$this->input->post('year');
+			$insArr['year']=$this->input->post('exp_year');
 			$insArr['status']=$this->input->post('status');
-			if(!empty($record_id)) {
-				$this->common_model->tbl_update(EXPERIENCE,array('id'=>$record_id),$insArr);
-			} else {
-				$banner_record_id=$this->common_model->tbl_insert(EXPERIENCE,$insArr);
-			}
-			if(!empty($record_id)) {
-				echo "Sucessfully Updated";
-			} else {
-				echo "Something went wrong. Please try again later!";
-			}
+			$this->common_model->tbl_update(EXPERIENCE,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['organization']=$this->input->post('organization');
+			$insArr['position']=$this->input->post('position');
+			$insArr['year']=$this->input->post('exp_year');
+			$insArr['status']=$this->input->post('status');
+			$banner_record_id=$this->common_model->tbl_insert(EXPERIENCE,$insArr);
+			echo "Sucessfully Added";
 		}
+	}
+
+	public function edit_experience() {
+		$id = $this->input->post('id');
+		$experience=$this->common_model->get_data_row(EXPERIENCE,array('id'=>$id));
+		echo json_encode($experience);
+	}
+
+	public function dlt_experience() {
+		$id = $this->input->post('id');
+		$experience=$this->common_model->get_data(EXPERIENCE,array('id'=>$id));
+		if($experience[0]['is_delete']==1) {
+			$status = array('is_delete'=>2);
+		} else {
+			$status = array('is_delete'=>1);
+		}
+		$this->common_model->tbl_update(EXPERIENCE,array('id'=>$id),$status);
 	}
 
 	public function logout() {
         $this->session->unset_userdata('uid');
         session_unset();  
-        redirect(base_url()."facilty/");
+        redirect(base_url()."faculty/");
     }
 }
