@@ -31,11 +31,24 @@ class Ourteam extends CI_Controller{
 			// 	$this->utilitylib->setMsg('<i class="fa fa-info-circle" aria-hidden="true"></i>Email ID is already registered.','ERROR');
 			// } else {
 				$insArr=array();
-				$insArr['fname']=$this->input->post('fname');
-				$insArr['email']=$this->input->post('email');
-				$insArr['designation']=$this->input->post('designation');
-				$insArr['position']=$this->input->post('position');
-				$insArr['status']=$this->input->post('status');
+				$insArr['fname'] = $this->input->post('fname');
+				$insArr['email'] = $this->input->post('email');
+				$insArr['position'] = $this->input->post('position');
+				$insArr['enrollno'] = $this->input->post('enrollno');
+				if ($this->input->post('designation') == 'others') {
+					$insArr['designation'] = $this->input->post('ndesignation');
+				} else {
+					$insArr['designation'] = $this->input->post('designation');
+				}
+				$insArr['supervisor'] = $this->input->post('supervisor');
+				$insArr['cosupervisors'] = $this->input->post('cosupervisors');
+				$insArr['post'] = $this->input->post('post');
+				$insArr['lab'] = $this->input->post('lab');
+				$insArr['mobile'] = $this->input->post('mobile');
+				$insArr['office'] = $this->input->post('office');
+				$insArr['specialization'] = $this->input->post('specialization');
+				$insArr['admssnyear'] = $this->input->post('admssnyear');
+				$insArr['status'] = $this->input->post('status');
 				if(!empty($id)){
 					$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);
 				} else{
@@ -48,21 +61,7 @@ class Ourteam extends CI_Controller{
 						$pass[] = $alphabet[$n];
 					}
 					$pass_generate = implode($pass); //turn the array into a string
-					$insArr['password']=md5($pass_generate);
-					$this->load->library('phpmailer_lib');
-					$mail = $this->phpmailer_lib->load();
-					$to = $this->input->post('email');
-					$toname = $this->input->post('name');
-					$mail->setFrom($to,$toname);
-					$mail->addAddress('registrar@iitmandi.ac.in', 'IIT Mandi');
-					$mail->Subject = 'Contact Us Email';
-					$mail->isHTML(true);
-					$mailContent = '<p>Dear User,<br/>You have successfully registered into IIT Mandi website. Please use the below credential to login into website.<br/>Login Crential:<br/>Email ID: '.$this->input->post('email').'<br/>Password: '.$pass_generate.'</p>';
-					$mail->Body = $mailContent;
-					echo $mail->send();
-					if(!empty($id)) {
-						$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);
-					}
+					$insArr['password']=base64_encode($pass_generate);
 				}
 				if ($_FILES['team_image']['name'] != '') {
 					$data['result']=$this->common_model->get_data(TEAM,array('id'=>$id));
@@ -109,10 +108,11 @@ class Ourteam extends CI_Controller{
 				}
 				if(!empty($id)) {
 					$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully updated','SUCCESS');
-					redirect(base_url('admin/ourteam/add_team/'.$id));
+					//redirect(base_url('admin/ourteam/add_team/'.$id));
+					redirect(base_url()."admin/ourteam/");
 				} else {
 					$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully saved','SUCCESS');
-					redirect(base_url()."admin/ourteam/add_team");
+					redirect(base_url()."admin/ourteam/");
 				}
 			//}
 		}

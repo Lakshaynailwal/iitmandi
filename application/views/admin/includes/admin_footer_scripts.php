@@ -4,17 +4,8 @@
 <script src="<?php echo base_url();?>assets/backend/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/backend/js/app.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/backend/js/demo.js" type="text/javascript"></script>
-<!-- <script language="JavaScript" type="text/javascript" src="tiny_mce/tiny_mce.js"></script> -->
 <script src="<?php echo base_url();?>assets/backend/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/backend/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
-<!--<script src="<?php echo base_url();?>ckeditor5/ckeditor.js" type="text/javascript"></script>-->
-<!--<script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>-->
-<!--<script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>-->
-<!-- <script src="<?php echo base_url();?>ckeditor/ckeditor.js"></script>
-<script src="<?php echo base_url();?>ckeditor/samples/js/sample.js"></script>
-<link rel="stylesheet" href="<?php echo base_url();?>ckeditor/samples/css/samples.css">
-<link rel="stylesheet" href="<?php echo base_url();?>ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css"> -->
-<!--<script src="https://cdn.tiny.cloud/1/gss6pfle0zg1a31vgsoj1blsymnrht3ai9q8190hcsfhil6t/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
 <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
 <script type="text/javascript">
     $("#calendar").datepicker('show');
@@ -52,22 +43,202 @@
             $("#frm").submit();
             return false;
         });
+        $('.enrollno').hide();
+        $('.pddesignation').hide();
+        $('.supervisor').hide();
+        $('.cosupervisors').hide();
+        $('.post').hide();
+        $('.lab').hide();
+        $('.mobile').hide();
+        $('.office').hide();
+        $('.specialization').hide();
+        $('.ndesignation').hide();
+        $('.admssnyear').hide();
+        // For team page
+        $('#position').change(function(){
+            var selectedPosition = $(this).children("option:selected").val();
+            if (selectedPosition == 1) {
+                $('.enrollno').hide();
+                $('.pddesignation').show();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if (selectedPosition == 2) {
+                $('.enrollno').hide();
+                $('.pddesignation').show();
+                $('.supervisor').show();
+                $('.cosupervisors').show();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if (selectedPosition == 3) {
+                $('.enrollno').show();
+                $('.pddesignation').show();
+                $('.supervisor').show();
+                $('.cosupervisors').show();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if (selectedPosition == 4) {
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').show();
+            } else if (selectedPosition == 5) {
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').show();
+                $('.lab').show();
+                $('.mobile').show();
+                $('.office').hide();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if (selectedPosition == 6) {
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').show();
+                $('.lab').show();
+                $('.mobile').show();
+                $('.office').show();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else {
+                $('.enrollno').hide();
+                $('.pddesignation').show();
+                $('.supervisor').show();
+                $('.cosupervisors').show();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            }
+        })
+        
+        $('#designation').change(function(){
+            var selectedDesignation = $(this).children("option:selected").val();
+            if (selectedDesignation == 'others') {
+                $('.ndesignation').show();
+            } else {
+                $('.ndesignation').hide();
+            }
+        })
+
+        if ($('#position').val() == 1) {
+                $('.enrollno').hide();
+                $('.pddesignation').show();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if ($('#position').val() == 2) {
+                $('.enrollno').hide();
+                $('.pddesignation').show();
+                $('.supervisor').show();
+                $('.cosupervisors').show();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if ($('#position').val() == 3) {
+                $('.enrollno').show();
+                $('.pddesignation').show();
+                $('.supervisor').show();
+                $('.cosupervisors').show();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if ($('#position').val() == 4) {
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').show();
+            } else if ($('#position').val() == 5) {
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').show();
+                $('.lab').show();
+                $('.mobile').show();
+                $('.office').hide();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if ($('#position').val() == 6) {
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').show();
+                $('.lab').show();
+                $('.mobile').show();
+                $('.office').show();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            } else if ($('#position').val() == 7) {
+                $('.enrollno').hide();
+                $('.pddesignation').show();
+                $('.supervisor').show();
+                $('.cosupervisors').show();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').show();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+            }
     });
-    // tinymce.init({
-    //   selector: 'textarea',
-    //   plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments link',
-    //   toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table link',
-    //   toolbar_mode: 'floating',
-    //   tinycomments_mode: 'embedded',
-    //   tinycomments_author: 'Author name',
-    // });
-    // CKEDITOR.replace('context');
-    // CKEDITOR.replace('overview');
-    // CKEDITOR.replace('description');
-    // CKEDITOR.replace('conclusion');
-    // CKEDITOR.replace('reference');
-    // CKEDITOR.replace('page_description');
-    // CKEDITOR.replace('aboutus');
     // CKEDITOR.replace('footer_cntnt');
 </script>
 <style type="text/css">

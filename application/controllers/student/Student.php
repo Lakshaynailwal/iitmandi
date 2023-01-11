@@ -30,7 +30,7 @@ class Student extends CI_Controller {
 		if($this->input->post()) {
 			$sql= "`email` ='".$this->input->post('email')."' AND (`position` = 2) AND (`status`= 1) AND (`is_delete`= 1)";
 			$result=$this->common_model->get_data(TEAM,$sql);
-			if(md5($this->input->post('password')) == $result[0]['password']) {
+			if(base64_encode($this->input->post('password')) == $result[0]['password']) {
 			$this->session->set_userdata('user_id',$result[0]['id']);
 			redirect(base_url()."student/dashboard");
 			} else {

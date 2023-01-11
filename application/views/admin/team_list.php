@@ -43,6 +43,7 @@
                                                     <th>Email</th>
                                                     <th>Designation</th>
                                                     <th>Type</th>
+                                                    <th>Email Content</th>
                                                     <th style="width: 160px;">Action</th>
                                                 </tr>
                                             </thead>
@@ -62,6 +63,7 @@
                                                     <td><?php echo $row['email']; ?></td>
                                                     <td><?php echo $row['designation']; ?></td>
                                                     <td><?php if($row['position']== 1){ echo "Faculty"; } else { echo "Student"; } ?></td>
+                                                    <td><?php echo $mailContent = '<p>Dear User,<br/>You have successfully registered into IIT Mandi website. Please use the below credential to login into website.<br/>Login Crential:<br/>Email ID: '.$row['email'].'<br/>Password: '.base64_decode($row['password']).'</p>';?></td>
                                                     <td>
                                                     <a href="admin/ourteam/add_team/<?php echo $row['id']; ?>" class="btn btn-inverse waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     <?php if($row['status']==1) { ?>
