@@ -35,13 +35,19 @@ class Ourteam extends CI_Controller{
 				$insArr['email'] = $this->input->post('email');
 				$insArr['position'] = $this->input->post('position');
 				$insArr['enrollno'] = $this->input->post('enrollno');
-				if ($this->input->post('designation') == 'others') {
-					$insArr['designation'] = $this->input->post('ndesignation');
+				$insArr['designation'] = $this->input->post('designation');
+				if ($this->input->post('supervisor') != '') {
+					$supervisor = $this->input->post('supervisor');
+					$insArr['supervisor'] = implode(",", $supervisor);
 				} else {
-					$insArr['designation'] = $this->input->post('designation');
+					$insArr['supervisor'] = $this->input->post('supervisor');
 				}
-				$insArr['supervisor'] = $this->input->post('supervisor');
-				$insArr['cosupervisors'] = $this->input->post('cosupervisors');
+				if ($this->input->post('cosupervisors') != '') {
+					$cosupervisors = $this->input->post('cosupervisors');
+					$insArr['cosupervisors'] = implode(",", $cosupervisors);
+				} else {
+					$insArr['cosupervisors'] = $this->input->post('cosupervisors');
+				}
 				$insArr['post'] = $this->input->post('post');
 				$insArr['lab'] = $this->input->post('lab');
 				$insArr['mobile'] = $this->input->post('mobile');
@@ -122,6 +128,7 @@ class Ourteam extends CI_Controller{
 		} else {
 			$data['page_title'] = "Add User";
 		}
+		$data['ourteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('is_delete'=>1));
 		$data['header_scripts'] = $this->load->view('admin/includes/admin_header_scripts','',true);
 	    $data['header']=$this->load->view('admin/includes/admin_header','',true);
 	    $data['sidebar']=$this->load->view('admin/includes/admin_sidebar','',true);
@@ -129,6 +136,23 @@ class Ourteam extends CI_Controller{
 		$data['footer_scripts']=$this->load->view('admin/includes/admin_footer_scripts','',true);
 		$this->load->view('admin/add_team',$data);
 	} 
+
+	public function get_designation_list() {
+        $position_id = $this->input->post('position');
+        $designation = $this->common_model->get_data_array(DESIGNATION,array('user_type' => $position_id),'','','','','','');
+        if(!empty($designation)) {
+            $html='<option value="">Select Designation</option>';
+            if(!empty($designation)) {
+                foreach($designation as $row){
+                    $html .='<option value="'.$row['id'].'"';
+                    $html .='>'.$row['designation'].'</option>';    
+                }
+            }
+        } else {
+            $html='<option value="">Select Designation</option>';	
+        }
+        echo $html;
+    }
 
 	public function change_status($id) {
 		$banner=$this->common_model->get_data(TEAM,array('id'=>$id));

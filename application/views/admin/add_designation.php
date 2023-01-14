@@ -32,17 +32,33 @@
                                 <div class="form">
                                     <form class="cmxform form-horizontal tasi-form" id="editForm" method="post" action="" enctype="multipart/form-data">
                                         <div class="form-group">
+                                            <label class="col-lg-3 col-md-3 col-sm-4 control-label">User Type</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-8">
+                                                <select class="form-control" name="user_type">
+                                                    <option value="">Choose an Option</option>
+                                                    <option value="1" <?php if(@$banner['user_type']==1){ echo "selected"; } ?>>Faculty</option>
+                                                    <option value="2" <?php if(@$banner['user_type']==2){ echo "selected"; } ?>>Postdocs</option>
+                                                    <option value="3" <?php if(@$banner['user_type']==3){ echo "selected"; } ?>>Scholars</option>
+                                                    <option value="4" <?php if(@$banner['user_type']==4){ echo "selected"; } ?>>Project Staff</option>
+                                                    <option value="5" <?php if(@$banner['user_type']==5){ echo "selected"; } ?>>Students</option>
+                                                    <option value="6" <?php if(@$banner['user_type']==6){ echo "selected"; } ?>>Technical Staff</option>
+                                                    <option value="7" <?php if(@$banner['user_type']==7){ echo "selected"; } ?>>Supporting Staff</option>
+                                                    <option value="8" <?php if(@$banner['user_type']==8){ echo "selected"; } ?>>External</option>
+                                              </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="category_name" class="control-label col-lg-3 col-md-3 col-sm-4">Category Name</label>
                                             <div class="col-lg-9 col-md-9 col-sm-8">
-                                                <input type="text" class="form-control required" id="category_name" name="category_name" placeholder="Category Name" value="<?php echo @$research_category['category_name']; ?>">
+                                                <input type="text" class="form-control required" id="designation" name="designation" placeholder="Designation" value="<?php echo @$banner['designation']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-3 col-md-3 col-sm-4 control-label">Status</label>
                                             <div class="col-lg-9 col-md-9 col-sm-8">
                                                 <select class="form-control" name="status">
-                                                    <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
-                                                    <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                                    <option value="1" <?php if(@$banner['status']==1){ echo "selected"; } ?>>Active</option>
+                                                    <option value="2" <?php if(@$banner['status']==2){ echo "selected"; } ?>>Inactive</option>
                                               </select>
                                             </div>
                                         </div>

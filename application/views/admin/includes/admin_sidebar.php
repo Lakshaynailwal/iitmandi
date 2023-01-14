@@ -54,16 +54,16 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="admin/ourteam"><i class="fa fa-user"></i>
+                <a href="admin/ourteam"><i class="fa fa-circle-o"></i>
                     <span>User Management</span>
                 </a>
             </li> 
-            <!-- <li class="treeview">
-                <a href="admin/committees"><i class="fa fa-cogs"></i>
-                    <span>House & Committees</span>
+            <li class="treeview">
+                <a href="admin/designation"><i class="fa fa-circle-o"></i>
+                    <span>Designation</span>
                 </a>
             </li>
-            <li class="treeview">
+            <!-- <li class="treeview">
                 <a href="admin/ourteam"><i class="fa fa-cogs"></i>
                     <span>Our Team</span>
                 </a>
@@ -79,7 +79,7 @@
                 </a>
             </li>-->
             <li class="treeview">
-                <a href="admin/settings"><i class="fa fa-cogs"></i>
+                <a href="admin/settings"><i class="fa fa-circle-o"></i>
                     <span>Settings</span>
                 </a>
             </li>

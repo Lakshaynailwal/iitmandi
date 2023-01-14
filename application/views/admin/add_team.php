@@ -47,14 +47,14 @@
                                        <label class="col-lg-3 col-md-3 col-sm-4 control-label">User Type</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <select class="form-control" id="position" name="position" require>
-                                             <option value="">Choose an Option</option>
+                                             <option value="">Select User Type</option>
                                              <option value="1" <?php if(@$banner['position']==1){ echo "selected"; } ?>>Faculty</option>
                                              <option value="2" <?php if(@$banner['position']==2){ echo "selected"; } ?>>Postdoc</option>
                                              <option value="3" <?php if(@$banner['position']==3){ echo "selected"; } ?>>Scholar</option>
-                                             <option value="4" <?php if(@$banner['position']==4){ echo "selected"; } ?>>Student</option>
-                                             <option value="5" <?php if(@$banner['position']==5){ echo "selected"; } ?>>Technical Staff</option>
-                                             <option value="6" <?php if(@$banner['position']==6){ echo "selected"; } ?>>Supporting Staff</option>
-                                             <option value="7" <?php if(@$banner['position']==7){ echo "selected"; } ?>>Project Staff</option>
+                                             <option value="4" <?php if(@$banner['position']==7){ echo "selected"; } ?>>Project Staff</option>
+                                             <option value="5" <?php if(@$banner['position']==4){ echo "selected"; } ?>>Student</option>
+                                             <option value="6" <?php if(@$banner['position']==5){ echo "selected"; } ?>>Technical Staff</option>
+                                             <option value="7" <?php if(@$banner['position']==6){ echo "selected"; } ?>>Supporting Staff</option>
                                           </select>
                                        </div>
                                     </div>
@@ -69,32 +69,33 @@
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <select class="form-control" id="designation" name="designation">
                                              <option value="">Choose an Option</option>
-                                             <?php 
-                                                $designation = $this->common_model->get_data_array(TEAM,'','','','','',TEAM.".designation",'',array('is_delete'=>1));
-                                                if(!empty($designation)) {
-                                                foreach($designation as $row) { ?>
-                                                   <option value="<?php echo $row['designation']; ?>" <?php if(@$banner['designation'] == $row['designation']){ echo "selected"; } ?>><?php echo $row['designation']; ?></option>
-                                             <?php } } ?>
-                                             <option value="others" <?php if(@$banner['designation']=='others'){ echo "selected"; } ?>>Others</option>
                                           </select>
-                                       </div>
-                                    </div>
-                                    <div class="form-group ndesignation">
-                                       <label for="banner_title" class="control-label col-lg-3 col-md-3 col-sm-4">Add New Designation</label>
-                                       <div class="col-lg-9 col-md-9 col-sm-8">
-                                          <input type="text" class="form-control" id="ndesignation" name="ndesignation" placeholder="Add New Designation" value="<?php echo @$banner['supervisor']; ?>">
                                        </div>
                                     </div>
                                     <div class="form-group supervisor">
                                        <label for="banner_title" class="control-label col-lg-3 col-md-3 col-sm-4">Supervisor</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
-                                          <input type="text" class="form-control" id="supervisor" name="supervisor" placeholder="Supervisor" value="<?php echo @$banner['supervisor']; ?>">
-                                       </div>
+                                          <select class="selectpicker form-control" id="supervisor" name="supervisor[]" multiple data-live-search="true">
+                                          <?php if(!empty($ourteam)) { 
+                                             foreach($ourteam as $row) { ?>
+                                             <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                          <?php  } } else { ?>
+                                             <option value="">No Data</option>
+                                             <?php } ?>
+                                          </select>
+                                       </div> 
                                     </div>
                                     <div class="form-group cosupervisors">
                                        <label for="banner_title" class="control-label col-lg-3 col-md-3 col-sm-4">Co-Supervisors</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
-                                          <input type="text" class="form-control" id="cosupervisors" name="cosupervisors" placeholder="Co-Supervisor" value="<?php echo @$banner['cosupervisors']; ?>">
+                                          <select class="selectpicker form-control" id="cosupervisors" name="cosupervisors[]" multiple data-live-search="true">
+                                             <?php if(!empty($ourteam)) { 
+                                                foreach($ourteam as $row) { ?>
+                                                <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                             <?php  } } else { ?>
+                                                <option value="">No Data</option>
+                                                <?php } ?>
+                                          </select>
                                        </div>
                                     </div>
                                     <div class="form-group post">

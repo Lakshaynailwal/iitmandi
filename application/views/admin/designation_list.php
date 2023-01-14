@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <ol class="breadcrumb pull-right">
-                            <a href="admin/<?php echo $this->uri->segment(2); ?>/add_category"><button class="btn btn-info waves-effect waves-light m-b-5" type="submit">Add Category</button></a>
+                            <a href="admin/<?php echo $this->uri->segment(2); ?>/add_designation"><button class="btn btn-info waves-effect waves-light m-b-5" type="submit">Add Designation</button></a>
                         </ol>
                    </div>
                 </div>
@@ -41,28 +41,30 @@
                                         <table id="datatable" class="table table-striped table-bordered dat_tbl">
                                             <thead>
                                                 <tr>
-                                                    <th>Category Name</th>
+                                                    <th>User Type</th>
+                                                    <th>Designation</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(!empty($research_category_lists)) { ?>
-                                                <?php foreach($research_category_lists as $row) { ?>
+                                                <?php if(!empty($designation)) { ?>
+                                                <?php foreach($designation as $row) { ?>
                                                 <tr>
-                                                    <td><?php echo $row['category_name']; ?></td>
+                                                    <td><?php if ($row['user_type'] == '1'){echo 'Faculty'; } else if($row['user_type'] == '2'){echo 'Postdocs'; } else if($row['user_type'] == '3'){echo 'Scholars'; } else if($row['user_type'] == '4'){echo 'Project Staff'; } else if($row['user_type'] == '5'){echo 'Students'; } else if($row['user_type'] == '6'){echo 'Technical Staff'; } else if($row['user_type'] == '7'){echo 'Supporting Staff'; } else {echo 'External';} ?></td>
+                                                    <td><?php echo $row['designation']; ?></td>
                                                     <td>
+                                                        <a href="admin/<?php echo $this->uri->segment(2); ?>/add_designation/<?php echo $row['id']; ?>" class="btn btn-inverse waves-effect waves-light tooltips btn-success" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <?php if($row['status']==1) { ?>
-                                                        <a onclick="return confirm('Are you sure you want to inactive?')" href="admin/<?php echo $this->uri->segment(2); ?>/category_change_status/<?php echo $row['id']; ?>" class="btn btn-info waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Inactive Status"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                        <a onclick="return confirm('Are you sure you want to inactive?')" href="admin/<?php echo $this->uri->segment(2); ?>/designation_change_status/<?php echo $row['id']; ?>" class="btn btn-info waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Inactive Status"><i class="fa fa-check" aria-hidden="true"></i></a>
                                                         <?php } else { ?>
-                                                        <a onclick="return confirm('Are you sure you want to active?')" href="admin/<?php echo $this->uri->segment(2); ?>/category_change_status/<?php echo $row['id']; ?>" class="btn btn-pink waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Active Status"><i class="fa fa-remove"></i></a>
+                                                        <a onclick="return confirm('Are you sure you want to active?')" href="admin/<?php echo $this->uri->segment(2); ?>/designation_change_status/<?php echo $row['id']; ?>" class="btn btn-pink waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Active Status"><i class="fa fa-remove"></i></a>
                                                         <?php } ?>
-                                                        <a href="admin/<?php echo $this->uri->segment(2); ?>/add_category/<?php echo $row['id']; ?>" class="btn btn-inverse waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="admin/<?php echo $this->uri->segment(2); ?>/category_delete/<?php echo $row['id']; ?>" class="btn btn-danger waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this category?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                        <a href="admin/<?php echo $this->uri->segment(2); ?>/designation_delete/<?php echo $row['id']; ?>" class="btn btn-danger waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this designation?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
                                                 </tr>
                                                 <?php } } else {?>
                                                 <tr>
-                                                    <td colspan="4">No Record Found</td>
+                                                    <td colspan="3">No Record Found</td>
                                                 </tr>
                                                 <?php } ?>
                                             </tbody>

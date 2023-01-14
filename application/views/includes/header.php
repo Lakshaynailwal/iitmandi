@@ -86,18 +86,26 @@
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                     <ul class="menu">
-                      <li class="menu-item menu-item--expanded">
-                        <div class="submenu-toggle__wrapper ">
-                          <a href="<?php echo base_url()?>pages/faculty_list" data-drupal-link-system-path="node/49915">Faculty<span class="primary-nav__submenu-indicator"></span>
-                          </a>
-                          <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
-                        </div>
+                    <li class="menu-item">
+                        <a href="<?php echo base_url()?>pages/faculty_list" data-drupal-link-system-path="node/2047">Faculty</a>
                       </li>
                       <li class="menu-item">
-                        <a href="/about/diversity" data-drupal-link-system-path="node/2047">Staff menu</a>
+                        <a href="<?php echo base_url()?>pages/postdocs" data-drupal-link-system-path="node/2047">Postdocs</a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="<?php echo base_url()?>pages/scholars" data-drupal-link-system-path="node/2336">Scholars</a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="<?php echo base_url()?>pages/project_staff" data-drupal-link-system-path="node/2336">Project Staff</a>
                       </li>
                       <li class="menu-item">
                         <a href="<?php echo base_url()?>pages/students" data-drupal-link-system-path="node/2336">Students</a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="<?php echo base_url()?>pages/technical_staff" data-drupal-link-system-path="node/2336">Technical Staff</a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="<?php echo base_url()?>pages/supporting_staff" data-drupal-link-system-path="node/2336">Supporting Staff</a>
                       </li>
                     </ul>
                   </li>
