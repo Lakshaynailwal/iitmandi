@@ -32,19 +32,12 @@ class Designation extends CI_Controller{
 			if(!empty($id)){
 				$this->common_model->tbl_update(DESIGNATION,array('id'=>$id),$insArr);
 				$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully updated','SUCCESS');
-				redirect(base_url('admin/designation/add_designation/'.$id));
+				redirect(base_url('admin/designation'));
 		    } else{
 				$id = $this->common_model->tbl_insert(DESIGNATION,$insArr);
 				$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully saved','SUCCESS');
-				redirect(base_url()."admin/designation/add_designation");
+				redirect(base_url()."admin/designation");
 			}
-			// if(!empty($id)) {
-			// 	$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully updated','SUCCESS');
-			// 	redirect(base_url('admin/committees/add_committees/'.$id));
-		    // } else {
-		    // 	$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully saved','SUCCESS');
-			// 	redirect(base_url()."admin/committees/add_committees");
-		    // }
 		}
 		$data['banner']=$this->common_model->get_data_row(DESIGNATION,array('id'=>$id));
 		if(!empty($id)){

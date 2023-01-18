@@ -47,14 +47,15 @@
                                        <label class="col-lg-3 col-md-3 col-sm-4 control-label">User Type</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <select class="form-control" id="position" name="position" require>
-                                             <option value="">Select User Type</option>
-                                             <option value="1" <?php if(@$banner['position']==1){ echo "selected"; } ?>>Faculty</option>
-                                             <option value="2" <?php if(@$banner['position']==2){ echo "selected"; } ?>>Postdoc</option>
-                                             <option value="3" <?php if(@$banner['position']==3){ echo "selected"; } ?>>Scholar</option>
-                                             <option value="4" <?php if(@$banner['position']==7){ echo "selected"; } ?>>Project Staff</option>
-                                             <option value="5" <?php if(@$banner['position']==4){ echo "selected"; } ?>>Student</option>
-                                             <option value="6" <?php if(@$banner['position']==5){ echo "selected"; } ?>>Technical Staff</option>
-                                             <option value="7" <?php if(@$banner['position']==6){ echo "selected"; } ?>>Supporting Staff</option>
+                                             <option value="">Choose an Option</option>
+                                             <option value="1" <?php if(@$banner['user_type']==1){ echo "selected"; } ?>>Faculty</option>
+                                             <option value="2" <?php if(@$banner['user_type']==2){ echo "selected"; } ?>>Postdocs</option>
+                                             <option value="3" <?php if(@$banner['user_type']==3){ echo "selected"; } ?>>Scholars</option>
+                                             <option value="4" <?php if(@$banner['user_type']==4){ echo "selected"; } ?>>Project Staff</option>
+                                             <option value="5" <?php if(@$banner['user_type']==5){ echo "selected"; } ?>>Students</option>
+                                             <option value="6" <?php if(@$banner['user_type']==6){ echo "selected"; } ?>>Technical Staff</option>
+                                             <option value="7" <?php if(@$banner['user_type']==7){ echo "selected"; } ?>>Supporting Staff</option>
+                                             <option value="8" <?php if(@$banner['user_type']==8){ echo "selected"; } ?>>External</option>
                                           </select>
                                        </div>
                                     </div>
@@ -125,13 +126,65 @@
                                     <div class="form-group specialization">
                                        <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Specialization</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
-                                          <input type="text" class="form-control" id="specialization" name="specialization" placeholder="Specialization" value="<?php echo @$banner['specialization']; ?>">
+                                          <select class="form-control" id="specialization" name="specialization" require>
+                                             <option value="">Choose an Option</option>
+                                             <option value="1" <?php if(@$banner['specialization']==1){ echo "selected"; } ?>>Environmental Engineering</option>
+                                             <option value="2" <?php if(@$banner['specialization']==2){ echo "selected"; } ?>>Geotechnical Engineering</option>
+                                             <option value="3" <?php if(@$banner['specialization']==3){ echo "selected"; } ?>>Structural Engineering</option>
+                                             <option value="4" <?php if(@$banner['specialization']==4){ echo "selected"; } ?>>Water Resources Engineering</option>
+                                             <option value="5" <?php if(@$banner['specialization']==5){ echo "selected"; } ?>>Transportation Engineering</option>
+                                             <option value="6" <?php if(@$banner['specialization']==6){ echo "selected"; } ?>>Remote Sensing and GIS</option>
+                                          </select>
                                        </div>
                                     </div>
                                     <div class="form-group admssnyear">
                                        <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Year of Admission</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
                                           <input type="text" class="form-control" id="admssnyear" name="admssnyear" placeholder="Year of Admission" value="<?php echo @$banner['admssnyear']; ?>">
+                                       </div>
+                                    </div>
+                                    <div class="form-group department">
+                                       <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Department</label>
+                                       <div class="col-lg-9 col-md-9 col-sm-8">
+                                          <input type="text" class="form-control" id="department" name="department" placeholder="Department" value="<?php echo @$banner['department']; ?>">
+                                       </div>
+                                    </div>
+                                    <div class="form-group institutename">
+                                       <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Institute Name</label>
+                                       <div class="col-lg-9 col-md-9 col-sm-8">
+                                          <input type="text" class="form-control" id="institutename" name="institutename" placeholder="Institute Name" value="<?php echo @$banner['institutename']; ?>">
+                                       </div>
+                                    </div>
+                                    <div class="form-group profilelink">
+                                       <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Profile Link</label>
+                                       <div class="col-lg-9 col-md-9 col-sm-8">
+                                          <input type="text" class="form-control" id="profilelink" name="profilelink" placeholder="Profile Link" value="<?php echo @$banner['profilelink']; ?>">
+                                       </div>
+                                    </div>
+                                    <div class="form-group program">
+                                       <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Program</label>
+                                       <div class="col-lg-9 col-md-9 col-sm-8">
+                                          <select class="form-control" id="program" name="program" require>
+                                          <?php if(!empty($ourteam)) { 
+                                             foreach($ourteam as $row) { ?>
+                                             <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                          <?php  } } else { ?>
+                                             <option value="">No Data</option>
+                                             <?php } ?>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="form-group degree">
+                                       <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Degree</label>
+                                       <div class="col-lg-9 col-md-9 col-sm-8">
+                                          <select class="form-control" id="degree" name="degree" require>
+                                          <?php if(!empty($ourteam)) { 
+                                             foreach($ourteam as $row) { ?>
+                                             <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                          <?php  } } else { ?>
+                                             <option value="">No Data</option>
+                                             <?php } ?>
+                                          </select>
                                        </div>
                                     </div>
                                     <?php if(!empty($banner)){ ?>

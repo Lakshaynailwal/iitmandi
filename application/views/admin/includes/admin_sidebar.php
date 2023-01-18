@@ -18,29 +18,25 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
                 <a href="admin/dashboard">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+                    <i class="fa fa-circle-o"></i> <span>Dashboard</span></i>
                 </a>
             </li>
             <li class="treeview">
-                <a href="javascript:void(0);"><i class="fa fa-newspaper-o"></i>
+                <a href="javascript:void(0);"><i class="fa fa-circle-o"></i>
                     <span>Home Page Management</span><i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="admin/banner"><i class="fa fa-circle-o"></i>Banner Section</a></li>
                     <li><a href="admin/homeabout"><i class="fa fa-circle-o"></i>About Section</a></li>
                     <li><a href="admin/homemessage"><i class="fa fa-circle-o"></i>Message Section</a></li>
-                    <!-- <li></li>
-                    <li><a href="admin/events"><i class="fa fa-circle-o"></i>Event management</a></li>
-                    <li><a href="admin/notice"><i class="fa fa-circle-o"></i>Notice Board</a></li> -->
                 </ul>
             </li>
             <li class="treeview">
-                <a href="javascript:void(0);"><i class="fa fa-files-o"></i>
+                <a href="javascript:void(0);"><i class="fa fa-circle-o"></i>
                     <span>Pages</span><i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="admin/page"><i class="fa fa-circle-o"></i>All Pages</a></li>
-                    <!-- <li><a href="admin/page/add_page"><i class="fa fa-circle-o"></i>Add New Page</a></li> -->
                 </ul>
             </li>
             <li class="treeview">
@@ -54,30 +50,15 @@
                 </a>
             </li>
             <li class="treeview">
-                <a href="admin/ourteam"><i class="fa fa-circle-o"></i>
-                    <span>User Management</span>
+                <a href="javascript:void(0);"><i class="fa fa-circle-o"></i>
+                    <span>Our Team Members</span><i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="admin/designation"><i class="fa fa-circle-o"></i>Designation</a></li>
+                    <li><a href="admin/ourteam"><i class="fa fa-circle-o"></i>All Users</a></li>
+                    <li><a href="admin/alumni"><i class="fa fa-circle-o"></i>Alumni</a></li>
+                </ul>
             </li> 
-            <li class="treeview">
-                <a href="admin/designation"><i class="fa fa-circle-o"></i>
-                    <span>Designation</span>
-                </a>
-            </li>
-            <!-- <li class="treeview">
-                <a href="admin/ourteam"><i class="fa fa-cogs"></i>
-                    <span>Our Team</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="admin/syllabus"><i class="fa fa-cogs"></i>
-                    <span>Syllabus</span>
-                </a>
-            </li>
-            <li class="treeview">
-                <a href="admin/disclosure"><i class="fa fa-cogs"></i>
-                    <span>Mandatory disclosure</span>
-                </a>
-            </li>-->
             <li class="treeview">
                 <a href="admin/settings"><i class="fa fa-circle-o"></i>
                     <span>Settings</span>

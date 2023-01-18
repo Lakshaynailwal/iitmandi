@@ -54,6 +54,11 @@ class Ourteam extends CI_Controller{
 				$insArr['office'] = $this->input->post('office');
 				$insArr['specialization'] = $this->input->post('specialization');
 				$insArr['admssnyear'] = $this->input->post('admssnyear');
+				$insArr['department'] = $this->input->post('department');
+				$insArr['institutename'] = $this->input->post('institutename');
+				$insArr['profilelink'] = $this->input->post('profilelink');
+				$insArr['program'] = $this->input->post('program');
+				$insArr['degree'] = $this->input->post('degree');
 				$insArr['status'] = $this->input->post('status');
 				if(!empty($id)){
 					$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);

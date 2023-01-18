@@ -61,6 +61,11 @@
         $('.specialization').hide();
         $('.ndesignation').hide();
         $('.admssnyear').hide();
+        $('.program').hide();
+        $('.department').hide();
+        $('.institutename').hide();
+        $('.profilelink').hide();
+        $('.degree').hide();
         // For team page
         $('#position').change(function(){
             var selectedPosition = $(this).children("option:selected").val();
@@ -76,6 +81,11 @@
                 $('.specialization').show();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
+                $('.program').hide();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').hide();
             } else if (selectedPosition == 2) {
                 $('.enrollno').hide();
                 $('.pddesignation').show();
@@ -88,9 +98,14 @@
                 $('.specialization').show();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
+                $('.program').hide();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').hide();
             } else if (selectedPosition == 3) {
                 $('.enrollno').show();
-                $('.pddesignation').show();
+                $('.pddesignation').hide();
                 $('.supervisor').show();
                 $('.cosupervisors').show();
                 $('.post').hide();
@@ -100,6 +115,11 @@
                 $('.specialization').show();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
+                $('.program').show();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').hide();
             } else if (selectedPosition == 4) {
                 $('.enrollno').hide();
                 $('.pddesignation').show();
@@ -112,6 +132,11 @@
                 $('.specialization').show();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
+                $('.program').hide();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').hide();
             } else if (selectedPosition == 5) {
                 $('.enrollno').hide();
                 $('.pddesignation').hide();
@@ -124,6 +149,11 @@
                 $('.specialization').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').show();
+                $('.program').hide();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').show();
             } else if (selectedPosition == 6) {
                 $('.enrollno').hide();
                 $('.pddesignation').hide();
@@ -136,7 +166,12 @@
                 $('.specialization').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
-            } else {
+                $('.program').hide();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').hide();
+            } else if (selectedPosition == 7) {
                 $('.enrollno').hide();
                 $('.pddesignation').hide();
                 $('.supervisor').hide();
@@ -148,6 +183,45 @@
                 $('.specialization').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
+                $('.program').hide();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').hide();
+            } else if (selectedPosition == 8){
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').show();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+                $('.program').hide();
+                $('.department').show();
+                $('.institutename').show();
+                $('.profilelink').show();
+                $('.degree').hide();
+            } else {
+                $('.enrollno').hide();
+                $('.pddesignation').hide();
+                $('.supervisor').hide();
+                $('.cosupervisors').hide();
+                $('.post').hide();
+                $('.lab').hide();
+                $('.mobile').hide();
+                $('.office').hide();
+                $('.specialization').hide();
+                $('.ndesignation').hide();
+                $('.admssnyear').hide();
+                $('.program').hide();
+                $('.department').hide();
+                $('.institutename').hide();
+                $('.profilelink').hide();
+                $('.degree').hide();
             }
         })
         
@@ -172,6 +246,11 @@
             $('.specialization').show();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
+            $('.program').hide();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').hide();
         } else if ($('#position').val() == 2) {
             $('.enrollno').hide();
             $('.pddesignation').show();
@@ -184,9 +263,14 @@
             $('.specialization').show();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
+            $('.program').hide();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').hide();
         } else if ($('#position').val() == 3) {
             $('.enrollno').show();
-            $('.pddesignation').show();
+            $('.pddesignation').hide();
             $('.supervisor').show();
             $('.cosupervisors').show();
             $('.post').hide();
@@ -196,6 +280,11 @@
             $('.specialization').show();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
+            $('.program').show();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').hide();
         } else if ($('#position').val() == 4) {
             $('.enrollno').hide();
             $('.pddesignation').show();
@@ -208,6 +297,11 @@
             $('.specialization').show();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
+            $('.program').hide();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').hide();
         } else if ($('#position').val() == 5) {
             $('.enrollno').hide();
             $('.pddesignation').hide();
@@ -220,6 +314,11 @@
             $('.specialization').hide();
             $('.ndesignation').hide();
             $('.admssnyear').show();
+            $('.program').hide();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').show();
         } else if ($('#position').val() == 6) {
             $('.enrollno').hide();
             $('.pddesignation').hide();
@@ -232,7 +331,12 @@
             $('.specialization').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
-        } else if ($('#position').val() == 7) {
+            $('.program').hide();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').hide();
+        }  else if ($('#position').val() == 7) {
             $('.enrollno').hide();
             $('.pddesignation').hide();
             $('.supervisor').hide();
@@ -244,7 +348,46 @@
             $('.specialization').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
-        }
+            $('.program').hide();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').hide();
+        } else if ($('#position').val() == 8)  {
+            $('.enrollno').hide();
+            $('.pddesignation').hide();
+            $('.supervisor').hide();
+            $('.cosupervisors').hide();
+            $('.post').show();
+            $('.lab').hide();
+            $('.mobile').hide();
+            $('.office').hide();
+            $('.specialization').hide();
+            $('.ndesignation').hide();
+            $('.admssnyear').hide();
+            $('.program').hide();
+            $('.department').show();
+            $('.institutename').show();
+            $('.profilelink').show();
+            $('.degree').hide();
+        }  else {
+            $('.enrollno').hide();
+            $('.pddesignation').hide();
+            $('.supervisor').hide();
+            $('.cosupervisors').hide();
+            $('.post').hide();
+            $('.lab').hide();
+            $('.mobile').hide();
+            $('.office').hide();
+            $('.specialization').hide();
+            $('.ndesignation').hide();
+            $('.admssnyear').hide();
+            $('.program').hide();
+            $('.department').hide();
+            $('.institutename').hide();
+            $('.profilelink').hide();
+            $('.degree').hide();
+            }
 
         $("#position").change(function(){
             var position = $("#position").val();
@@ -252,7 +395,9 @@
                 "<?php echo base_url('admin/ourteam/get_designation_list') ?>", {position: position}, 
                 function(result){
                     if(result) {
-                        $("#designation").html(result); 
+                        $("#designation").html(result);
+                        $("#program").html(result);
+                        $("#degree").html(result); 
                     }
                 }
             )

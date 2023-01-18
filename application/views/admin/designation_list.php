@@ -47,8 +47,9 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php if(!empty($designation)) { ?>
-                                                <?php foreach($designation as $row) { ?>
+                                                <?php if(!empty($designation)) { 
+                                                    $i=1;
+                                                    foreach($designation as $row) { ?>
                                                 <tr>
                                                     <td><?php if ($row['user_type'] == '1'){echo 'Faculty'; } else if($row['user_type'] == '2'){echo 'Postdocs'; } else if($row['user_type'] == '3'){echo 'Scholars'; } else if($row['user_type'] == '4'){echo 'Project Staff'; } else if($row['user_type'] == '5'){echo 'Students'; } else if($row['user_type'] == '6'){echo 'Technical Staff'; } else if($row['user_type'] == '7'){echo 'Supporting Staff'; } else {echo 'External';} ?></td>
                                                     <td><?php echo $row['designation']; ?></td>
@@ -62,11 +63,7 @@
                                                         <a href="admin/<?php echo $this->uri->segment(2); ?>/designation_delete/<?php echo $row['id']; ?>" class="btn btn-danger waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this designation?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
                                                 </tr>
-                                                <?php } } else {?>
-                                                <tr>
-                                                    <td colspan="3">No Record Found</td>
-                                                </tr>
-                                                <?php } ?>
+                                                <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
