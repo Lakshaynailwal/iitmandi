@@ -465,6 +465,20 @@
                 }          
             });
         }));
+
+        $(".fetch_data").on('click',(function(e) {
+            e.preventDefault();
+            var designation = $("#designation").val();
+            var specialization = $("#specialization").val();
+            $.post(
+                "<?php echo base_url('faculty/get_filter_data') ?>", {designation:designation,specialization:specialization}, 
+                function(result){
+                    if(result) {
+                        $(".cls_filter_data").html(result);
+                    }
+                }
+            )
+        }));
     });
 
     /* Edit education */

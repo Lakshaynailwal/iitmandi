@@ -15,7 +15,7 @@ class Project_staff extends CI_Controller {
         $data['project_staff'] = $this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('status'=>1, 'is_delete'=>1, 'position'=>4));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
-        $data['title']='Faclity List';
+        $data['title']='Project Staff';
         $this->load->view('project_staff_list',$data);
     }
 

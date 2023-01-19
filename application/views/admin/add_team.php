@@ -76,7 +76,8 @@
                                     <div class="form-group supervisor">
                                        <label for="banner_title" class="control-label col-lg-3 col-md-3 col-sm-4">Supervisor</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">
-                                          <select class="selectpicker form-control" id="supervisor" name="supervisor[]" multiple data-live-search="true">
+                                          <select class="form-control" id="supervisor" name="supervisor">
+                                          <option value="">Choose an Option</option>
                                           <?php if(!empty($ourteam)) { 
                                              foreach($ourteam as $row) { ?>
                                              <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>

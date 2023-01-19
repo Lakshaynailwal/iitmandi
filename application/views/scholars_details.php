@@ -116,9 +116,6 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
-                                </div>
                             </div>
                             <div class="col-12">
                                 <div class="row">

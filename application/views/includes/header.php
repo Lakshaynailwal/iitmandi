@@ -31,6 +31,7 @@
     @media (min-width: 1500px) and (max-width: 2560px)  {
       .primary-nav li {width: 190px;}
     }
+    .portfolio-details .portfolio-info {display: inline-block;}
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>

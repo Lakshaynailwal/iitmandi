@@ -43,7 +43,6 @@
                                                     <th>Email</th>
                                                     <th>Designation</th>
                                                     <th>Type</th>
-                                                    <th>Email Content</th>
                                                     <th style="width: 160px;">Action</th>
                                                 </tr>
                                             </thead>
@@ -62,8 +61,8 @@
                                                     <td><?php echo $row['fname']; ?></td>
                                                     <td><?php echo $row['email']; ?></td>
                                                     <td><?php echo $row['designation']; ?></td>
-                                                    <td><?php if($row['position']== 1){ echo "Faculty"; } else { echo "Student"; } ?></td>
-                                                    <td><?php echo $mailContent = '<p>Dear User,<br/>You have successfully registered into IIT Mandi website. Please use the below credential to login into website.<br/>Login Crential:<br/>Email ID: '.$row['email'].'<br/>Password: '.base64_decode($row['password']).'</p>';?></td>
+                                                    <td><?php if ($row['position'] == '1'){echo 'Faculty'; } else if($row['position'] == '2'){echo 'Postdocs'; } else if($row['position'] == '3'){echo 'Scholars'; } else if($row['position'] == '4'){echo 'Project Staff'; } else if($row['position'] == '5'){echo 'Students'; } else if($row['position'] == '6'){echo 'Technical Staff'; } else if($row['position'] == '7'){echo 'Supporting Staff'; } else if($row['position'] == '8'){echo 'External'; } else {echo '';} ?></td>
+                                                    <!-- <td><?php echo $mailContent = '<p>Dear User,<br/>You have successfully registered into IIT Mandi website. Please use the below credential to login into website.<br/>Login Crential:<br/>Email ID: '.$row['email'].'<br/>Password: '.base64_decode($row['password']).'</p>';?></td> -->
                                                     <td>
                                                     <a href="admin/ourteam/add_team/<?php echo $row['id']; ?>" class="btn btn-inverse waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                     <?php if($row['status']==1) { ?>
