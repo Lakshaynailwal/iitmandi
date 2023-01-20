@@ -53,7 +53,7 @@ class Ourteam extends CI_Controller{
 				$insArr['institutename'] = $this->input->post('institutename');
 				$insArr['profilelink'] = $this->input->post('profilelink');
 				$insArr['designation'] = $this->input->post('program');
-				$insArr['degree'] = $this->input->post('degree');
+				$insArr['designation'] = $this->input->post('degree');
 				$insArr['status'] = $this->input->post('status');
 				if(!empty($id)){
 					$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);

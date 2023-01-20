@@ -32,6 +32,7 @@
       .primary-nav li {width: 190px;}
     }
     .portfolio-details .portfolio-info {display: inline-block;}
+    .portfolio-info {width: 100%}
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
