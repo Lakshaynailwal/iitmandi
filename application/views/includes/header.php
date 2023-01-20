@@ -206,7 +206,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="menu-item menu-item--expanded">
+                  <!-- <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
                       <a href="javascript:void(0)" data-drupal-link-system-path="node/2343">Log In<span class="primary-nav__submenu-indicator"></span>
                       </a>
@@ -220,7 +220,7 @@
                         <a href="<?php echo base_url()?>faculty" data-drupal-link-system-path="faculty">Faculty Login</a>
                       </li>
                     </ul>
-                  </li>
+                  </li> -->
                 </ul>
               </nav>
             </div>
