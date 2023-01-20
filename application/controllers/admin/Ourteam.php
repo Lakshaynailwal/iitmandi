@@ -36,12 +36,7 @@ class Ourteam extends CI_Controller{
 				$insArr['position'] = $this->input->post('position');
 				$insArr['enrollno'] = $this->input->post('enrollno');
 				$insArr['designation'] = $this->input->post('designation');
-				if ($this->input->post('supervisor') != '') {
-					$supervisor = $this->input->post('supervisor');
-					$insArr['supervisor'] = implode(",", $supervisor);
-				} else {
-					$insArr['supervisor'] = $this->input->post('supervisor');
-				}
+				$insArr['supervisor'] = $this->input->post('supervisor');
 				if ($this->input->post('cosupervisors') != '') {
 					$cosupervisors = $this->input->post('cosupervisors');
 					$insArr['cosupervisors'] = implode(",", $cosupervisors);
@@ -57,7 +52,7 @@ class Ourteam extends CI_Controller{
 				$insArr['department'] = $this->input->post('department');
 				$insArr['institutename'] = $this->input->post('institutename');
 				$insArr['profilelink'] = $this->input->post('profilelink');
-				$insArr['program'] = $this->input->post('program');
+				$insArr['designation'] = $this->input->post('program');
 				$insArr['degree'] = $this->input->post('degree');
 				$insArr['status'] = $this->input->post('status');
 				if(!empty($id)){

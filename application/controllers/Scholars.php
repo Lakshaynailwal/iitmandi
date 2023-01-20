@@ -13,6 +13,7 @@ class Scholars extends CI_Controller {
 
     public function index() { 
         $data['scholars'] = $this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('status'=>1, 'is_delete'=>1, 'position'=>3));
+        $data['designation'] = $this->common_model->get_data_array(DESIGNATION,'','','','','','',DESIGNATION.".id ASC",array('status'=>1, 'is_delete'=>1, 'user_type'=>3));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
         $data['title']='Scholars List';
