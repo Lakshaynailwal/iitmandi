@@ -72,6 +72,7 @@ $route['pages/supporting_staff_details/(:any)'] = 'Supporting_staff/supporting_s
 $route['pages/contactus'] = 'home/contactus';
 $route['pages/payment'] = 'home/payment';
 $route['pages/committees'] = 'home/committees';
+$route['login'] = 'home/login';
 
 /* Students */
 $route['student'] = 'student/student/index';

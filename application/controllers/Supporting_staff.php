@@ -15,7 +15,7 @@ class Supporting_staff extends CI_Controller {
         $data['supporting_staff'] = $this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('status'=>1, 'is_delete'=>1, 'position'=>7));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
-        $data['title']='Faclity List';
+        $data['title']='Supporting Staff List';
         $this->load->view('supporting_staff_list',$data);
     }
 

@@ -24,6 +24,13 @@ class Home extends CI_Controller {
         $this->load->view('home',$data);
     }
 
+    public function login() { 
+        $data['header']=$this->load->view('includes/header','',true);
+        $data['footer']=$this->load->view('includes/footer','',true);
+        $data['title']='Login Page';
+        $this->load->view('login',$data);
+    }
+
     public function payment(){
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);

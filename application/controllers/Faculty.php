@@ -34,7 +34,7 @@ class Faculty extends CI_Controller {
                     $html .='<div class="col-sm-2" style="border: 1px solid;box-shadow: 1px 1px 0px #999,2px 2px 0px #999,3px 3px 0px #999,4px 4px 0px #999,5px 5px 0px #999,6px 6px 0px #999; margin-right: 40px; float: left;">';
                     $html .='<img src="'.base_url().'uploads/our_team/'.$row['team_image'].'" alt="">';
                     $html .='<a href="'.base_url().'pages/faculty_details/'.base64_encode($row['id']).'"><p style="text-align: center; background: #fff;">'.$row['fname'].'<br><small>'.$row['designation'].'</small></p></a>';
-                    $html .='<p style="text-align: center; background: #fff;">'.$row['specialization'].'</p></div>';
+                    //$html .='<p style="text-align: center; background: #fff;">'.$row['specialization'].'</p></div>';
                 }
             }
         } else {

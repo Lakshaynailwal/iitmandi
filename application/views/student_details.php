@@ -59,7 +59,7 @@
                                                                 <p class='bio_text'>Name: <?php echo $about_me[0]['fname'];?></p>
                                                                 <p class='bio_text'>Enrolment No.: <?php echo $about_me[0]['enrollno'];?></p>
                                                                 <p class='bio_text'>Email: <?php echo $about_me[0]['email'];?></p>
-                                                                <p class='bio_text'>Admission year: <?php echo $about_me[0]['admissionyear'];?></p>
+                                                                <p class='bio_text'>Admission year: <?php echo $about_me[0]['admssnyear'];?></p>
                                                                 <p class='bio_text'>Research Interests: <?php echo $about_me[0]['research_interest'];?></p>
                                                             </div>
                                                         </div>
