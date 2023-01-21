@@ -47,7 +47,9 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Name</th>
+                                            <?php if ($row1['designation'] == 'M-Tech') { ?>
                                             <th scope="col">Specialization</th>
+                                            <?php } ?>
                                             <th scope="col">En. No.</th>
                                             <th scope="col">Year of admission</th>
                                         </tr>
@@ -59,7 +61,9 @@
                                         if(!empty($students->result_array())) {
                                             foreach($students->result_array() as $row) { ?>
                                                 <td><p><?php echo $row['fname']?></p></td>
+                                                <?php if ($row1['designation'] == 'M-Tech') { ?>
                                                 <td><p><?php echo $row['specialization']?></p></td>
+                                                <?php } ?>
                                                 <td><p><?php echo $row['enrollno']?></p></td>
                                                 <td><p><?php echo $row['admssnyear']?></p></td>
                                         <?php } } ?>

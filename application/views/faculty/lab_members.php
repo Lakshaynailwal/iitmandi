@@ -1,6 +1,9 @@
 <?php 
-$uid = $this->session->userdata('user_id');
-$get_name = get_users_name($uid);
+if ($this->session->userdata('user_id') != "") {
+    echo "with session".$uid = $this->session->userdata('user_id');
+} else {
+    echo "without session".$uid = $about_me[0]['id'];
+}
 echo $header;
 ?>
 <style>
@@ -46,18 +49,21 @@ echo $header;
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <h3 style="text-transform: capitalize">Welcome <?php echo $get_name[0]['fname'];?></h3>
-                        <p style="text-transform: capitalize">Welcome <?php echo $get_name[0]['designation'];?></p>
+                        <h3 style="text-transform: capitalize">Welcome <?php echo $about_me[0]['fname'];?></h3>
+                        <p style="text-transform: capitalize">Welcome <?php echo $about_me[0]['designation'];?></p>
                         <div class="row">
                             <div class="col-12 profile_menu" style="text-align:center">
                                 <!-- Tab navs -->
-                                <a href="<?php echo base_url()?>faculty/dashboard"><button type="button" class="btn btn-primary">Home</button></a>
-                                <a href="<?php echo base_url()?>faculty/research"><button type="button" class="btn btn-primary">Research</button></a>
-                                <a href="<?php echo base_url()?>faculty/publication"><button type="button" class="btn btn-primary">Publication</button></a>
-                                <a href="<?php echo base_url()?>faculty/projects"><button type="button" class="btn btn-primary">Projects</button></a>
-                                <a href="<?php echo base_url()?>faculty/lab_members"><button type="button" class="btn btn-primary active">Lab Members</button></a>
-                                <a href="<?php echo base_url()?>faculty/current_opening"><button type="button" class="btn btn-primary">Current Openings</button></a>
-                                <a href="<?php echo base_url()?>faculty/miscellaneous"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary">Home</button></a>
+                                <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
+                                <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary">Publication</button></a>
+                                <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
+                                <a href="<?php echo base_url()?>faculty/lab_members/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Lab Members</button></a>
+                                <a href="<?php echo base_url()?>faculty/current_opening/<?php echo $uid?>"><button type="button" class="btn btn-primary">Current Openings</button></a>
+                                <a href="<?php echo base_url()?>faculty/miscellaneous/<?php echo $uid?>"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
+                                <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
+                                <?php } ?>
                                 <!-- Tab navs -->
                             </div>
                             
@@ -92,9 +98,6 @@ echo $header;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary"><a href=''>Add</a></button>
-                                </div>
                             </div>
 
                             <div class="col-12">
@@ -126,9 +129,6 @@ echo $header;
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary"><a href=''>Add</a></button>
                                 </div>
                             </div>
 
@@ -162,9 +162,6 @@ echo $header;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary"><a href=''>Add</a></button>
-                                </div>
                             </div>
 
                             <div class="col-12">
@@ -197,9 +194,6 @@ echo $header;
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
                                 </div>
                             </div>
 
@@ -241,9 +235,6 @@ echo $header;
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
-                                </div>
                             </div>
 
                             <div class="col-12">
@@ -281,9 +272,6 @@ echo $header;
                                         </table>
                                     </div>
                                 </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
-                                </div>
                             </div>
 
                             <div class="col-12">
@@ -320,9 +308,6 @@ echo $header;
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                                <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
                                 </div>
                             </div>
                             <!-- Lab Member End --> 

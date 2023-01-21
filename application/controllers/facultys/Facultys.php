@@ -9,6 +9,7 @@ class Facultys extends CI_Controller {
         $this->load->library('image_lib');
         $this->load->helper('cookie');
         $this->load->library('email');
+		$this->load->library('session');
         date_default_timezone_set('Asia/Calcutta');
         session_start();
     }
@@ -21,15 +22,17 @@ class Facultys extends CI_Controller {
 	}
 
     public function login() {
+		$this->load->library('session');
 		if($this->session->userdata('user_id') != ''){
-            redirect(base_url('faculty/dashboard'));
+            redirect(base_url('faculty/dashboard/'.$this->session->userdata('user_id')));
 		}
 		if($this->input->post()) {
 			$sql="`email` ='".$this->input->post('email')."' AND (`position`=1)";
 			$result=$this->common_model->get_data(TEAM,$sql);
 			if(base64_encode($this->input->post('password')) == $result[0]['password']) {
 			$this->session->set_userdata('user_id',$result[0]['id']);
-			redirect(base_url()."faculty/dashboard");
+			$id = $this->session->userdata('user_id');
+			redirect(base_url()."faculty/dashboard/".$id);
 			} else {
 				$this->utilitylib->setMsg('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Wrong email or password!','ERROR');
 				redirect(base_url()."faculty/");
@@ -41,82 +44,150 @@ class Facultys extends CI_Controller {
 		$this->load->view('faculty/home',$data);
     }
 
-    public function dashboard() {
-		if($this->session->userdata('user_id') != ''){
+    public function dashboard($id='') {
+		$this->load->library('session');
+		if($id != ''){
 			$data['page_title'] = "Dashboard";
-			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'status'=>1,'is_delete'=>1));
-			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$this->session->userdata('user_id'),'status'=>1,'is_delete'=>1));
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/dashboard',$data);
 		} else {
-			redirect(base_url()."faculty/");
+			$data['page_title'] = "Dashboard";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('faculty/dashboard',$data);
 		}
     }
 
-	public function research() {
-		if($this->session->userdata('user_id') != ''){
+	public function research($id='') {
+		if($id != ''){
 			$data['page_title'] = "Research";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/research',$data);
 		} else {
-			redirect(base_url()."faculty/");
+			$data['page_title'] = "Research";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('faculty/research',$data);
+			//redirect(base_url()."faculty/");
 		}
     }
 
-	public function publication() {
+	public function publication($id='') {
 		if($this->session->userdata('user_id') != ''){
 			$data['page_title'] = "Publication";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/publication',$data);
 		} else {
-			redirect(base_url()."faculty/");
+			$data['page_title'] = "Publication";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('faculty/publication',$data);
+			//redirect(base_url()."faculty/");
 		}
     }
 
-	public function projects() {
+	public function projects($id='') {
 		if($this->session->userdata('user_id') != ''){
 			$data['page_title'] = "Projects";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/projects',$data);
 		} else {
-			redirect(base_url()."faculty/");
+			$data['page_title'] = "Projects";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('faculty/projects',$data);
+			//redirect(base_url()."faculty/");
 		}
     }
 
-	public function lab_members() {
+	public function lab_members($id='') {
 		if($this->session->userdata('user_id') != ''){
 			$data['page_title'] = "Lab Members";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/lab_members',$data);
 		} else {
-			redirect(base_url()."faculty/");
+			$data['page_title'] = "Lab Members";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('faculty/lab_members',$data);
+			//redirect(base_url()."faculty/");
 		}
     }
 
-	public function current_opening() {
+	public function current_opening($id='') {
 		if($this->session->userdata('user_id') != ''){
 			$data['page_title'] = "Current Opening";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/current_opening',$data);
 		} else {
-			redirect(base_url()."faculty/");
+			$data['page_title'] = "Current Opening";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('faculty/current_opening',$data);
+			//redirect(base_url()."faculty/");
 		}
     }
 
-	public function miscellaneous() {
+	public function miscellaneous($id='') {
 		if($this->session->userdata('user_id') != ''){
 			$data['page_title'] = "Miscellaneous";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/miscellaneous',$data);
 		} else {
-			redirect(base_url()."faculty/");
+			$data['page_title'] = "Miscellaneous";
+			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
+			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['header']=$this->load->view('includes/header','',true);
+			$data['footer']=$this->load->view('includes/footer','',true);
+			$this->load->view('faculty/miscellaneous',$data);
+			//redirect(base_url()."faculty/");
 		}
     }
 
@@ -130,7 +201,7 @@ class Facultys extends CI_Controller {
 				$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);
 			}
 			if($_FILES['team_image']['name'] != '') {
-				$data['result']=$this->common_model->get_data(TEAM,array('id'=>$id));
+				$this->common_model->get_data(TEAM,array('id'=>$id));
 				if(@$data['result'][0]['team_image']) {	
 					unlink('./uploads/our_team/'.$data['result'][0]['team_image']);	
 					unlink('./uploads/our_team/thumb/'.$data['result'][0]['team_image']);	

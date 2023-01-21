@@ -1,6 +1,9 @@
 <?php 
-$uid = $this->session->userdata('user_id');
-$get_name = get_users_name($uid);
+if ($this->session->userdata('user_id') != "") {
+    echo "with session".$uid = $this->session->userdata('user_id');
+} else {
+    echo "without session".$uid = $about_me[0]['id'];
+}
 echo $header;
 ?>
 <style>
@@ -47,19 +50,21 @@ echo $header;
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <h3 style="text-transform: capitalize">Welcome <?php echo $get_name[0]['fname'];?></h3>
-                        <p style="text-transform: capitalize">Welcome <?php echo $get_name[0]['designation'];?></p>
+                        <h3 style="text-transform: capitalize">Welcome <?php echo $about_me[0]['fname'];?></h3>
+                        <!-- <p style="text-transform: capitalize">Welcome <?php echo $about_me[0]['designation'];?></p> -->
                         <div class="row">
                             <div class="col-12 profile_menu" style="text-align:center">
                                 <!-- Tab navs -->
-                                <a href="<?php echo base_url()?>faculty/dashboard"><button type="button" class="btn btn-primary active">Home</button></a>
-                                <a href="<?php echo base_url()?>faculty/research"><button type="button" class="btn btn-primary">Research</button></a>
-                                <a href="<?php echo base_url()?>faculty/publication"><button type="button" class="btn btn-primary">Publication</button></a>
-                                <a href="<?php echo base_url()?>faculty/projects"><button type="button" class="btn btn-primary">Projects</button></a>
-                                <a href="<?php echo base_url()?>faculty/lab_members"><button type="button" class="btn btn-primary">Lab Members</button></a>
-                                <a href="<?php echo base_url()?>faculty/current_opening"><button type="button" class="btn btn-primary">Current Openings</button></a>
-                                <a href="<?php echo base_url()?>faculty/miscellaneous"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Home</button></a>
+                                <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
+                                <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary">Publication</button></a>
+                                <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
+                                <a href="<?php echo base_url()?>faculty/lab_members/<?php echo $uid?>"><button type="button" class="btn btn-primary">Lab Members</button></a>
+                                <a href="<?php echo base_url()?>faculty/current_opening/<?php echo $uid?>"><button type="button" class="btn btn-primary">Current Openings</button></a>
+                                <a href="<?php echo base_url()?>faculty/miscellaneous/<?php echo $uid?>"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
+                                <?php } ?>
                                 <!-- Tab navs -->
                             </div>
                             <!-- Home Start -->
@@ -67,14 +72,16 @@ echo $header;
                                 <div class="row">
                                     <div class='col-sm-12' style="margin-top: 50px;">
                                         <div class="col-sm-3" style="text-align: center;float: left;display: inline-block;">
-                                            <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/<?php echo $get_name[0]['team_image'];?>" alt=""/>
+                                            <img class="bio_img" src="<?php echo base_url();?>uploads/our_team/<?php echo $about_me[0]['team_image'];?>" alt=""/>
                                         </div>
                                         <div class="col-sm-9" style="float: left;display: inline-block;">
-                                            <div class='bio_text1'><?php echo $get_name[0]['aboutme'];?></div>
+                                            <div class='bio_text1'><?php echo $about_me[0]['aboutme'];?></div>
                                         </div>
+                                        <?php if ($this->session->userdata('user_id') != '') { ?>
                                         <div class="col-sm-12" style="text-align: right;">
                                             <button type="button" class="btn btn-primary about_btn" data-toggle="modal" data-target=".bd-example-modal-lg1">Edit Record</button>
                                         </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +97,9 @@ echo $header;
                                                     <th>Degree</th>
                                                     <th>University</th>
                                                     <th>Year</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -101,19 +110,23 @@ echo $header;
                                                     <td><?php echo $row['degree'];?></td>
                                                     <td><?php echo $row['university'];?></td>
                                                     <td><?php echo $row['year'];?></td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="EditFEduID(<?php echo $row['id']?>)">Edit</button>
                                                         <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="DtlFEduID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
                                     <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2">Add New Record</button>
                                 </div>
+                                <?php } ?>
                             </div>
                             <div class="col-12">
                                 <div class="row">
@@ -127,7 +140,9 @@ echo $header;
                                                     <th>Organisation</th>
                                                     <th>Post</th>
                                                     <th>Year</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -138,19 +153,23 @@ echo $header;
                                                     <td><?php echo $row['organization'];?></td>
                                                     <td><?php echo $row['position'];?></td>
                                                     <td><?php echo $row['year'];?></td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3" onclick="EditFExpID(<?php echo $row['id']?>)">Edit</button>
                                                         <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="DtlFExpID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
                                     <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
                                 </div>
+                                <?php } ?>
                             </div>
                             <div class="col-12">
                                 <div class="row">
@@ -164,7 +183,9 @@ echo $header;
                                                     <th>Degree</th>
                                                     <th>University</th>
                                                     <th>Year</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -172,18 +193,22 @@ echo $header;
                                                     <td>Demo</td>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
                                     <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2">Add New Record</button>
                                 </div>
+                                <?php } ?>
                             </div>
                             <div class="col-12">
                                 <div class="row">
@@ -197,7 +222,9 @@ echo $header;
                                                     <th>Organisation</th>
                                                     <th>Post</th>
                                                     <th>Year</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -205,18 +232,22 @@ echo $header;
                                                     <td>Demo</td>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
                                     <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
                                 </div>
+                                <?php } ?>
                             </div>
                             <div class="col-12">
                                 <div class="row">
@@ -230,7 +261,9 @@ echo $header;
                                                     <th>Organisation</th>
                                                     <th>Post</th>
                                                     <th>Year</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -238,18 +271,22 @@ echo $header;
                                                     <td>Demo</td>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
                                     <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
                                 </div>
+                                <?php } ?>
                             </div>
                             <!-- Home End -->
                         </div>
@@ -271,7 +308,7 @@ echo $header;
                         </div>
                     </div>
                     <div class='col-sm-12'>
-                        <textarea id="aboutme" name="aboutme"><?php echo $get_name[0]['aboutme'];?></textarea>
+                        <textarea id="aboutme" name="aboutme"><?php echo $about_me[0]['aboutme'];?></textarea>
                     </div>
                 </div>
                 <div class="col-sm-12" style="text-align: center;margin-top: 20px;">

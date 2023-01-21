@@ -138,7 +138,7 @@
                 $('.profilelink').hide();
                 $('.degree').hide();
             } else if (selectedPosition == 5) {
-                $('.enrollno').hide();
+                $('.enrollno').show();
                 $('.pddesignation').hide();
                 $('.supervisor').hide();
                 $('.cosupervisors').hide();
@@ -225,15 +225,6 @@
             }
         })
         
-        // $('#designation').change(function(){
-        //     var selectedDesignation = $(this).children("option:selected").val();
-        //     if (selectedDesignation == 'others') {
-        //         $('.ndesignation').show();
-        //     } else {
-        //         $('.ndesignation').hide();
-        //     }
-        // })
-
         if ($('#position').val() == 1) {
             $('.enrollno').hide();
             $('.pddesignation').show();
@@ -303,7 +294,7 @@
             $('.profilelink').hide();
             $('.degree').hide();
         } else if ($('#position').val() == 5) {
-            $('.enrollno').hide();
+            $('.enrollno').show();
             $('.pddesignation').hide();
             $('.supervisor').hide();
             $('.cosupervisors').hide();
@@ -402,6 +393,14 @@
                 }
             )
         });
+        $('#degree').change(function(){
+            var checkDegree = $(this).children("option:selected").text();
+            if (checkDegree.includes("M") == true) {
+                $('.specialization').show();
+            } else {
+                $('.specialization').hide();
+            }
+        })
         $('#supervisor').selectpicker('render');
     });
     // CKEDITOR.replace('footer_cntnt');

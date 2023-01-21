@@ -59,7 +59,7 @@ class Faculty extends CI_Controller {
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
         $data['title']='Faculty Detais';
-        $this->load->view('faculty_details',$data);
+        $this->load->view('faculty/dashboard',$data);
     }
 
 }

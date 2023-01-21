@@ -1,6 +1,9 @@
 <?php 
-$uid = $this->session->userdata('user_id');
-$get_name = get_users_name($uid);
+if ($this->session->userdata('user_id') != "") {
+    echo "with session".$uid = $this->session->userdata('user_id');
+} else {
+    echo "without session".$uid = $about_me[0]['id'];
+}
 echo $header;
 ?>
 <style>
@@ -46,25 +49,29 @@ echo $header;
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <h3 style="text-transform: capitalize">Welcome <?php echo $get_name[0]['fname'];?></h3>
-                        <p style="text-transform: capitalize">Welcome <?php echo $get_name[0]['designation'];?></p>
+                        <h3 style="text-transform: capitalize">Welcome <?php echo $about_me[0]['fname'];?></h3>
+                        <p style="text-transform: capitalize">Welcome <?php echo $about_me[0]['designation'];?></p>
                         <div class="row">
                             <div class="col-12 profile_menu" style="text-align:center">
                                 <!-- Tab navs -->
-                                <a href="<?php echo base_url()?>faculty/dashboard"><button type="button" class="btn btn-primary">Home</button></a>
-                                <a href="<?php echo base_url()?>faculty/research"><button type="button" class="btn btn-primary">Research</button></a>
-                                <a href="<?php echo base_url()?>faculty/publication"><button type="button" class="btn btn-primary active">Publication</button></a>
-                                <a href="<?php echo base_url()?>faculty/projects"><button type="button" class="btn btn-primary">Projects</button></a>
-                                <a href="<?php echo base_url()?>faculty/lab_members"><button type="button" class="btn btn-primary">Lab Members</button></a>
-                                <a href="<?php echo base_url()?>faculty/current_opening"><button type="button" class="btn btn-primary">Current Openings</button></a>
-                                <a href="<?php echo base_url()?>faculty/miscellaneous"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary">Home</button></a>
+                                <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
+                                <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Publication</button></a>
+                                <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
+                                <a href="<?php echo base_url()?>faculty/lab_members/<?php echo $uid?>"><button type="button" class="btn btn-primary">Lab Members</button></a>
+                                <a href="<?php echo base_url()?>faculty/current_opening/<?php echo $uid?>"><button type="button" class="btn btn-primary">Current Openings</button></a>
+                                <a href="<?php echo base_url()?>faculty/miscellaneous/<?php echo $uid?>"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <?php if ($this->session->userdata('user_id') != '') { ?>
+                                <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
+                                <?php } ?>
                                 <!-- Tab navs -->
                             </div>
                             <!-- Research Publication Start -->
+                            <?php if ($this->session->userdata('user_id') != '') { ?>
                             <div class="col-sm-12" style="text-align: right; margin-top: 15px;">
                                 <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
                             </div>
-                            
+                            <?php } ?>
                             <div class="col-12">
                                 <div class="row">
                                     <div class='col-sm-12'>
@@ -76,17 +83,21 @@ echo $header;
                                                 <tr>
                                                     <th>Sl No.</th>
                                                     <th>Pubtication Details</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -105,17 +116,21 @@ echo $header;
                                                 <tr>
                                                     <th>Sl No.</th>
                                                     <th>Pubtication Details</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -134,17 +149,21 @@ echo $header;
                                                 <tr>
                                                     <th>Sl No.</th>
                                                     <th>Pubtication Details</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -163,17 +182,21 @@ echo $header;
                                                 <tr>
                                                     <th>Sl No.</th>
                                                     <th>Pubtication Details</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -192,17 +215,21 @@ echo $header;
                                                 <tr>
                                                     <th>Sl No.</th>
                                                     <th>Pubtication Details</th>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
+                                                    <?php } ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
+                                                    <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
                                                         <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                                         <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                                                     </td>
+                                                    <?php } ?>
                                                 </tr>
                                             </tbody>
                                         </table>
