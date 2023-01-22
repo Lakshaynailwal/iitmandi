@@ -193,16 +193,16 @@
 
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="/news" data-drupal-link-system-path="node/2343">Projects<span class="primary-nav__submenu-indicator"></span>
+                      <a href="" data-drupal-link-system-path="node/2343">Projects<span class="primary-nav__submenu-indicator"></span>
                       </a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                     <ul class="menu">
                       <li class="menu-item">
-                        <a href="/news/latest" data-drupal-link-system-path="news/latest">Research</a>
+                        <a href="<?php echo base_url()?>pages/research" data-drupal-link-system-path="news/latest">Research</a>
                       </li>
                       <li class="menu-item">
-                        <a href="/news/student-life" data-drupal-link-system-path="taxonomy/term/24">Consultancy</a>
+                        <a href="<?php echo base_url()?>pages/consultancy" data-drupal-link-system-path="taxonomy/term/24">Consultancy</a>
                       </li>
                     </ul>
                   </li>

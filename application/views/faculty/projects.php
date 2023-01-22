@@ -1,8 +1,8 @@
 <?php 
 if ($this->session->userdata('user_id') != "") {
-    echo "with session".$uid = $this->session->userdata('user_id');
+    $uid = $this->session->userdata('user_id');
 } else {
-    echo "without session".$uid = $about_me[0]['id'];
+    $uid = $about_me[0]['id'];
 }
 echo $header;
 ?>
@@ -64,10 +64,42 @@ echo $header;
                                 <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
                                 <?php } ?>
                                 <!-- Tab navs -->
-                            </div>
-                            
+                            </div>                            
                             <!-- Project Start --> 
-                            
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class='col-sm-12' style="margin-top: 50px;">
+                                        <table id="datatable" class="table table-striped table-bordered dat_tbl">
+                                            <thead>
+                                                <tr>
+                                                   <th>Sl No.</th>
+                                                   <th>Project Title</th>
+                                                   <th>Status</th>
+                                                   <th>View Details</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php if(!empty($project)) { 
+                                                   $i=1; ?>
+                                                <?php foreach($project as $row) { ?>
+                                                <tr>
+                                                    <td><?php echo $i; ?></td>
+                                                    <td><?php echo $row['project_title']; ?></td>
+                                                    <td><?php echo $row['status']; ?></td>
+                                                    <td>
+                                                    <button type="button" class="btn btn-primary">View More</button>
+                                                    </td>
+                                                </tr>
+                                                <?php $i++; } } else {?>
+                                                <!-- <tr>
+                                                    <td colspan="5">No Record Found</td>
+                                                </tr> -->
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Project END -->
                         </div>
                     </div>

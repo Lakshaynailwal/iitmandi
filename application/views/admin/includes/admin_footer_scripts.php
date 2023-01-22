@@ -403,7 +403,7 @@
         })
         $('#supervisor').selectpicker('render');
     });
-    // CKEDITOR.replace('footer_cntnt');
+    CKEDITOR.replace('description');
 </script>
 <style type="text/css">
     /*.tox-statusbar{display: none !important;}*/

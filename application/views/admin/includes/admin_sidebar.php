@@ -60,6 +60,11 @@
                 </ul>
             </li> 
             <li class="treeview">
+                <a href="admin/project"><i class="fa fa-circle-o"></i>
+                    <span>Project Management</span>
+                </a>
+            </li>
+            <li class="treeview">
                 <a href="admin/settings"><i class="fa fa-circle-o"></i>
                     <span>Settings</span>
                 </a>

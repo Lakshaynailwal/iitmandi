@@ -73,6 +73,8 @@ $route['pages/contactus'] = 'home/contactus';
 $route['pages/payment'] = 'home/payment';
 $route['pages/committees'] = 'home/committees';
 $route['login'] = 'home/login';
+$route['pages/research'] = 'home/research';
+$route['pages/consultancy'] = 'home/consultancy';
 
 /* Students */
 $route['student'] = 'student/student/index';

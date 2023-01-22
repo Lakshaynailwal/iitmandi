@@ -65,4 +65,26 @@ class Home extends CI_Controller {
         $data['title']='House & Committees';
         $this->load->view('committees',$data);
     }
+
+    public function research() { 
+        $data['finding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        $data['team']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        $data['research']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        $data['header']=$this->load->view('includes/header','',true);
+        $data['footer']=$this->load->view('includes/footer','',true);
+        $data['title']='Research';
+        $this->load->view('research',$data);
+    }
+
+    public function consultancy() { 
+        $data['finding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        $data['team']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        $data['consultancy']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>2,'is_delete' =>1));
+        $data['header']=$this->load->view('includes/header','',true);
+        $data['footer']=$this->load->view('includes/footer','',true);
+        $data['title']='Consultancy';
+        $this->load->view('consultancy',$data);
+    }
 }
