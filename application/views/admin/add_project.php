@@ -117,10 +117,10 @@
                                                 <div class="col-lg-9 col-md-9 col-sm-8">
                                                     <select class="form-control" name="status">
                                                         <option value="">Choose an option</option>
-                                                        <option value="1" <?php if(@$project['status']==1){ echo "selected"; } ?>>Ongoing</option>
-                                                        <option value="2" <?php if(@$project['status']==2){ echo "selected"; } ?>>Completed</option>
-                                                        <option value="3" <?php if(@$project['status']==3){ echo "selected"; } ?>>Transferred</option>
-                                                        <option value="4" <?php if(@$project['status']==4){ echo "selected"; } ?>>Closed</option>
+                                                        <option value="Ongoing" <?php if(@$project['status']=='Ongoing'){ echo "selected"; } ?>>Ongoing</option>
+                                                        <option value="Completed" <?php if(@$project['status']=='Completed'){ echo "selected"; } ?>>Completed</option>
+                                                        <option value="Transferred" <?php if(@$project['status']=='Transferred'){ echo "selected"; } ?>>Transferred</option>
+                                                        <option value="Closed" <?php if(@$project['status']=='Closed'){ echo "selected"; } ?>>Closed</option>
                                                     </select>
                                                </div>
                                             </div>

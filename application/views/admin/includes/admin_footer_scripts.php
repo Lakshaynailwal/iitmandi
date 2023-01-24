@@ -393,6 +393,7 @@
                 }
             )
         });
+
         $('#degree').change(function(){
             var checkDegree = $(this).children("option:selected").text();
             if (checkDegree.includes("M") == true) {
@@ -401,6 +402,7 @@
                 $('.specialization').hide();
             }
         })
+
         $('#supervisor').selectpicker('render');
     });
     CKEDITOR.replace('description');

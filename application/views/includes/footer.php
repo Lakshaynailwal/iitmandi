@@ -479,6 +479,58 @@
                 }
             )
         }));
+
+        $("#funding_agencyflt").change(function(){
+            var funding_agencyid = $("#funding_agencyflt").val();
+            var project_type = $('#project_type').val();
+            $.post(
+                "<?php echo base_url('home/filterByFundingAgency') ?>", {fa_id: funding_agencyid, pt_id: project_type}, 
+                function(result){
+                    if(result) {
+                        $("#showFilterData").html(result);
+                    }
+                }
+            )
+        });
+
+        $("#starting_yearflt").change(function(){
+            var starting_yearid = $("#starting_yearflt").val();
+            var project_type = $('#project_type').val();
+            $.post(
+                "<?php echo base_url('home/filterByStartingYear') ?>", {sy_id: starting_yearid, pt_id: project_type}, 
+                function(result){
+                    if(result) {
+                        $("#showFilterData").html(result);
+                    }
+                }
+            )
+        });
+
+        $("#faculty_memberflt").change(function(){
+            var faculty_memberid = $("#faculty_memberflt").val();
+            var project_type = $('#project_type').val();
+            $.post(
+                "<?php echo base_url('home/filterByfacultyMember') ?>", {fm_id: faculty_memberid, pt_id: project_type}, 
+                function(result){
+                    if(result) {
+                        $("#showFilterData").html(result);
+                    }
+                }
+            )
+        });
+
+        $("#statusflt").change(function(){
+            var statusid = $("#statusflt").val();
+            var project_type = $('#project_type').val();
+            $.post(
+                "<?php echo base_url('home/filterBystatus') ?>", {st_id: statusid, pt_id: project_type}, 
+                function(result){
+                    if(result) {
+                        $("#showFilterData").html(result);
+                    }
+                }
+            )
+        });
     });
 
     /* Edit education */

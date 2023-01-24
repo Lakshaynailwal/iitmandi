@@ -36,49 +36,56 @@
                         <h3 style="text-align:center"><?php echo $title?></h3>
                         <div class="col-sm-12 filter_data">
                             <div class="col-sm-4">
-                                <select class="form-control" id="finding_agency" name="finding_agency">
-                                    <option value="">Finding Agency</option>
-                                <?php if(!empty($designation)) { 
-                                    foreach($designation as $row) { ?>
-                                    <option value="<?php echo $row['id']?>"><?php echo $row['designation']?></option>
-                                <?php  } } else { ?>
+                                <select class="form-control" id="funding_agencyflt" name="funding_agency">
+                                <option value="">Funding Agency</option>
+                                    <?php 
+                                    $funding_agency = $this->db->query("SELECT funding_agency, GROUP_CONCAT(id) as id FROM iitmandi_project WHERE `is_delete` = 1 GROUP BY funding_agency ORDER BY COUNT(*) DESC");
+                                    if(!empty($funding_agency->result_array())) { 
+                                    foreach($funding_agency->result_array() as $row) { 
+                                        $id = explode(",",$row['id']);
+                                    ?>  
+                                    <option value="<?php echo $row['funding_agency']?>"><?php echo $row['funding_agency']?></option>
+                                    <?php  } } else { ?>
                                     <option value="">No Data</option>
                                     <?php } ?>
                                 </select>
                             </div>
                             <div class="col-sm-1">
-                                <select class="form-control" id="starting_year" name="starting_year">
+                                <select class="form-control" id="starting_yearflt" name="starting_year">
                                     <option value="">Year</option>
-                                    <option value="1" <?php if(@$banner['specialization']==1){ echo "selected"; } ?>>Environmental Engineering</option>
-                                    <option value="2" <?php if(@$banner['specialization']==2){ echo "selected"; } ?>>Geotechnical Engineering</option>
-                                    <option value="3" <?php if(@$banner['specialization']==3){ echo "selected"; } ?>>Structural Engineering</option>
-                                    <option value="4" <?php if(@$banner['specialization']==4){ echo "selected"; } ?>>Water Resources Engineering</option>
-                                    <option value="5" <?php if(@$banner['specialization']==5){ echo "selected"; } ?>>Transportation Engineering</option>
-                                    <option value="6" <?php if(@$banner['specialization']==6){ echo "selected"; } ?>>Remote Sensing and GIS</option>
+                                    <?php 
+                                    $starting_year = $this->db->query("SELECT starting_year, GROUP_CONCAT(id) as id FROM iitmandi_project WHERE `is_delete` = 1 GROUP BY starting_year ORDER BY COUNT(*) DESC");
+                                    if(!empty($starting_year)) { 
+                                    foreach($starting_year as $row) { ?>
+                                    <option value="<?php echo $row['starting_year']?>"><?php echo $row['starting_year']?></option>
+                                    <?php  } } else { ?>
+                                    <option value="">No Data</option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                <select class="form-control" id="faculty_member" name="faculty_member">
+                                <select class="form-control" id="faculty_memberflt" name="faculty_member">
                                     <option value="">Faculty Member</option>
-                                    <option value="1" <?php if(@$banner['specialization']==1){ echo "selected"; } ?>>Environmental Engineering</option>
-                                    <option value="2" <?php if(@$banner['specialization']==2){ echo "selected"; } ?>>Geotechnical Engineering</option>
-                                    <option value="3" <?php if(@$banner['specialization']==3){ echo "selected"; } ?>>Structural Engineering</option>
-                                    <option value="4" <?php if(@$banner['specialization']==4){ echo "selected"; } ?>>Water Resources Engineering</option>
-                                    <option value="5" <?php if(@$banner['specialization']==5){ echo "selected"; } ?>>Transportation Engineering</option>
-                                    <option value="6" <?php if(@$banner['specialization']==6){ echo "selected"; } ?>>Remote Sensing and GIS</option>
+                                    <?php if(!empty($team)) { 
+                                    foreach($team as $row) { ?>
+                                    <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                    <?php  } } else { ?>
+                                    <option value="">No Data</option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="col-sm-2">
-                                <select class="form-control" name="status">
+                                <select class="form-control" id="statusflt" name="statusflt">
                                     <option value="">Status</option>
-                                    <option value="1">Ongoing</option>
-                                    <option value="2">Completed</option>
-                                    <option value="3">Transferred</option>
-                                    <option value="4">Closed</option>
+                                    <option value="Ongoing">Ongoing</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Transferred">Transferred</option>
+                                    <option value="Closed">Closed</option>
                                 </select>
                             </div>
                             <div class="col-sm-1">
-                                <button type="button" class="btn btn-secondary research_project_data">Search</button>
+                                <button type="button" class="btn btn-secondary" onClick="window.location.reload();">Reset</button>
+                                <input type="hidden" id="project_type" value = '1'>
                             </div>
                         </div>
                         <div class='col-sm-12' style="margin-top: 50px;">
@@ -91,7 +98,7 @@
                                         <th>View Details</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id = "showFilterData">
                                     <?php if(!empty($research)) { 
                                         $i=1; ?>
                                     <?php foreach($research as $row) { ?>

@@ -67,9 +67,9 @@ class Home extends CI_Controller {
     }
 
     public function research() { 
-        $data['finding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
-        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
-        $data['team']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        //$data['funding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','funding_agency','',array('is_delete' =>1));
+        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','starting_year',array('is_delete' =>1));
+        $data['team']=$this->common_model->get_data_array(TEAM,'','','','','','','',array('position'=>[1,2],'status' =>1,'is_delete' =>1));
         $data['research']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
@@ -78,13 +78,85 @@ class Home extends CI_Controller {
     }
 
     public function consultancy() { 
-        $data['finding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
-        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
-        $data['team']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
+        //$data['funding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','funding_agency','',array('is_delete' =>1));
+        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','starting_year',array('is_delete' =>1));
+        $data['team']=$this->common_model->get_data_array(TEAM,'','','','','','','',array('position'=>[1,2],'status' =>1,'is_delete' =>1));
         $data['consultancy']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>2,'is_delete' =>1));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
         $data['title']='Consultancy';
         $this->load->view('consultancy',$data);
+    }
+
+    public function filterByFundingAgency() { 
+        $fa_id = $this->input->post('fa_id');
+        $pt_id = $this->input->post('pt_id');
+        $filter_data = $this->common_model->get_data_array(PROJECT,array('funding_agency' => $fa_id, 'project_type' =>$pt_id, 'is_delete' =>1),'','','','','','');
+        if(!empty($filter_data)) {
+            $html='<tr>';
+            if(!empty($filter_data)) {
+                $i=1;
+                foreach($filter_data as $row){
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                $i++;}
+            }
+        } else {
+            $html='<p>No Data found for the current selection.</p>';	
+        }
+        echo $html;
+    }
+
+    public function filterByStartingYear() { 
+        $sy_id = $this->input->post('sy_id');
+        $pt_id = $this->input->post('pt_id');
+        $filter_data = $this->common_model->get_data_array(PROJECT,array('starting_year' => $sy_id, 'project_type' =>$pt_id, 'is_delete' =>1),'','','','','','');
+        if(!empty($filter_data)) {
+            $html='<tr>';
+            if(!empty($filter_data)) {
+                $i=1;
+                foreach($filter_data as $row){
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                $i++;}
+            }
+        } else {
+            $html='<p>No Data found for the current selection.</p>';	
+        }
+        echo $html;
+    }
+
+    public function filterByfacultyMember() { 
+        $fm_id = $this->input->post('fm_id');
+        $pt_id = $this->input->post('pt_id');
+        $filter_data = $this->common_model->get_data_array(PROJECT,array('project_incharge' => $fm_id, 'project_type' =>$pt_id, 'is_delete' =>1),'','','','','','');
+        if(!empty($filter_data)) {
+            $html='<tr>';
+            if(!empty($filter_data)) {
+                $i=1;
+                foreach($filter_data as $row){
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                $i++;}
+            }
+        } else {
+            $html='<p>No Data found for the current selection.</p>';	
+        }
+        echo $html;
+    }
+
+    public function filterBystatus() { 
+        $st_id = $this->input->post('st_id');
+        $pt_id = $this->input->post('pt_id');
+        $filter_data = $this->common_model->get_data_array(PROJECT,array('status' => $st_id, 'project_type' =>$pt_id, 'is_delete' =>1),'','','','','','');
+        if(!empty($filter_data)) {
+            $html='<tr>';
+            if(!empty($filter_data)) {
+                $i=1;
+                foreach($filter_data as $row){
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                $i++;}
+            }
+        } else {
+            $html='<p>No Data found for the current selection.</p>';	
+        }
+        echo $html;
     }
 }
