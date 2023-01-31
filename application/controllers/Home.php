@@ -68,7 +68,7 @@ class Home extends CI_Controller {
 
     public function research() { 
         //$data['funding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','funding_agency','',array('is_delete' =>1));
-        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','starting_year',array('is_delete' =>1));
+        //$data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','starting_year',array('is_delete' =>1));
         $data['team']=$this->common_model->get_data_array(TEAM,'','','','','','','',array('position'=>[1,2],'status' =>1,'is_delete' =>1));
         $data['research']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>1,'is_delete' =>1));
         $data['header']=$this->load->view('includes/header','',true);
@@ -79,7 +79,7 @@ class Home extends CI_Controller {
 
     public function consultancy() { 
         //$data['funding_agency']=$this->common_model->get_data_array(PROJECT,'','','','','','funding_agency','',array('is_delete' =>1));
-        $data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','starting_year',array('is_delete' =>1));
+        //$data['starting_year']=$this->common_model->get_data_array(PROJECT,'','','','','','','starting_year',array('is_delete' =>1));
         $data['team']=$this->common_model->get_data_array(TEAM,'','','','','','','',array('position'=>[1,2],'status' =>1,'is_delete' =>1));
         $data['consultancy']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>2,'is_delete' =>1));
         $data['header']=$this->load->view('includes/header','',true);
@@ -158,5 +158,14 @@ class Home extends CI_Controller {
             $html='<p>No Data found for the current selection.</p>';	
         }
         echo $html;
+    }
+
+    public function project_details() { 
+        $p_id = $this->input->post('p_id');
+        $pt_id = $this->input->post('pt_id');
+        //$project_data = $this->common_model->get_data_array(PROJECT,array('id' => $p_id, 'project_type' =>$pt_id, 'is_delete' =>1),'','','','','','');
+        $project_data = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.project_incharge WHERE iitmandi_project.id = $p_id AND iitmandi_project.project_type = $pt_id AND iitmandi_project.is_delete = 1");
+        $project_data = $project_data->result_array();
+        echo json_encode($project_data[0]);
     }
 }

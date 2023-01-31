@@ -12,6 +12,10 @@
     .col-sm-4 {display: inline-block;float: left; margin-left:5px;}
     .col-sm-8 {display: inline-block;float: left;}
     .col-sm-12 {display: inline-block;}
+    .fade:not(.show) { opacity: 1 !important; background: #00000063;}
+    .modal-lg { margin-top : 10%}
+    .close {padding: 0;background-color: transparent;border: 0;float: right;font-size: 1.5rem;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;
+opacity: .5;}
 </style>
 <main id="main">
     <!-- ======= Breadcrumbs Section ======= -->
@@ -55,8 +59,8 @@
                                     <option value="">Year</option>
                                     <?php 
                                     $starting_year = $this->db->query("SELECT starting_year, GROUP_CONCAT(id) as id FROM iitmandi_project WHERE `is_delete` = 1 GROUP BY starting_year ORDER BY COUNT(*) DESC");
-                                    if(!empty($starting_year)) { 
-                                    foreach($starting_year as $row) { ?>
+                                    if(!empty($starting_year->result_array())) { 
+                                    foreach($starting_year->result_array() as $row) { ?>
                                     <option value="<?php echo $row['starting_year']?>"><?php echo $row['starting_year']?></option>
                                     <?php  } } else { ?>
                                     <option value="">No Data</option>
@@ -107,7 +111,7 @@
                                         <td><?php echo $row['project_title']; ?></td>
                                         <td><?php echo $row['status']; ?></td>
                                         <td>
-                                        <button type="button" class="btn btn-primary">View More</button>
+                                        <button type="button" class="btn btn-primary myLargeModalLabel" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="project_details(<?php echo $row['id']?>)">View More</button>
                                         </td>
                                     </tr>
                                     <?php $i++; } } else {?>
@@ -123,5 +127,50 @@
             </div>
         </div>
     </section>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="modal-content" style="padding: 20px;">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr style="background-color: #dff0d8;">
+                                        <th colspan="2" style="text-align: center; font-size: 1.4em; font-family: 'Noto Serif', serif;">Complete Project Detail 
+                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th width="20%">Project Title</th>
+                                        <td width="80%"><span id="project_title"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Project Ref. No.</th>
+                                        <td><span id="proj_ref_new"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Funding Agency</th>
+                                        <td><span id="agency_name"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Funding Amount</th>
+                                        <td><span id="project_currency">₹</span> <span id="project_amount"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Duration</th>
+                                        <td> <span id="project_start"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Principal Investigator</th>
+                                        <td><span id="name_of_pi"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main><!-- End #main -->
 <?php echo $footer?>

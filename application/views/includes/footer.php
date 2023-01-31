@@ -368,7 +368,7 @@
         $("#form_awrd").on('submit',(function(e) {
             e.preventDefault();
             $.ajax({
-                url: "<?php echo base_url()?>student/save_award",
+                url: "<?php echo base_url()?>faculty/save_award",
                 type: "POST",
                 data:  new FormData(this),
                 contentType: false,
@@ -380,7 +380,37 @@
                 },
                 success: function(data) {
                     if(data !='invalid') {
-                        $("#form_exp")[0].reset(); 
+                        $("#form_awrd")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
+
+        /* save Event */
+        $(".evnt_add_btn").click(function() {
+            $(".event_data").css("opacity", "1");
+        });
+
+        $("#form_evnt").on('submit',(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "<?php echo base_url()?>faculty/save_event",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function() {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data !='invalid') {
+                        $("#form_evnt")[0].reset(); 
                         location.reload();
                     }
                 },
@@ -531,6 +561,7 @@
                 }
             )
         });
+
     });
 
     /* Edit education */
@@ -1071,6 +1102,118 @@
             return false;
         }
     }
+
+    /* Edit faculty Award */
+    function EditFAwrdID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>facultys/facultys/edit_award",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $("#awdid").val(response.id);
+	            $("#title").val(response.name);
+	            $("#awrd_year").val(response.year);
+	            $("#status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete faculty Award */
+    function DtlFAwrdID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>facultys/facultys/dlt_award",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    /* Edit faculty Event */
+    function EditFEvntID(id) {
+        var e_id = id;
+        $.ajax({
+	        type: "POST",
+	        url: "<?php echo base_url()?>facultys/facultys/edit_event",
+	        data: {id:e_id},
+	        beforeSend: function () {
+	            //$("#preview").fadeOut();
+                $("#err").fadeOut();
+	        },
+	        success: function (response) {
+                //console.log(response);
+	            response = JSON.parse(response);
+                console.log(response);
+                $("#evntid").val(response.id);
+	            $("#evnt_title").val(response.name);
+                $("#evnt_location").val(response.location);
+	            $("#event_year").val(response.year);
+	            $("#event_status").val(response.status);
+	        }
+	    });
+    }
+
+    /* Delete faculty Event */
+    function DtlFEvntID(id) {
+        if(confirm("Are you sure you want to delete this?")){
+            var e_id = id;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url()?>facultys/facultys/dlt_event",
+                data: {id:e_id},
+                beforeSend: function () {
+                    //$("#preview").fadeOut();
+                    $("#err").fadeOut();
+                },
+                success: function (response) {
+                    console.log(response);
+                    alert('Successfuly deleted');
+                    location.reload();
+                }
+            });
+        } else {
+            return false;
+        }
+    }
+
+    function project_details(id) {
+        var project_type = $('#project_type').val();
+        var p_id = id;
+        $.post(
+            "<?php echo base_url('home/project_details') ?>", {p_id: p_id, pt_id: project_type}, 
+            function(result){
+                if(result) {
+                    result = JSON.parse(result);
+                    $("#project_title").html(result.project_title);
+                    $("#proj_ref_new").html(result.reference_number);
+                    $("#agency_name").html(result.funding_agency);
+                    $("#project_amount").html(result.funding_amount);
+                    $("#project_start").html(result.project_duration);
+                    $("#name_of_pi").html(result.fname);
+                }
+            }
+        )
+    };
 
     CKEDITOR.replace('aboutme');
     CKEDITOR.replace('short_summery');

@@ -51,6 +51,8 @@ class Facultys extends CI_Controller {
 			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
 			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['award']=$this->common_model->get_data_array(AWARDEVENT,'','','','','','',AWARDEVENT.".id DESC",array('user_id'=>$id,'type'=> 'Award','status'=>1,'is_delete'=>1));
+			$data['event']=$this->common_model->get_data_array(AWARDEVENT,'','','','','','',AWARDEVENT.".id DESC",array('user_id'=>$id,'type'=> 'Event','status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/dashboard',$data);
@@ -59,6 +61,8 @@ class Facultys extends CI_Controller {
 			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
 			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['award']=$this->common_model->get_data_array(AWARDEVENT,'','','','','','',AWARDEVENT.".id DESC",array('user_id'=>$id,'type'=> 'Award','status'=>1,'is_delete'=>1));
+			$data['event']=$this->common_model->get_data_array(AWARDEVENT,'','','','','','',AWARDEVENT.".id DESC",array('user_id'=>$id,'type'=> 'Event','status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/dashboard',$data);
@@ -331,6 +335,88 @@ class Facultys extends CI_Controller {
 			$status = array('is_delete'=>1);
 		}
 		$this->common_model->tbl_update(EXPERIENCE,array('id'=>$id),$status);
+	}
+
+	public function save_award() {
+		$record_id = $this->input->post('awdid');
+		if($record_id != '') {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['name']=$this->input->post('title');
+			$insArr['year']=$this->input->post('awrd_year');
+			$insArr['type'] = "Award";
+			$insArr['status']=$this->input->post('status');
+			$this->common_model->tbl_update(AWARDEVENT,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['name']=$this->input->post('title');
+			$insArr['year']=$this->input->post('awrd_year');
+			$insArr['type'] = "Award";
+			$insArr['status']=$this->input->post('status');
+			$banner_record_id=$this->common_model->tbl_insert(AWARDEVENT,$insArr);
+			echo "Sucessfully Added";
+		}
+	}
+
+	public function edit_award() {
+		$id = $this->input->post('id');
+		$award=$this->common_model->get_data_row(AWARDEVENT,array('id'=>$id));
+		echo json_encode($award);
+	}
+
+	public function dlt_award() {
+		$id = $this->input->post('id');
+		$award=$this->common_model->get_data(AWARDEVENT,array('id'=>$id));
+		if($award[0]['is_delete']==1) {
+			$status = array('is_delete'=>2);
+		} else {
+			$status = array('is_delete'=>1);
+		}
+		$this->common_model->tbl_update(AWARDEVENT,array('id'=>$id),$status);
+	}
+
+	public function save_event() {
+		$record_id = $this->input->post('evntid');
+		if($record_id != '') {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['name']=$this->input->post('event_title');
+			$insArr['location']=$this->input->post('event_location');
+			$insArr['year']=$this->input->post('event_year');
+			$insArr['type'] = "Event";
+			$insArr['status']=$this->input->post('event_status');
+			$this->common_model->tbl_update(AWARDEVENT,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['name']=$this->input->post('event_title');
+			$insArr['location']=$this->input->post('event_location');
+			$insArr['year']=$this->input->post('event_year');
+			$insArr['type'] = "Event";
+			$insArr['status']=$this->input->post('event_status');
+			$banner_record_id=$this->common_model->tbl_insert(AWARDEVENT,$insArr);
+			echo "Sucessfully Added";
+		}
+	}
+
+	public function edit_event() {
+		$id = $this->input->post('id');
+		$award=$this->common_model->get_data_row(AWARDEVENT,array('id'=>$id));
+		echo json_encode($award);
+	}
+
+	public function dlt_event() {
+		$id = $this->input->post('id');
+		$award=$this->common_model->get_data(AWARDEVENT,array('id'=>$id));
+		if($award[0]['is_delete']==1) {
+			$status = array('is_delete'=>2);
+		} else {
+			$status = array('is_delete'=>1);
+		}
+		$this->common_model->tbl_update(AWARDEVENT,array('id'=>$id),$status);
 	}
 
 	public function logout() {

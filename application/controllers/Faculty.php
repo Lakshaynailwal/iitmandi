@@ -53,9 +53,8 @@ class Faculty extends CI_Controller {
         $data['book_chapter']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Book Chapter', 'status'=>1, 'is_delete'=>1));
         $data['book']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Book', 'status'=>1, 'is_delete'=>1));
         $data['patent']=$this->common_model->get_data_array(PUBLICATION,array('user_id'=>base64_decode($id), 'publication_type'=>'Patent', 'status'=>1, 'is_delete'=>1));
-
-        //$data['faculty_details']=$this->common_model->get_data_row(TEAM,array('id'=>base64_decode($id)));
-        //$data['faculty_details']=$this->common_model->get_data_row(TEAM,array('id'=>base64_decode($id)));
+        $data['award']=$this->common_model->get_data_array(AWARDEVENT,array('user_id'=>base64_decode($id), 'type'=> 'Award', 'status'=>1, 'is_delete'=>1));
+        $data['event']=$this->common_model->get_data_array(AWARDEVENT,array('user_id'=>base64_decode($id), 'type'=> 'Event', 'status'=>1, 'is_delete'=>1));
         $data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
         $data['title']='Faculty Detais';

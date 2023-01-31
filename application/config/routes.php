@@ -100,4 +100,6 @@ $route['faculty/miscellaneous/(:any)'] = 'facultys/facultys/miscellaneous/$1';
 $route['faculty/save_aboutme'] = 'facultys/facultys/save_aboutme';
 $route['faculty/save_educate'] = 'facultys/facultys/save_educate';
 $route['faculty/save_experience'] = 'facultys/facultys/save_experience';
+$route['faculty/save_award'] = 'facultys/facultys/save_award';
+$route['faculty/save_event'] = 'facultys/facultys/save_event';
 $route['faculty/logout'] = 'facultys/facultys/logout';

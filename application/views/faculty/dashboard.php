@@ -180,8 +180,7 @@ echo $header;
                                         <table id="example" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>Degree</th>
-                                                    <th>University</th>
+                                                    <th>Name</th>
                                                     <th>Year</th>
                                                     <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
@@ -189,24 +188,27 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php if(!empty($award)) {
+                                                $i=1; ?>
+                                                <?php foreach($award as $row) { ?>
                                                 <tr>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
+                                                <td><?php echo $row['name'];?></td>
+                                                <td><?php echo $row['year'];?></td>
                                                     <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class edu_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                        <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5" onclick="EditFAwrdID(<?php echo $row['id']?>)">Edit</button>
+                                                        <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="DtlFAwrdID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                     </td>
                                                     <?php } ?>
                                                 </tr>
+                                                <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                                 <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2">Add New Record</button>
+                                    <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
                                 </div>
                                 <?php } ?>
                             </div>
@@ -219,8 +221,8 @@ echo $header;
                                         <table id="example" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>Organisation</th>
-                                                    <th>Post</th>
+                                                    <th>Name</th>
+                                                    <th>Location</th>
                                                     <th>Year</th>
                                                     <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <th>Action</th>
@@ -228,28 +230,32 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php if(!empty($event)) {
+                                                $i=1; ?>
+                                                <?php foreach($event as $row) { ?>
                                                 <tr>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
+                                                    <td><?php echo $row['name'];?></td>
+                                                    <td><?php echo $row['location'];?></td>
+                                                    <td><?php echo $row['year'];?></td>
                                                     <?php if ($this->session->userdata('user_id') != '') { ?>
                                                     <td>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_edit_btn" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="javascript:void(0)" class="btn waves-effect waves-light tooltips td_class exp_dlt_btn" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                        <button type="button" class="btn btn-primary evnt_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg6" onclick="EditFEvntID(<?php echo $row['id']?>)">Edit</button>
+                                                        <button type="button" class="btn btn-primary evnt_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" onclick="DtlFEvntID(<?php echo $row['id']?>)" style="background: red; color: #fff;">Delete</button>
                                                     </td>
                                                     <?php } ?>
                                                 </tr>
+                                                <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                                 <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
+                                    <button type="button" class="btn btn-primary evnt_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg6">Add New Record</button>
                                 </div>
                                 <?php } ?>
                             </div>
-                            <div class="col-12">
+                            <!-- <div class="col-12">
                                 <div class="row">
                                     <div class='col-sm-12'>
                                         <h2 style="text-align: center;">News</h2>
@@ -287,7 +293,7 @@ echo $header;
                                     <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
                                 </div>
                                 <?php } ?>
-                            </div>
+                            </div> -->
                             <!-- Home End -->
                         </div>
                     </div>
@@ -581,15 +587,15 @@ echo $header;
                         <div class="col-sm-12" style="margin-bottom: 40px;">
                             <div class="col-sm-12" style="float: left; display: inline-block;">
                                 <div class="form-group col-sm-4 cstm_details">
-                                    <label for="Event Name" class="control-label">Position</label>
+                                    <label for="Event Name" class="control-label">Name</label>
                                     <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="position" name="position" value="">
+                                        <input type="text" class="form-control required" id="title" name="title" value="">
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-4 cstm_details">
                                     <label for="Event Name" class="control-label">Year</label>
                                     <div class="col-lg-9 col-md-9 col-sm-8">
-                                        <input type="text" class="form-control required" id="year" name="year" value="">
+                                        <input type="text" class="form-control required" id="awrd_year" name="awrd_year" value="">
                                     </div>
                                 </div>
                                 <div class="form-group col-sm-4 cstm_details">
@@ -606,10 +612,58 @@ echo $header;
                     </div>
                     <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
                         <div id="err"></div>
-                        <!-- <button type="button" class="btn btn-primary about_data"><a href="javascript:void(0);">Edit Record</a></button> -->
-                        <!-- <button type="button" class="btn btn-primary about_save" data-toggle="modal" data-target=".bd-example-modal-lg">Update</button> -->
-                        <input class="btn btn-primary exp_save" type="submit" value="Submit">
+                        <input class="btn btn-primary awd_save" type="submit" value="Submit">
                         <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                        <input type="hidden" id="awdid" name="awdid">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg6 event_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
+    <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">
+        <div class="modal-content">
+            <form id="form_evnt" action="" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12" style="margin-bottom: 40px;">
+                            <div class="col-sm-12" style="float: left; display: inline-block;">
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Name</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="event_title" name="event_title" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Location</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="event_location" name="event_location" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Year</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <input type="text" class="form-control required" id="event_year" name="event_year" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-4 cstm_details">
+                                    <label for="Event Name" class="control-label">Status</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-8">
+                                        <select class="form-control" name="event_status">
+                                            <option value="1" <?php if(@$research_category['status']==1){ echo "selected"; } ?>>Active</option>
+                                            <option value="2" <?php if(@$research_category['status']==2){ echo "selected"; } ?>>Inactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="text-align: center;margin-top: 20px;">
+                        <div id="err"></div>
+                        <input class="btn btn-primary evnt_save" type="submit" value="Submit">
+                        <input type="hidden" id="uid" name="uid" value="<?php echo $uid?>">
+                        <input type="hidden" id="evntid" name="evntid">
                     </div>
                 </div>
             </form>

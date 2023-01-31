@@ -107,11 +107,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php if(!empty($experience)) {
+                                                $i=1; ?>
+                                                <?php foreach($experience as $row) { ?>
                                                 <tr>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
                                                     <td>Demo</td>
                                                 </tr>
+                                                <?php $i++; } } ?>
                                             </tbody>
                                         </table>
                                     </div>
