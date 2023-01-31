@@ -1,8 +1,8 @@
 <?php 
 if ($this->session->userdata('user_id') != "") {
-    echo "with session".$uid = $this->session->userdata('user_id');
+    $uid = $this->session->userdata('user_id');
 } else {
-    echo "without session".$uid = $about_me[0]['id'];
+    $uid = $about_me[0]['id'];
 }
 echo $header;
 ?>
