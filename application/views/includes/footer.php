@@ -562,6 +562,41 @@
             )
         });
 
+        $(".myLargeModalLabel").click(function() {
+            $(".myLargeModal").css("opacity", "1");
+        });
+
+        $(".opening_add_btn").click(function() {
+            $(".opening_data").css("opacity", "1");
+        });
+
+        $("#form_opening").on('submit',(function(e) {
+            e.preventDefault();
+            var uid = $("#uid").val();
+            var position = $("#position").val();
+            var codescription = CKEDITOR.instances['codescription'].getData();
+            var status = $("#opening_status").val();
+            $.ajax({
+                url: "<?php echo base_url()?>facultys/facultys/save_currentopening",
+                type: "POST",
+                data:  {uid: uid, position: position, codescription: codescription, status: status},
+                beforeSend : function() {
+                    $("#err").fadeOut();
+                },
+                success: function(data) {
+                    if(data == 'invalid') {
+                        $("#err").html("Invalid File !").fadeIn();
+                    } else {
+                        $("#preview").html(data).fadeIn();
+                        $("#form_opening")[0].reset(); 
+                        location.reload();
+                    }
+                },
+                error: function(e) {
+                    $("#err").html(e).fadeIn();
+                }          
+            });
+        }));
     });
 
     /* Edit education */
@@ -1139,7 +1174,7 @@
                     $("#err").fadeOut();
                 },
                 success: function (response) {
-                    console.log(response);
+                    //console.log(response);
                     alert('Successfuly deleted');
                     location.reload();
                 }
@@ -1203,13 +1238,57 @@
             "<?php echo base_url('home/project_details') ?>", {p_id: p_id, pt_id: project_type}, 
             function(result){
                 if(result) {
+                    //console.log(result);
                     result = JSON.parse(result);
                     $("#project_title").html(result.project_title);
                     $("#proj_ref_new").html(result.reference_number);
                     $("#agency_name").html(result.funding_agency);
                     $("#project_amount").html(result.funding_amount);
-                    $("#project_start").html(result.project_duration);
+                    $("#project_start").html(result.starting_year + '-' + result.project_duration);
                     $("#name_of_pi").html(result.fname);
+                    if (result.hasOwnProperty('copi')) {
+                        $(".name_of_copi").show();
+                        $("#name_of_copi").html(result.copi);
+                    } else {
+                        $(".name_of_copi").hide();
+                    }
+                    if (result.hasOwnProperty('stuffname')) {
+                        $(".name_of_ps").show();
+                        $("#name_of_ps").html(result.stuffname);
+                    } else {
+                        $(".name_of_ps").hide();
+                    }
+                }
+            }
+        )
+    };
+
+    function project_fdetails(id) {
+        var p_id = id;
+        $.post(
+            "<?php echo base_url('home/project_fdetails') ?>", {p_id: p_id}, 
+            function(result){
+                if(result) {
+                    //console.log(result);
+                    result = JSON.parse(result);
+                    $("#project_title").html(result.project_title);
+                    $("#proj_ref_new").html(result.reference_number);
+                    $("#agency_name").html(result.funding_agency);
+                    $("#project_amount").html(result.funding_amount);
+                    $("#project_start").html(result.starting_year + '-' + result.project_duration);
+                    $("#name_of_pi").html(result.fname);
+                    if (result.hasOwnProperty('copi')) {
+                        $(".name_of_copi").show();
+                        $("#name_of_copi").html(result.copi);
+                    } else {
+                        $(".name_of_copi").hide();
+                    }
+                    if (result.hasOwnProperty('stuffname')) {
+                        $(".name_of_ps").show();
+                        $("#name_of_ps").html(result.stuffname);
+                    } else {
+                        $(".name_of_ps").hide();
+                    }
                 }
             }
         )
@@ -1218,6 +1297,7 @@
     CKEDITOR.replace('aboutme');
     CKEDITOR.replace('short_summery');
     CKEDITOR.replace('key_points');
+    CKEDITOR.replace('codescription');
 </script>
 <!-- <?php 
 for ($i = 0; $i <= 7; $i++) { ?>

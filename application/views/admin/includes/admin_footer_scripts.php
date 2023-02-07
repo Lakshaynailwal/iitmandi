@@ -59,6 +59,7 @@
         $('.mobile').hide();
         $('.office').hide();
         $('.specialization').hide();
+        $('.project_name').hide();
         $('.ndesignation').hide();
         $('.admssnyear').hide();
         $('.program').hide();
@@ -79,6 +80,7 @@
                 $('.mobile').hide();
                 $('.office').hide();
                 $('.specialization').show();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').hide();
@@ -96,6 +98,7 @@
                 $('.mobile').hide();
                 $('.office').hide();
                 $('.specialization').show();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').hide();
@@ -113,6 +116,7 @@
                 $('.mobile').hide();
                 $('.office').hide();
                 $('.specialization').show();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').show();
@@ -130,6 +134,7 @@
                 $('.mobile').hide();
                 $('.office').hide();
                 $('.specialization').show();
+                $('.project_name').show();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').hide();
@@ -147,6 +152,7 @@
                 $('.mobile').hide();
                 $('.office').hide();
                 $('.specialization').hide();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').show();
                 $('.program').hide();
@@ -164,6 +170,7 @@
                 $('.mobile').show();
                 $('.office').hide();
                 $('.specialization').hide();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').hide();
@@ -181,6 +188,7 @@
                 $('.mobile').show();
                 $('.office').show();
                 $('.specialization').hide();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').hide();
@@ -198,6 +206,7 @@
                 $('.mobile').hide();
                 $('.office').hide();
                 $('.specialization').hide();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').hide();
@@ -215,6 +224,7 @@
                 $('.mobile').hide();
                 $('.office').hide();
                 $('.specialization').hide();
+                $('.project_name').hide();
                 $('.ndesignation').hide();
                 $('.admssnyear').hide();
                 $('.program').hide();
@@ -235,6 +245,7 @@
             $('.mobile').hide();
             $('.office').hide();
             $('.specialization').show();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').hide();
@@ -252,6 +263,7 @@
             $('.mobile').hide();
             $('.office').hide();
             $('.specialization').show();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').hide();
@@ -269,6 +281,7 @@
             $('.mobile').hide();
             $('.office').hide();
             $('.specialization').show();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').show();
@@ -286,6 +299,7 @@
             $('.mobile').hide();
             $('.office').hide();
             $('.specialization').show();
+            $('.project_name').show();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').hide();
@@ -303,6 +317,7 @@
             $('.mobile').hide();
             $('.office').hide();
             $('.specialization').hide();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').show();
             $('.program').hide();
@@ -320,6 +335,7 @@
             $('.mobile').show();
             $('.office').hide();
             $('.specialization').hide();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').hide();
@@ -337,6 +353,7 @@
             $('.mobile').show();
             $('.office').show();
             $('.specialization').hide();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').hide();
@@ -354,6 +371,7 @@
             $('.mobile').hide();
             $('.office').hide();
             $('.specialization').hide();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').hide();
@@ -371,6 +389,7 @@
             $('.mobile').hide();
             $('.office').hide();
             $('.specialization').hide();
+            $('.project_name').hide();
             $('.ndesignation').hide();
             $('.admssnyear').hide();
             $('.program').hide();
@@ -404,6 +423,22 @@
         })
 
         $('#supervisor').selectpicker('render');
+        
+        $(".allow_numeric").on("input", function(evt) {
+            var self = $(this);
+            self.val(self.val().replace(/\D/g, ""));
+            if ((evt.which < 48 || evt.which > 57)) {
+            evt.preventDefault();
+            }
+        });
+
+        $(".allow_decimal").on("input", function(evt) {
+        var self = $(this);
+        self.val(self.val().replace(/[^0-9\.]/g, ''));
+        if ((evt.which != 46 || self.val().indexOf('.') != -1) && (evt.which < 48 || evt.which > 57)) {
+            evt.preventDefault();
+        }
+    });
     });
     CKEDITOR.replace('description');
 </script>

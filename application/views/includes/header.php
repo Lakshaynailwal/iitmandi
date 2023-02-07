@@ -84,7 +84,7 @@
                 <ul suggestion="region_navigation" class="menu">
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="/about" data-drupal-link-system-path="node/11">People<span class="primary-nav__submenu-indicator"></span></a>
+                      <a href="#" data-drupal-link-system-path="node/11">People<span class="primary-nav__submenu-indicator"></span></a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                     <ul class="menu">
@@ -114,76 +114,76 @@
 
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="/admissions" data-drupal-link-system-path="node/21">Academics<span class="primary-nav__submenu-indicator"></span>
+                      <a href="#" data-drupal-link-system-path="node/21">Academics<span class="primary-nav__submenu-indicator"></span>
                       </a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                     <ul class="menu">
                       <li class="menu-item menu-item--expanded">
                         <div class="submenu-toggle__wrapper ">
-                          <a href="/admissions/undergraduate" title="Information about admission to IIT Mandi for prospective undergraduates" data-drupal-link-system-path="node/2241">Specialization<span class="primary-nav__submenu-indicator"></span>
+                          <a href="#" title="Information about admission to IIT Mandi for prospective undergraduates" data-drupal-link-system-path="node/2241">Specialization<span class="primary-nav__submenu-indicator"></span>
                           </a>
                           <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                         </div>
                       </li>
                       <li class="menu-item">
-                        <a href="/admissions/undocumented-student-applicants" data-drupal-link-system-path="node/49441">Programs</a>
+                        <a href="#" data-drupal-link-system-path="node/49441">Programs</a>
                       </li>
                     </ul>
                   </li>
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="/academics" data-drupal-link-system-path="node/16">Facilities<span class="primary-nav__submenu-indicator"></span>
+                      <a href="#" data-drupal-link-system-path="node/16">Facilities<span class="primary-nav__submenu-indicator"></span>
                       </a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                     <ul class="menu">
                       <li class="menu-item menu-item--expanded">
                         <div class="submenu-toggle__wrapper ">
-                          <a href="/academics/majors" data-drupal-link-system-path="node/2032">Teaching labs<span class="primary-nav__submenu-indicator"></span>
+                          <a href="#" data-drupal-link-system-path="node/2032">Teaching labs<span class="primary-nav__submenu-indicator"></span>
                           </a>
                           <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                         </div>
                       </li>
                       <li class="menu-item">
-                        <a href="/academics/minors" data-drupal-link-system-path="node/2033">Research labs</a>
+                        <a href="#" data-drupal-link-system-path="node/2033">Research labs</a>
                       </li>
                     </ul>
                   </li>
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="/research" data-drupal-link-system-path="node/26">Activities<span class="primary-nav__submenu-indicator"></span>
+                      <a href="#" data-drupal-link-system-path="node/26">Activities<span class="primary-nav__submenu-indicator"></span>
                       </a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                     <ul class="menu">
                       <li class="menu-item">
-                        <a href="/research/undergraduate" data-drupal-link-system-path="node/2330">Placements</a>
+                        <a href="#" data-drupal-link-system-path="node/2330">Placements</a>
                       </li>
                       <li class="menu-item">
-                        <a href="/research/graduate-professional" data-drupal-link-system-path="node/2098">Student Activities</a>
+                        <a href="#" data-drupal-link-system-path="node/2098">Student Activities</a>
                       </li>
                     </ul>
                   </li>
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="/campus-life" data-drupal-link-system-path="node/31">Resources<span class="primary-nav__submenu-indicator"></span>
+                      <a href="#" data-drupal-link-system-path="node/31">Resources<span class="primary-nav__submenu-indicator"></span>
                       </a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                   </li>
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="/news" data-drupal-link-system-path="node/2343">Publications<span class="primary-nav__submenu-indicator"></span>
+                      <a href="#" data-drupal-link-system-path="node/2343">Publications<span class="primary-nav__submenu-indicator"></span>
                       </a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
                     <!-- <ul class="menu">
                       <li class="menu-item">
-                        <a href="/news/latest" data-drupal-link-system-path="news/latest">Latest News</a>
+                        <a href="#" data-drupal-link-system-path="news/latest">Latest News</a>
                       </li>
                       <li class="menu-item">
-                        <a href="/news/student-life" data-drupal-link-system-path="taxonomy/term/24">Student News</a>
+                        <a href="#" data-drupal-link-system-path="taxonomy/term/24">Student News</a>
                       </li>
                       <li class="menu-item">
                         <a href="/blogs" data-drupal-link-system-path="node/48756">Blogs</a>

@@ -103,3 +103,4 @@ define('PUBLICATION', 'iitmandi_publication');
 define('DESIGNATION', 'iitmandi_designation');
 define('PROJECT', 'iitmandi_project');
 define('AWARDEVENT', 'iitmandi_awardevent');
+define('CRNTOPENING', 'iitmandi_crntopening');

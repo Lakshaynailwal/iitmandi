@@ -79,6 +79,28 @@
                                                 <input class="form-control" id="linkedin_url" type="url" name="linkedin_url" value="<?php echo @$result[0]['linkedin_url']; ?>">
                                             </div>
                                         </div>
+                                        <?php if(@$result[0]['dprtmnt_pic'] !=""){ ?>
+                                        <div class="form-group">
+                                            <label for="about_me" class="control-label col-lg-3 col-md-3 col-sm-4">Depertment Logo</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-8">
+                                                <?php if(@$result[0]['dprtmnt_pic']){ ?>
+                                                <img src="<?php echo base_url(); ?>uploads/site_logo/thumb/<?php echo @$result[0]['dprtmnt_pic']; ?>" alt="<?php echo @$result[0]['dprtmnt_pic']; ?>">
+                                                <?php } else { ?>
+                                                <img src="<?php echo base_url(); ?>images/no-img.png" alt="no-img.png">
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                        <div class="form-group">
+                                            <label for="about_me" class="control-label col-lg-3 col-md-3 col-sm-4">Depertment Logo</label>
+                                            <div class="col-lg-9 col-md-9 col-sm-8">
+                                                <div class="fileupload btn btn-primary_cust waves-effect waves-light">
+                                                    <input type="file" name="dprtmnt_pic" id="dprtmnt_pic" class="upload">
+                                                    <span id="image_name1"></span>
+                                                </div>
+                                                <label for="about_me" class="control-label" style="color:red;">Image size must be 200px X 58px</label>
+                                            </div>
+                                        </div>
                                         <?php if(@$result[0]['profile_pic'] !=""){ ?>
                                         <div class="form-group">
                                             <label for="about_me" class="control-label col-lg-3 col-md-3 col-sm-4">Site Logo</label>

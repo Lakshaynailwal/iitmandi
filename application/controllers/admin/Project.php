@@ -42,14 +42,19 @@ class Project extends CI_Controller{
             $insert_array['reference_number']=$this->input->post('reference_number');
             $insert_array['description'] = addslashes($this->input->post('description'));
             $insert_array['status']=$this->input->post('status');
-            if(!empty($id)){
+            if(!empty($id)) {
 				$this->common_model->tbl_update(PROJECT,array('id'=>$id),$insert_array);
                 $this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully updated','SUCCESS');
 				redirect(base_url('admin/project'));
-		    } else{
-				$id = $this->common_model->tbl_insert(PROJECT,$insert_array);
-                $this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully saved','SUCCESS');
-				redirect(base_url()."admin/project");
+		    } else {
+                $chech_title = $this->common_model->get_data_row(PROJECT,array('project_title'=>$this->input->post('project_title')));
+                if ($chech_title['project_title'] == $this->input->post('project_title')) {
+                    echo ('<script>alert("Project title is already exist!");</script>');
+                } else {
+                    $id = $this->common_model->tbl_insert(PROJECT,$insert_array);
+                    $this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully saved','SUCCESS');
+                    redirect(base_url()."admin/project");
+                }
 			}
         }
         if(!empty($id)) {

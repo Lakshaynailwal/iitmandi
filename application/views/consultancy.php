@@ -94,6 +94,7 @@ opacity: .5;}
                         </div>
                         <div class='col-sm-12' style="margin-top: 50px;">
                             <table id="datatable" class="table table-striped table-bordered dat_tbl">
+                                <?php if(!empty($consultancy)) { ?>
                                 <thead>
                                     <tr>
                                         <th>Sl No.</th>
@@ -102,6 +103,7 @@ opacity: .5;}
                                         <th>View Details</th>
                                     </tr>
                                 </thead>
+                                <?php } ?>
                                 <tbody id = "showFilterData">
                                     <?php if(!empty($consultancy)) { 
                                         $i=1; ?>
@@ -163,6 +165,14 @@ opacity: .5;}
                                     <tr>
                                         <th>Principal Investigator</th>
                                         <td><span id="name_of_pi"></span></td>
+                                    </tr>
+                                    <tr class='name_of_copi'>
+                                        <th>Co - Principal Investigator</th>
+                                        <td><span id="name_of_copi"></span></td>
+                                    </tr>
+                                    <tr class='name_of_ps'>
+                                        <th>Project Staff</th>
+                                        <td><span id="name_of_ps"></span></td>
                                     </tr>
                                 </tbody>
                             </table>

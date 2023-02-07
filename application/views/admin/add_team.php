@@ -138,6 +138,19 @@
                                           </select>
                                        </div>
                                     </div>
+                                    <div class="form-group project_name">
+                                       <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Project Name</label>
+                                       <div class="col-lg-9 col-md-9 col-sm-8">
+                                          <select class="selectpicker form-control" id="project_name" name="project_name" data-live-search="true">
+                                             <?php if(!empty($project_list)) { 
+                                                foreach($project_list as $row) { ?>
+                                                <option value="<?php echo $row['id']?>"><?php echo $row['project_title']?></option>
+                                             <?php  } } else { ?>
+                                                <option value="">No Data</option>
+                                                <?php } ?>
+                                          </select>
+                                       </div>
+                                    </div>
                                     <div class="form-group admssnyear">
                                        <label for="banner_title1" class="control-label col-lg-3 col-md-3 col-sm-4">Year of Admission</label>
                                        <div class="col-lg-9 col-md-9 col-sm-8">

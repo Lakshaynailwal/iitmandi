@@ -90,6 +90,8 @@ $route['student/logout'] = 'student/student/logout';
 /* Faculty */
 $route['faculty'] = 'facultys/facultys/index';
 $route['faculty/login'] = 'facultys/facultys/login';
+$route['faculty/reset_password/(:any)'] = 'facultys/facultys/reset_password/$1';
+$route['faculty/update_password'] = 'facultys/facultys/update_password';
 $route['faculty/dashboard/(:any)'] = 'facultys/facultys/dashboard/$1';
 $route['faculty/research/(:any)'] = 'facultys/facultys/research/$1';
 $route['faculty/publication/(:any)'] = 'facultys/facultys/publication/$1';

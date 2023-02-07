@@ -38,7 +38,7 @@
                                                    <th>Sl No.</th>
                                                    <th>Project Title</th>
                                                    <th>Starting Year</th>
-                                                   <th>Project Duration</th>
+                                                   <th>Ending Year</th>
                                                    <th>Status</th>
                                                    <th>Action</th>
                                                 </tr>

@@ -49,18 +49,26 @@ echo $header;
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <h3 style="text-transform: capitalize">Welcome <?php echo $about_me[0]['fname'];?></h3>
-                        <p style="text-transform: capitalize">Welcome <?php echo $about_me[0]['designation'];?></p>
+                        <!-- <h3 style="text-transform: capitalize">Welcome <?php echo $about_me[0]['fname'];?></h3>
+                        <p style="text-transform: capitalize">Welcome <?php echo $about_me[0]['designation'];?></p> -->
                         <div class="row">
                             <div class="col-12 profile_menu" style="text-align:center">
                                 <!-- Tab navs -->
                                 <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary">Home</button></a>
                                 <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
                                 <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary">Publication</button></a>
+                                <?php if(!empty($project)) { ?>
                                 <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
-                                <a href="<?php echo base_url()?>faculty/lab_members/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Lab Members</button></a>
+                                <?php } ?>
+                                <?php if(!empty($lab_member)) { ?>
+                                <a href="<?php echo base_url()?>faculty/lab_members/<?php echo $uid?>"><button type="button" class="btn btn-primary">Lab Members</button></a>
+                                <?php } ?>
+                                <?php if(!empty($copening)) { ?>
                                 <a href="<?php echo base_url()?>faculty/current_opening/<?php echo $uid?>"><button type="button" class="btn btn-primary">Current Openings</button></a>
+                                <?php } ?>
+                                <?php //if(!empty($experience)) { ?>
                                 <a href="<?php echo base_url()?>faculty/miscellaneous/<?php echo $uid?>"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
+                                <?php //} ?>
                                 <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
                                 <?php } ?>
@@ -68,6 +76,7 @@ echo $header;
                             </div>
                             
                             <!-- Lab Member Start --> 
+                            <?php  if(!empty($phdteam)) { ?>
                             <div class="col-12" style=" margin-top: 35px;">
                                 <div class="row">
                                     <div class='col-sm-12'>
@@ -75,31 +84,22 @@ echo $header;
                                     </div>
                                     <div class="content">
                                         <div class='col-sm-12'>
+                                        <?php
+                                            $i=1; ?>
+                                            <?php foreach($phdteam as $row) { ?>
                                             <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>Ph.D. Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
+                                                <?php ?>
+                                                <img src="<?php echo base_url()?>uploads/our_team/thumb/<?php echo $row['team_image']?>"/>
+                                                <h3><?php echo $row['fname']?></h3>
                                             </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>Ph.D. Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>Ph.D. Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>Ph.D. Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
+                                        <?php $i++; } ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
 
+                            <?php  if(!empty($mtechrteam)) { ?>
                             <div class="col-12">
                                 <div class="row">
                                     <div class='col-sm-12'>
@@ -107,31 +107,22 @@ echo $header;
                                     </div>
                                     <div class="content">
                                         <div class='col-sm-12'>
+                                        <?php
+                                            $i=1; ?>
+                                            <?php foreach($mtechrteam as $row) { ?>
                                             <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. (R) Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
+                                                <?php ?>
+                                                <img src="<?php echo base_url()?>uploads/our_team/thumb/<?php echo $row['team_image']?>"/>
+                                                <h3><?php echo $row['fname']?></h3>
                                             </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. (R) Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. (R) Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. (R) Scholars Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
+                                        <?php $i++; } ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
 
+                            <?php  if(!empty($mtechteam)) { ?>
                             <div class="col-12">
                                 <div class="row">
                                     <div class='col-sm-12'>
@@ -139,31 +130,21 @@ echo $header;
                                     </div>
                                     <div class="content">
                                         <div class='col-sm-12'>
+                                        <?php $i=1; ?>
+                                                <?php foreach($mtechteam as $row) { ?>
                                             <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. Students Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
+                                                <?php ?>
+                                                <img src="<?php echo base_url()?>uploads/our_team/thumb/<?php echo $row['team_image']?>"/>
+                                                <h3><?php echo $row['fname']?></h3>
                                             </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. Students Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. Students Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <img src="<?php echo base_url()?>uploads/gallery/demo_pic.png"/>
-                                                <h3>M.Tech. Students Name</h3>
-                                                <p><a href="">Thesis Topic</a></p>
-                                            </div>
+                                        <?php $i++; } ?>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
 
+                            <?php  if(!empty($btechteam)) { ?>
                             <div class="col-12">
                                 <div class="row">
                                     <div class='col-sm-12'>
@@ -175,29 +156,26 @@ echo $header;
                                                 <tr>
                                                     <th>Sl No.</th>
                                                     <th>Name</th>
-                                                    <th>Project Title</th>
                                                     <th>Year</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php $i=1; ?>
+                                                <?php foreach($btechteam as $row) { ?>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>
-                                                        <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                    </td>
+                                                    <td><h3><?php echo $row['fname']?></h3></td>
+                                                    <td><h3><?php echo $row['admssnyear']?></h3></td>
                                                 </tr>
+                                                <?php $i++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
 
-                            <div class="col-12">
+                            <!-- <div class="col-12">
                                 <div class='col-sm-12'>
                                     <h2 style="text-align: center;">Alumni</h2>
                                 </div>
@@ -309,7 +287,7 @@ echo $header;
                                         </table>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- Lab Member End --> 
                         </div>
                     </div>

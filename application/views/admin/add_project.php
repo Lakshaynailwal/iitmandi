@@ -47,8 +47,8 @@
                                             <div class="form-group">
                                                 <label for="funding_amount" class="control-label col-lg-3 col-md-3 col-sm-4">Funding Amount</label>
                                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                                <input type="text" class="form-control" id="funding_amount" name="funding_amount" required  placeholder="Funding Amount" value="<?php echo @$project['funding_amount'] ?>">
-                                               </div>
+                                                    <input type="text" class="form-control allow_decimal" id="funding_amount" name="funding_amount" required  placeholder="Funding Amount" value="<?php echo @$project['funding_amount'] ?>">
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="project_incharge" class="control-label col-lg-3 col-md-3 col-sm-4">PI</label>
@@ -90,13 +90,31 @@
                                             <div class="form-group">
                                                 <label for="starting_year" class="control-label col-lg-3 col-md-3 col-sm-4">Starting year</label>
                                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                                    <input type="text" class="form-control" id="starting_year" name="starting_year" required  placeholder="Starting year" value="<?php echo @$project['starting_year'] ?>">
+                                                    <?php
+                                                    $currently_selected = date('Y'); 
+                                                    $earliest_year = 1950; 
+                                                    $latest_year = date('Y'); 
+                                                    print '<select class="form-control" id="starting_year" name="starting_year"><option value="">Choose an option</option>';
+                                                    foreach ( range( $latest_year, $earliest_year ) as $i ) {
+                                                        print '<option value="'.$i.'"'.($i === $currently_selected ?'"' : '').'>'.$i.'</option>';
+                                                    }
+                                                    print '</select>';
+                                                    ?>
                                                </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="project_duration" class="control-label col-lg-3 col-md-3 col-sm-4">Duration of the Project</label>
+                                                <label for="project_duration" class="control-label col-lg-3 col-md-3 col-sm-4">End Year</label>
                                                 <div class="col-lg-9 col-md-9 col-sm-8">
-                                                    <input type="text" class="form-control" id="project_duration" name="project_duration" required  placeholder="Project Duration" value="<?php echo @$project['project_duration'] ?>">
+                                                    <?php
+                                                    $currently_selected = date('Y'); 
+                                                    $earliest_year = 1950; 
+                                                    $latest_year = date('Y'); 
+                                                    print '<select class="form-control" id="project_duration" name="project_duration"><option value="">Choose an option</option>';
+                                                    foreach ( range( $latest_year, $earliest_year ) as $i ) {
+                                                        print '<option value="'.$i.'"'.($i === $currently_selected ?'"' : '').'>'.$i.'</option>';
+                                                    }
+                                                    print '</select>';
+                                                    ?>
                                                </div>
                                             </div>
                                             <div class="form-group">

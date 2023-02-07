@@ -25,40 +25,76 @@ class Ourteam extends CI_Controller{
 	
 	public function add_team($id='') {
 		if($this->input->post()) {
-			// $verify_email = $this->common_model->get_data(TEAM,array('email'=>$this->input->post('email')));
-			// //print_r($verify_email); die();
-			// if($verify_email[0]['email'] != '') {
-			// 	$this->utilitylib->setMsg('<i class="fa fa-info-circle" aria-hidden="true"></i>Email ID is already registered.','ERROR');
-			// } else {
-				$insArr=array();
-				$insArr['fname'] = $this->input->post('fname');
-				$insArr['email'] = $this->input->post('email');
-				$insArr['position'] = $this->input->post('position');
-				$insArr['enrollno'] = $this->input->post('enrollno');
-				$insArr['designation'] = $this->input->post('designation');
-				$insArr['supervisor'] = $this->input->post('supervisor');
-				if ($this->input->post('cosupervisors') != '') {
-					$cosupervisors = $this->input->post('cosupervisors');
-					$insArr['cosupervisors'] = implode(",", $cosupervisors);
-				} else {
-					$insArr['cosupervisors'] = $this->input->post('cosupervisors');
+			$insArr=array();
+			$insArr['fname'] = $this->input->post('fname');
+			$insArr['email'] = $this->input->post('email');
+			$insArr['position'] = $this->input->post('position');
+			$insArr['enrollno'] = $this->input->post('enrollno');
+			$insArr['designation'] = $this->input->post('designation');
+			$insArr['supervisor'] = $this->input->post('supervisor');
+			if ($this->input->post('cosupervisors') != '') {
+				$cosupervisors = $this->input->post('cosupervisors');
+				$insArr['cosupervisors'] = implode(",", $cosupervisors);
+			} else {
+				$insArr['cosupervisors'] = $this->input->post('cosupervisors');
+			}
+			$insArr['post'] = $this->input->post('post');
+			$insArr['lab'] = $this->input->post('lab');
+			$insArr['mobile'] = $this->input->post('mobile');
+			$insArr['office'] = $this->input->post('office');
+			$insArr['specialization'] = $this->input->post('specialization');
+			$insArr['admssnyear'] = $this->input->post('admssnyear');
+			$insArr['department'] = $this->input->post('department');
+			$insArr['institutename'] = $this->input->post('institutename');
+			$insArr['profilelink'] = $this->input->post('profilelink');
+			$insArr['designation'] = $this->input->post('program');
+			$insArr['designation'] = $this->input->post('degree');
+			$insArr['status'] = $this->input->post('status');
+			if ($_FILES['team_image']['name'] != '') {
+				$data['result']=$this->common_model->get_data(TEAM,array('id'=>$id));
+				if(@$data['result'][0]['team_image']) {	
+					unlink('./uploads/our_team/'.$data['result'][0]['team_image']);	
+					unlink('./uploads/our_team/thumb/'.$data['result'][0]['team_image']);	
 				}
-				$insArr['post'] = $this->input->post('post');
-				$insArr['lab'] = $this->input->post('lab');
-				$insArr['mobile'] = $this->input->post('mobile');
-				$insArr['office'] = $this->input->post('office');
-				$insArr['specialization'] = $this->input->post('specialization');
-				$insArr['admssnyear'] = $this->input->post('admssnyear');
-				$insArr['department'] = $this->input->post('department');
-				$insArr['institutename'] = $this->input->post('institutename');
-				$insArr['profilelink'] = $this->input->post('profilelink');
-				$insArr['designation'] = $this->input->post('program');
-				$insArr['designation'] = $this->input->post('degree');
-				$insArr['status'] = $this->input->post('status');
-				if(!empty($id)){
-					$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);
-				} else{
-					$id = $this->common_model->tbl_insert(TEAM,$insArr);
+				$config1=array();
+				$config1['upload_path']='./uploads/our_team/thumb';
+				$config1['upload_path']='./uploads/our_team/';
+				$random_number = substr(number_format(time() * rand(),0,'',''),0,6);
+				$config1['file_name']=time().$random_number;
+				$config1['allowed_types']='jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|mp4|MPEG-4';
+				/*$config1['max_width'] = '2000';
+				$config1['max_height'] = '1125';*/
+				$config1['overwrite']=TRUE;
+				$this->load->library('upload',$config1);
+				$this->upload->initialize($config1);
+				if(!$this->upload->do_upload('team_image')){
+					$err_upload=$this->upload->display_errors();
+					$this->utilitylib->setMsg($err_upload,'ERROR');
+					print_r($err_upload);
+					redirect(base_url('admin/ourteam/add_team'));
+				} else {
+					$suc_upload2=array();
+					$suc_upload2=$this->upload->data();
+					$config1['image_library']='gd2';
+					$config1['source_image']='uploads/our_team/'.$suc_upload2['file_name'];
+					$config1['new_image']='uploads/our_team/thumb/'.$suc_upload2['file_name'];
+					$config1['maintain_ratio']=TRUE;
+					$config1['width']=150;
+					$config1['height']=97;
+					$this->image_lib->initialize($config1);
+					$this->image_lib->resize();
+					$insArr['team_image']=$suc_upload2['file_name'];
+				}
+			}
+			if(!empty($id)) {
+				$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);
+				$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully updated','SUCCESS');
+				redirect(base_url()."admin/ourteam/");
+			} else {
+				$check_email=$this->common_model->get_data_row(TEAM,array('email'=>$this->input->post('email')));
+				if($check_email['email'] == $this->input->post('email')) {
+					echo ('<script>alert("Email ID is already exist!");</script>');
+				} else {
 					$alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789!@#$%^&*()";
 					$pass = array(); //remember to declare $pass as an array
 					$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
@@ -68,59 +104,15 @@ class Ourteam extends CI_Controller{
 					}
 					$pass_generate = implode($pass); //turn the array into a string
 					$insArr['password']=base64_encode($pass_generate);
-				}
-				if ($_FILES['team_image']['name'] != '') {
-					$data['result']=$this->common_model->get_data(TEAM,array('id'=>$id));
-					if(@$data['result'][0]['team_image']) {	
-						unlink('./uploads/our_team/'.$data['result'][0]['team_image']);	
-						unlink('./uploads/our_team/thumb/'.$data['result'][0]['team_image']);	
+					$id = $this->common_model->tbl_insert(TEAM,$insArr);
+					if(!empty($this->db->insert_id())) {
+						$insArr1['projectstuff_id'] = $this->db->insert_id();
+						$this->common_model->tbl_update(PROJECT,array('id'=>$this->input->post('project_name')),$insArr1);
 					}
-					$config1=array();
-					$config1['upload_path']='./uploads/our_team/thumb';
-					$config1['upload_path']='./uploads/our_team/';
-					$random_number = substr(number_format(time() * rand(),0,'',''),0,6);
-					$config1['file_name']=time().$random_number;
-					$config1['allowed_types']='jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF|mp4|MPEG-4';
-					/*$config1['max_width'] = '2000';
-					$config1['max_height'] = '1125';*/
-					$config1['overwrite']=TRUE;
-					$this->load->library('upload',$config1);
-					$this->upload->initialize($config1);
-					if(!$this->upload->do_upload('team_image')){
-						$err_upload=$this->upload->display_errors();
-						$this->utilitylib->setMsg($err_upload,'ERROR');
-						print_r($err_upload);
-						redirect(base_url('admin/ourteam/add_team'));
-					} else {
-						$suc_upload2=array();
-						$suc_upload2=$this->upload->data();
-						$config1['image_library']='gd2';
-						$config1['source_image']='uploads/our_team/'.$suc_upload2['file_name'];
-						$config1['new_image']='uploads/our_team/thumb/'.$suc_upload2['file_name'];
-						$config1['maintain_ratio']=TRUE;
-						$config1['width']=150;
-						$config1['height']=97;
-						$this->image_lib->initialize($config1);
-						$this->image_lib->resize();
-						$insArr['team_image']=$suc_upload2['file_name'];
-						if(!empty($id)) {
-							$this->common_model->tbl_update(TEAM,array('id'=>$id),$insArr);
-							$banner_id=$id;
-						} else {
-							$banner_id=$this->common_model->tbl_insert(TEAM,$insArr);
-						}
-						//$this->common_model->tbl_update(TEAM,array('id'=>$banner_id),$insArr);
-					}
-				}
-				if(!empty($id)) {
-					$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully updated','SUCCESS');
-					//redirect(base_url('admin/ourteam/add_team/'.$id));
-					redirect(base_url()."admin/ourteam/");
-				} else {
 					$this->utilitylib->setMsg(SUCCESS_ICON.' Sucessfully saved','SUCCESS');
 					redirect(base_url()."admin/ourteam/");
 				}
-			//}
+			}
 		}
 		$data['banner']=$this->common_model->get_data_row(TEAM,array('id'=>$id));
 		if(!empty($id)){
@@ -129,6 +121,7 @@ class Ourteam extends CI_Controller{
 			$data['page_title'] = "Add User";
 		}
 		$data['ourteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('position'=>[1,2],'status'=>1, 'is_delete'=>1));
+		$data['project_list']=$this->common_model->get_data_array(PROJECT,'','','','','','',PROJECT.".id DESC",array('is_delete'=>1));
 		$data['header_scripts'] = $this->load->view('admin/includes/admin_header_scripts','',true);
 	    $data['header']=$this->load->view('admin/includes/admin_header','',true);
 	    $data['sidebar']=$this->load->view('admin/includes/admin_sidebar','',true);
@@ -176,5 +169,17 @@ class Ourteam extends CI_Controller{
 		$this->common_model->tbl_update(TEAM,array('id'=>$id),$status);
 		$this->utilitylib->setMsg('<i class="fa fa-info-circle" aria-hidden="true"></i>Successfully Deleted.','SUCCESS');
 		redirect(base_url()."admin/ourteam");
+	}
+
+	public function reset_password() {
+		$insArr=array();
+		$insArr['password'] = base64_encode($this->input->post('newpass'));
+		$insArr['update_pass'] = '1';
+		$resultdata = $this->common_model->tbl_update(TEAM,array('id'=>$this->input->post('uid')),$insArr);
+		if ($resultdata > 0) {
+			echo 'Password Updated';
+		} else {
+			echo 'Please try again!';
+		}
 	}
 }

@@ -32,7 +32,11 @@ class Facultys extends CI_Controller {
 			if(base64_encode($this->input->post('password')) == $result[0]['password']) {
 			$this->session->set_userdata('user_id',$result[0]['id']);
 			$id = $this->session->userdata('user_id');
-			redirect(base_url()."faculty/dashboard/".$id);
+			if($result[0]['update_pass'] == 2) {
+				redirect(base_url()."faculty/dashboard/".$id);
+			} else {
+				redirect(base_url()."faculty/reset_password/".$id);
+			}
 			} else {
 				$this->utilitylib->setMsg('<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Wrong email or password!','ERROR');
 				redirect(base_url()."faculty/");
@@ -41,7 +45,7 @@ class Facultys extends CI_Controller {
 		$data['page_title'] = "Login";
 		$data['header']=$this->load->view('includes/header','',true);
         $data['footer']=$this->load->view('includes/footer','',true);
-		$this->load->view('faculty/home',$data);
+		$this->load->view('faculty/reset_password',$data);
     }
 
     public function dashboard($id='') {
@@ -117,7 +121,7 @@ class Facultys extends CI_Controller {
 			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
 			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
-			$data['project']=$this->common_model->get_data_array(PROJECT,'','','','','','',PROJECT.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['project']=$this->common_model->get_data_array(PROJECT,'','','','','','',PROJECT.".id DESC",array('project_incharge'=>$id,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/projects',$data);
@@ -140,6 +144,11 @@ class Facultys extends CI_Controller {
 			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
 			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['lab_member']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'status'=>1,'is_delete'=>1));
+			$data['phdteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'program'=>3,'status'=>1,'is_delete'=>1));
+			$data['mtechrteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'program'=>4,'status'=>1,'is_delete'=>1));
+			$data['mtechteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'degree'=>7,'status'=>1,'is_delete'=>1));
+			$data['btechteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('degree'=>6,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/lab_members',$data);
@@ -148,6 +157,11 @@ class Facultys extends CI_Controller {
 			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
 			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['lab_member']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'status'=>1,'is_delete'=>1));
+			$data['phdteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'program'=>3,'status'=>1,'is_delete'=>1));
+			$data['mtechrteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'program'=>4,'status'=>1,'is_delete'=>1));
+			$data['mtechteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('supervisor'=>$id,'degree'=>7,'status'=>1,'is_delete'=>1));
+			$data['btechteam']=$this->common_model->get_data_array(TEAM,'','','','','','',TEAM.".id DESC",array('degree'=>6,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/lab_members',$data);
@@ -161,6 +175,10 @@ class Facultys extends CI_Controller {
 			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
 			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['copening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['scholeropening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'position'=>1,'status'=>1,'is_delete'=>1));
+			$data['mtechropening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'position'=>2,'status'=>1,'is_delete'=>1));
+			$data['pstuffopening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'position'=>3,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/current_opening',$data);
@@ -169,6 +187,10 @@ class Facultys extends CI_Controller {
 			$data['about_me']=$this->common_model->get_data(TEAM,array('id'=>$id));
 			$data['education']=$this->common_model->get_data_array(EDUCATION,'','','','','','',EDUCATION.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
 			$data['experience']=$this->common_model->get_data_array(EXPERIENCE,'','','','','','',EXPERIENCE.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['copening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'status'=>1,'is_delete'=>1));
+			$data['scholeropening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'position'=>1,'status'=>1,'is_delete'=>1));
+			$data['mtechropening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'position'=>2,'status'=>1,'is_delete'=>1));
+			$data['pstuffopening']=$this->common_model->get_data_array(CRNTOPENING,'','','','','','',CRNTOPENING.".id DESC",array('user_id'=>$id,'position'=>3,'status'=>1,'is_delete'=>1));
 			$data['header']=$this->load->view('includes/header','',true);
 			$data['footer']=$this->load->view('includes/footer','',true);
 			$this->load->view('faculty/current_opening',$data);
@@ -417,6 +439,42 @@ class Facultys extends CI_Controller {
 			$status = array('is_delete'=>1);
 		}
 		$this->common_model->tbl_update(AWARDEVENT,array('id'=>$id),$status);
+	}
+
+	public function save_currentopening() {
+		$record_id = $this->input->post('copeningid');
+		if($record_id != '') {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['position']=$this->input->post('position');
+			$insArr['description']=$this->input->post('codescription');
+			$insArr['status']=$this->input->post('status');
+			$this->common_model->tbl_update(CRNTOPENING,array('id'=>$record_id),$insArr);
+			echo "Sucessfully Updated";
+		} else {
+			$insArr=array();
+			$insArr['user_id'] = $this->input->post('uid');
+			$insArr['position']=$this->input->post('position');
+			$insArr['description']=$this->input->post('codescription');
+			$insArr['status']=$this->input->post('status');
+			$this->common_model->tbl_insert(CRNTOPENING,$insArr);
+			echo "Sucessfully Added";
+		}
+	}
+
+	public function reset_password () {
+		$data['page_title'] = "Reset Password";
+		$data['header']=$this->load->view('includes/header','',true);
+        $data['footer']=$this->load->view('includes/footer','',true);
+		$this->load->view('faculty/reset_password',$data);
+	}
+
+	public function update_password () {
+		$insArr=array();
+		$insArr['password'] = base64_encode($this->input->post('new_pass'));
+		$insArr['update_pass'] = '2';
+		$resultdata = $this->common_model->tbl_update(TEAM,array('id'=>$this->session->userdata('user_id')),$insArr);
+		redirect(base_url()."faculty/dashboard/".$this->session->userdata('user_id'));
 	}
 
 	public function logout() {

@@ -97,7 +97,7 @@ class Home extends CI_Controller {
             if(!empty($filter_data)) {
                 $i=1;
                 foreach($filter_data as $row){
-                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary myLargeModalLabel" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="project_details('.$row['id'].')">View More</button></td></tr>';
                 $i++;}
             }
         } else {
@@ -115,7 +115,7 @@ class Home extends CI_Controller {
             if(!empty($filter_data)) {
                 $i=1;
                 foreach($filter_data as $row){
-                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary myLargeModalLabel" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="project_details('.$row['id'].')">View More</button></td></tr>';
                 $i++;}
             }
         } else {
@@ -133,7 +133,7 @@ class Home extends CI_Controller {
             if(!empty($filter_data)) {
                 $i=1;
                 foreach($filter_data as $row){
-                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary myLargeModalLabel" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="project_details('.$row['id'].')">View More</button></td></tr>';
                 $i++;}
             }
         } else {
@@ -151,7 +151,7 @@ class Home extends CI_Controller {
             if(!empty($filter_data)) {
                 $i=1;
                 foreach($filter_data as $row){
-                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary">View More</button></td></tr>';
+                    $html .='<td>'.$i.'</td><td>'.$row['project_title'].'</td><td>'.$row['status'].'</td><td><button type="button" class="btn btn-primary myLargeModalLabel" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="project_details('.$row['id'].')">View More</button></td></tr>';
                 $i++;}
             }
         } else {
@@ -164,8 +164,33 @@ class Home extends CI_Controller {
         $p_id = $this->input->post('p_id');
         $pt_id = $this->input->post('pt_id');
         //$project_data = $this->common_model->get_data_array(PROJECT,array('id' => $p_id, 'project_type' =>$pt_id, 'is_delete' =>1),'','','','','','');
-        $project_data = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.project_incharge WHERE iitmandi_project.id = $p_id AND iitmandi_project.project_type = $pt_id AND iitmandi_project.is_delete = 1");
+        $project_data = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.starting_year, iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.project_incharge WHERE iitmandi_project.id = $p_id AND iitmandi_project.project_type = $pt_id AND iitmandi_project.is_delete = 1");
+        $project_data1 = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.starting_year, iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname as 'stuffname' FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.projectstuff_id WHERE iitmandi_project.id = $p_id AND iitmandi_project.project_type = $pt_id AND iitmandi_project.is_delete = 1");
+        $project_data2 = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.starting_year, iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname as 'copi' FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.coproject_incharge WHERE iitmandi_project.id = $p_id AND iitmandi_project.project_type = $pt_id AND iitmandi_project.is_delete = 1");
         $project_data = $project_data->result_array();
-        echo json_encode($project_data[0]);
+        $project_data1 = $project_data1->result_array();
+        $project_data2 = $project_data2->result_array();
+        if (!empty($project_data1) and !empty($project_data2)) {
+            $result = array_merge($project_data[0],$project_data1[0],$project_data2[0]);
+            echo json_encode($result);
+        } else {
+            echo json_encode($project_data[0]);
+        }
+    }
+
+    public function project_fdetails() { 
+        $p_id = $this->input->post('p_id');
+        $project_data = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.starting_year, iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.project_incharge WHERE iitmandi_project.id = $p_id AND iitmandi_project.is_delete = 1");
+        $project_data1 = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.starting_year, iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname as 'stuffname' FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.projectstuff_id WHERE iitmandi_project.id = $p_id AND iitmandi_project.is_delete = 1");
+        $project_data2 = $this->db->query("SELECT iitmandi_project.id, iitmandi_project.project_title, iitmandi_project.funding_agency, iitmandi_project.funding_amount,iitmandi_project.starting_year, iitmandi_project.project_duration, iitmandi_project.reference_number, iitmandi_team.fname as 'copi' FROM iitmandi_project JOIN iitmandi_team ON iitmandi_team.id = iitmandi_project.coproject_incharge WHERE iitmandi_project.id = $p_id AND iitmandi_project.is_delete = 1");
+        $project_data = $project_data->result_array();
+        $project_data1 = $project_data1->result_array();
+        $project_data2 = $project_data2->result_array();
+        if (!empty($project_data1) and !empty($project_data2)) {
+            $result = array_merge($project_data[0],$project_data1[0],$project_data2[0]);
+            echo json_encode($result);
+        } else {
+            echo json_encode($project_data[0]);
+        }
     }
 }
