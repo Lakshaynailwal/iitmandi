@@ -77,14 +77,13 @@
                                                     <a href="javascript:void(0);" class="btn btn-info waves-effect waves-light tooltips showhidereply" data-placement="top" data-toggle="tooltip" data-original-title="Email Content" data-id="<?php echo $i?>">
                                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                                     </a>
-                                                    <div class ='replycomment' id="replycomment_<?php echo $i?>">
-                                                    <?php echo $mailContent = '<p>Dear User,<br/>You have successfully registered into IIT Mandi website. Please use the below credential to login into website.<br/>Login Crential:<br/>Email ID: '.$row['email'].'<br/>Password: '.base64_decode($row['password']).'</p></div>';
-                                                    }
-                                                    ?>
+                                                    <?php } ?>
                                                     <a href="javascript:void(0);" class="btn btn-info waves-effect waves-light tooltips showhidereset_pass" data-placement="top" data-toggle="tooltip" data-original-title="Reset Password" data-id="<?php echo $i?>">
                                                     <i class="fa fa-key" aria-hidden="true"></i>
                                                     </a>
-                                                    
+                                                    <div class ='replycomment' id="replycomment_<?php echo $i?>">
+                                                    <?php echo $mailContent = '<p>Dear User,<br/>You have successfully registered into IIT Mandi website. Please use the below credential to login into website.<br/>Login Crential:<br/>Email ID: '.$row['email'].'<br/>Password: '.base64_decode($row['password']).'</p>'; ?>
+                                                    </div>
                                                     <div class ='reset_pass' id="reset_pass_<?php echo $i;?>" style="margin-top: 10px;">
                                                         <form>
                                                             <div class="form-group">
