@@ -58,9 +58,11 @@ opacity: .5;}
                         <div class="row">
                             <div class="col-12 profile_menu" style="text-align:center">
                                 <!-- Tab navs -->
-                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary">Home</button></a>
+                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Home</button></a>
                                 <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
+                                <?php if(!empty($publications)) { ?>
                                 <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary">Publication</button></a>
+                                <?php } ?>
                                 <?php if(!empty($project)) { ?>
                                 <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
                                 <?php } ?>
@@ -77,7 +79,7 @@ opacity: .5;}
                                 <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
                                 <?php } ?>
                                 <!-- Tab navs -->
-                            </div>                            
+                            </div>                           
                             <!-- Project Start --> 
                             <div class="col-12">
                                 <div class="row">

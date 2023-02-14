@@ -75,6 +75,7 @@ $route['pages/committees'] = 'home/committees';
 $route['login'] = 'home/login';
 $route['pages/research'] = 'home/research';
 $route['pages/consultancy'] = 'home/consultancy';
+$route['pages/publications'] = 'home/publications';
 
 /* Students */
 $route['student'] = 'student/student/index';

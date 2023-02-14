@@ -6,7 +6,7 @@ class Ourteam extends CI_Controller{
 		@parent::__construct();
 		$this->load->library('pagination');
 		$this->load->library('image_lib');
-		session_start();
+		//session_start();
         if($this->session->userdata('uid') == ''){
             redirect(base_url().'admin/');
         }
@@ -24,13 +24,16 @@ class Ourteam extends CI_Controller{
 	} 
 	
 	public function add_team($id='') {
+		print_r($this->input->post());
 		if($this->input->post()) {
 			$insArr=array();
 			$insArr['fname'] = $this->input->post('fname');
 			$insArr['email'] = $this->input->post('email');
 			$insArr['position'] = $this->input->post('position');
 			$insArr['enrollno'] = $this->input->post('enrollno');
-			$insArr['designation'] = $this->input->post('designation');
+			if($this->input->post('designation') != '') {
+				$insArr['designation'] = $this->input->post('designation');
+			}
 			$insArr['supervisor'] = $this->input->post('supervisor');
 			if ($this->input->post('cosupervisors') != '') {
 				$cosupervisors = $this->input->post('cosupervisors');
@@ -47,8 +50,12 @@ class Ourteam extends CI_Controller{
 			$insArr['department'] = $this->input->post('department');
 			$insArr['institutename'] = $this->input->post('institutename');
 			$insArr['profilelink'] = $this->input->post('profilelink');
-			$insArr['designation'] = $this->input->post('program');
-			$insArr['designation'] = $this->input->post('degree');
+			if($this->input->post('program') != '') {
+				$insArr['designation'] = $this->input->post('program');
+			}
+			if($this->input->post('degree') != '') {
+				$insArr['designation'] = $this->input->post('degree');
+			}
 			$insArr['status'] = $this->input->post('status');
 			if ($_FILES['team_image']['name'] != '') {
 				$data['result']=$this->common_model->get_data(TEAM,array('id'=>$id));

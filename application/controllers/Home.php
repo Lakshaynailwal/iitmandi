@@ -193,4 +193,13 @@ class Home extends CI_Controller {
             echo json_encode($project_data[0]);
         }
     }
+
+    public function publications() { 
+        $data['publications']=$this->common_model->get_data_array(PUBLICATION,'','','','','','',PUBLICATION.".id DESC",array('status'=>1,'is_delete'=>1));
+        $data['consultancy']=$this->common_model->get_data_array(PROJECT,'','','','','','','',array('project_type' =>2,'is_delete' =>1));
+        $data['header']=$this->load->view('includes/header','',true);
+        $data['footer']=$this->load->view('includes/footer','',true);
+        $data['title']='Publications';
+        $this->load->view('publication',$data);
+    }
 }

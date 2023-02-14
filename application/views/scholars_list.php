@@ -44,6 +44,7 @@
                             <h3 style="text-align:center"><?php echo $row1['designation']?></h3>
                             <div class="col-sm-12" style="display: inline-block;">
                             <?php 
+                            echo "SELECT * from iitmandi_team WHERE iitmandi_team.position = 3 and iitmandi_team.designation = '".$row1['id']."' and iitmandi_team.status = 1 and iitmandi_team.is_delete = 1";
                                 $scholars = $this->db->query("SELECT * from iitmandi_team WHERE iitmandi_team.position = 3 and iitmandi_team.designation = '".$row1['id']."' and iitmandi_team.status = 1 and iitmandi_team.is_delete = 1");
                                 if(!empty($scholars->result_array())) {
                                     foreach($scholars->result_array() as $row) { ?>

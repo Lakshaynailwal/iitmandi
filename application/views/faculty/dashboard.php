@@ -57,7 +57,9 @@ echo $header;
                                 <!-- Tab navs -->
                                 <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Home</button></a>
                                 <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
+                                <?php if(!empty($publications)) { ?>
                                 <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary">Publication</button></a>
+                                <?php } ?>
                                 <?php if(!empty($project)) { ?>
                                 <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
                                 <?php } ?>
@@ -94,6 +96,7 @@ echo $header;
                                 </div>
                             </div>
                             <div class="col-12">
+                                <?php if(!empty($education)) { ?>
                                 <div class="row">
                                     <div class='col-sm-12'>
                                         <h2 style="text-align: center;">Academic Background</h2>
@@ -111,8 +114,7 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php if(!empty($education)) {
-                                                $i=1; ?>
+                                            <?php $i=1; ?>
                                             <?php foreach($education as $row) { ?>
                                                 <tr>
                                                     <td><?php echo $row['degree'];?></td>
@@ -125,18 +127,20 @@ echo $header;
                                                     </td>
                                                     <?php } ?>
                                                 </tr>
-                                            <?php $i++; } } ?>
+                                            <?php $i++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php } ?>
                                 <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2">Add New Record</button>
+                                    <button type="button" class="btn btn-primary edu_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg2" style="margin-top: 20px;">Add Academic Background</button>
                                 </div>
                                 <?php } ?>
                             </div>
                             <div class="col-12">
+                                <?php if(!empty($experience)) { ?>
                                 <div class="row">
                                     <div class='col-sm-12'>
                                         <h2 style="text-align: center;">Professional Background</h2>
@@ -154,7 +158,7 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php if(!empty($experience)) {
+                                            <?php
                                                 $i=1; ?>
                                                 <?php foreach($experience as $row) { ?>
                                                 <tr>
@@ -168,18 +172,20 @@ echo $header;
                                                     </td>
                                                     <?php } ?>
                                                 </tr>
-                                            <?php $i++; } } ?>
+                                            <?php $i++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php } ?>
                                 <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3">Add New Record</button>
+                                    <button type="button" class="btn btn-primary exp_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg3" style="margin-top: 20px;">Add Professional Background</button>
                                 </div>
                                 <?php } ?>
                             </div>
                             <div class="col-12">
+                                <?php if(!empty($award)) { ?>
                                 <div class="row">
                                     <div class='col-sm-12'>
                                         <h2 style="text-align: center;">Awards and Distinctions</h2>
@@ -196,7 +202,7 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php if(!empty($award)) {
+                                            <?php
                                                 $i=1; ?>
                                                 <?php foreach($award as $row) { ?>
                                                 <tr>
@@ -209,18 +215,20 @@ echo $header;
                                                     </td>
                                                     <?php } ?>
                                                 </tr>
-                                                <?php $i++; } } ?>
+                                                <?php $i++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php } ?>
                                 <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
+                                    <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5" style="margin-top: 20px;">Add Awards and Distinctions</button>
                                 </div>
                                 <?php } ?>
                             </div>
                             <div class="col-12">
+                                <?php if(!empty($event)) { ?>
                                 <div class="row">
                                     <div class='col-sm-12'>
                                         <h2 style="text-align: center;">Events Organised</h2>
@@ -238,8 +246,7 @@ echo $header;
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php if(!empty($event)) {
-                                                $i=1; ?>
+                                            <?php $i=1; ?>
                                                 <?php foreach($event as $row) { ?>
                                                 <tr>
                                                     <td><?php echo $row['name'];?></td>
@@ -252,14 +259,15 @@ echo $header;
                                                     </td>
                                                     <?php } ?>
                                                 </tr>
-                                                <?php $i++; } } ?>
+                                                <?php $i++; } ?>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
+                                <?php } ?>
                                 <?php if ($this->session->userdata('user_id') != '') { ?>
                                 <div class="col-sm-12" style="text-align: right;">
-                                    <button type="button" class="btn btn-primary evnt_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg6">Add New Record</button>
+                                    <button type="button" class="btn btn-primary evnt_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg6" style="margin-top: 20px;">Add New Event</button>
                                 </div>
                                 <?php } ?>
                             </div>

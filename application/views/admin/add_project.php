@@ -57,7 +57,7 @@
                                                     <option value="">Choose an Option</option>
                                                     <?php if(!empty($ourteam)) { 
                                                         foreach($ourteam as $row) { ?>
-                                                        <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                                        <option value="<?php echo $row['id'];?>" <?php if($row['id'] == @$project['project_incharge']) {echo "selected"; }?>><?php echo $row['fname']?></option>
                                                     <?php  } } else { ?>
                                                         <option value="">No Data</option>
                                                         <?php } ?>
@@ -70,7 +70,7 @@
                                                     <select class="selectpicker form-control" id="coproject_incharge" name="coproject_incharge[]" multiple data-live-search="true" required>
                                                         <?php if(!empty($ourteam)) { 
                                                             foreach($ourteam as $row) { ?>
-                                                            <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                                            <option value="<?php echo $row['id'];?>" <?php if($row['id'] == @$project['coproject_incharge']) {echo "selected"; }?>><?php echo $row['fname']?></option>
                                                         <?php  } } else { ?>
                                                             <option value="">No Data</option>
                                                             <?php } ?>
@@ -91,12 +91,13 @@
                                                 <label for="starting_year" class="control-label col-lg-3 col-md-3 col-sm-4">Starting year</label>
                                                 <div class="col-lg-9 col-md-9 col-sm-8">
                                                     <?php
-                                                    $currently_selected = date('Y'); 
+                                                    //$currently_selected = date('Y', strtotime('+10 years')); 
+                                                    $currently_selected = @$project['starting_year'];
                                                     $earliest_year = 1950; 
-                                                    $latest_year = date('Y'); 
+                                                    $latest_year = date('Y', strtotime('+10 years')); 
                                                     print '<select class="form-control" id="starting_year" name="starting_year"><option value="">Choose an option</option>';
                                                     foreach ( range( $latest_year, $earliest_year ) as $i ) {
-                                                        print '<option value="'.$i.'"'.($i === $currently_selected ?'"' : '').'>'.$i.'</option>';
+                                                        print '<option value="'.$i.'"'.($i == $currently_selected ?' selected="selected"' : '').'>'.$i.'</option>';
                                                     }
                                                     print '</select>';
                                                     ?>
@@ -106,12 +107,13 @@
                                                 <label for="project_duration" class="control-label col-lg-3 col-md-3 col-sm-4">End Year</label>
                                                 <div class="col-lg-9 col-md-9 col-sm-8">
                                                     <?php
-                                                    $currently_selected = date('Y'); 
+                                                    //$currently_selected = date('Y');
+                                                    $currently_selected = @$project['project_duration']; 
                                                     $earliest_year = 1950; 
-                                                    $latest_year = date('Y'); 
+                                                    $latest_year = date('Y', strtotime('+10 years'));; 
                                                     print '<select class="form-control" id="project_duration" name="project_duration"><option value="">Choose an option</option>';
                                                     foreach ( range( $latest_year, $earliest_year ) as $i ) {
-                                                        print '<option value="'.$i.'"'.($i === $currently_selected ?'"' : '').'>'.$i.'</option>';
+                                                        print '<option value="'.$i.'"'.($i == $currently_selected ?' selected="selected"' : '').'>'.$i.'</option>';
                                                     }
                                                     print '</select>';
                                                     ?>

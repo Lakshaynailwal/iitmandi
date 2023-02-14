@@ -1,31 +1,21 @@
-<?php 
-if ($this->session->userdata('user_id') != "") {
-    $uid = $this->session->userdata('user_id');
-} else {
-    $uid = $about_me[0]['id'];
-}
-echo $header;
-?>
+<?php echo $header;?>
 <style>
     .nav-pills .nav-link{margin-bottom: 15px;}
-    .bio_img {width: 200px; height: 200px;}
+    .bio_img {width: 140px; height: 140px; border-radius: 50%;}
     .bio_text {margin-bottom: auto;}
-    .bio_text1 {border: 1px solid #eee; padding: 30px; text-align: justify;}
+    .bio_text1 {margin-top: 30px; border: 1px solid #eee; padding: 30px; text-align: justify;}
     .td_class {padding: 0px; display: initial;}
     .table>:not(caption)>*>* {text-align: center;}
-    .cstm_gllery {float: left; display: inline;}
-    .cstm_gllery img {padding: 12px; border-radius: 50%; height: 313px;}
-    .cstm_gllery h3, p {text-align: center;}
-    .modal-content {padding: 30px}
-    .modal-lg, .modal-xl {--bs-modal-width: 90% !important;}
-    .cstm_details {float: left; display: inline-block;}
-    .portfolio-details .portfolio-info h3{margin-bottom: 0 !important; padding-bottom: 0 !important; border-bottom: none !important;}
-    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {max-width: 1440px !important;}
-    .cslm_crnt_open ul { list-style-type: disc !important; padding-left:1em !important; margin-left:1em;}
-    .cstmf_gllery {float: left; display: inline;}
-    .cstmf_gllery img {padding: 12px;}
-    .profile_menu a {color: #FFF; text-decoration: none;}
-    .active {background: #032851 !important; color: #fff !important;}
+    .col-sm-1 {display: inline-block;float: left; margin-left:5px;}
+    .col-sm-2 {display: inline-block;float: left; margin-left:5px;}
+    .col-sm-3 {display: inline-block;float: left; margin-left:5px;}
+    .col-sm-4 {display: inline-block;float: left; margin-left:5px;}
+    .col-sm-8 {display: inline-block;float: left;}
+    .col-sm-12 {display: inline-block;}
+    .fade:not(.show) { opacity: 1 !important; background: #00000063;}
+    .modal-lg { margin-top : 10%}
+    .close {padding: 0;background-color: transparent;border: 0;float: right;font-size: 1.5rem;font-weight: 700;line-height: 1;color: #000;text-shadow: 0 1px 0 #fff;
+opacity: .5;}
 </style>
 <main id="main">
     <!-- ======= Breadcrumbs Section ======= -->
@@ -49,253 +39,98 @@ echo $header;
             <div class="row gy-4">
                 <div class="col-lg-12">
                     <div class="portfolio-info">
-                        <!-- <h3 style="text-transform: capitalize">Welcome <?php echo $about_me[0]['fname'];?></h3>
-                        <p style="text-transform: capitalize">Welcome <?php echo $about_me[0]['designation'];?></p> -->
-                        <div class="row">
-                            <div class="col-12 profile_menu" style="text-align:center">
-                                <!-- Tab navs -->
-                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Home</button></a>
-                                <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
-                                <?php if(!empty($publications)) { ?>
-                                <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary">Publication</button></a>
+                        <h3 style="text-align:center"><?php echo $title?></h3>
+                        <div class="col-sm-12 filter_data">
+                            <div class="col-sm-4">
+                                <select class="form-control" id="funding_agencyflt" name="funding_agency">
+                                <option value="">Funding Agency</option>
+                                    <?php 
+                                    $funding_agency = $this->db->query("SELECT funding_agency, GROUP_CONCAT(id) as id FROM iitmandi_project WHERE `is_delete` = 1 GROUP BY funding_agency ORDER BY COUNT(*) DESC");
+                                    if(!empty($funding_agency->result_array())) { 
+                                    foreach($funding_agency->result_array() as $row) { 
+                                        $id = explode(",",$row['id']);
+                                    ?>  
+                                    <option value="<?php echo $row['funding_agency']?>"><?php echo $row['funding_agency']?></option>
+                                    <?php  } } else { ?>
+                                    <option value="">No Data</option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-1">
+                                <select class="form-control" id="starting_yearflt" name="starting_year">
+                                    <option value="">Year</option>
+                                    <?php 
+                                    $starting_year = $this->db->query("SELECT starting_year, GROUP_CONCAT(id) as id FROM iitmandi_project WHERE `is_delete` = 1 GROUP BY starting_year ORDER BY COUNT(*) DESC");
+                                    if(!empty($starting_year->result_array())) { 
+                                    foreach($starting_year->result_array() as $row) { ?>
+                                    <option value="<?php echo $row['starting_year']?>"><?php echo $row['starting_year']?></option>
+                                    <?php  } } else { ?>
+                                    <option value="">No Data</option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select class="form-control" id="faculty_memberflt" name="faculty_member">
+                                    <option value="">Faculty Member</option>
+                                    <?php if(!empty($team)) { 
+                                    foreach($team as $row) { ?>
+                                    <option value="<?php echo $row['id']?>"><?php echo $row['fname']?></option>
+                                    <?php  } } else { ?>
+                                    <option value="">No Data</option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <select class="form-control" id="statusflt" name="statusflt">
+                                    <option value="">Status</option>
+                                    <option value="Ongoing">Ongoing</option>
+                                    <option value="Completed">Completed</option>
+                                    <option value="Transferred">Transferred</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-1">
+                                <button type="button" class="btn btn-secondary" onClick="window.location.reload();">Reset</button>
+                                <input type="hidden" id="project_type" value = '2'>
+                            </div>
+                        </div>
+                        <div class='col-sm-12' style="margin-top: 50px;">
+                            <table id="example" class="table table-striped" style="width:100%">
+                                <?php if(!empty($publication)) { ?>
+                                <thead>
+                                    <tr>
+                                        <th>Sl No.</th>
+                                        <th>Pubtication Details</th>
+                                        <th>View</th>
+                                    </tr>
+                                </thead>
                                 <?php } ?>
-                                <?php if(!empty($project)) { ?>
-                                <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
-                                <?php } ?>
-                                <?php if(!empty($lab_member)) { ?>
-                                <a href="<?php echo base_url()?>faculty/lab_members/<?php echo $uid?>"><button type="button" class="btn btn-primary">Lab Members</button></a>
-                                <?php } ?>
-                                <?php if(!empty($copening)) { ?>
-                                <a href="<?php echo base_url()?>faculty/current_opening/<?php echo $uid?>"><button type="button" class="btn btn-primary">Current Openings</button></a>
-                                <?php } ?>
-                                <?php //if(!empty($experience)) { ?>
-                                <a href="<?php echo base_url()?>faculty/miscellaneous/<?php echo $uid?>"><button type="button" class="btn btn-primary">Miscellaneous</button></a>
-                                <?php //} ?>
-                                <?php if ($this->session->userdata('user_id') != '') { ?>
-                                <a href="<?php echo base_url()?>faculty/logout"><button type="button" class="btn btn-primary">Logout</button></a>
-                                <?php } ?>
-                                <!-- Tab navs -->
-                            </div>
-                            <!-- Lab Member Start --> 
-                            <?php  if(!empty($phdteam)) { ?>
-                            <div class="col-12" style=" margin-top: 35px;">
-                                <div class="row">
-                                    <div class='col-sm-12'>
-                                        <h2 style="text-align: center;">Ph.D. Scholars</h2>
-                                    </div>
-                                    <div class="content">
-                                        <div class='col-sm-12'>
-                                        <?php
-                                            $i=1; ?>
-                                            <?php foreach($phdteam as $row) { ?>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <?php ?>
-                                                <img src="<?php echo base_url()?>uploads/our_team/thumb/<?php echo $row['team_image']?>"/>
-                                                <h3><?php echo $row['fname']?></h3>
-                                            </div>
-                                        <?php $i++; } ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
-
-                            <?php  if(!empty($mtechrteam)) { ?>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class='col-sm-12'>
-                                        <h2 style="text-align: center;">M.Tech. (R) Scholars</h2>
-                                    </div>
-                                    <div class="content">
-                                        <div class='col-sm-12'>
-                                        <?php
-                                            $i=1; ?>
-                                            <?php foreach($mtechrteam as $row) { ?>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <?php ?>
-                                                <img src="<?php echo base_url()?>uploads/our_team/thumb/<?php echo $row['team_image']?>"/>
-                                                <h3><?php echo $row['fname']?></h3>
-                                            </div>
-                                        <?php $i++; } ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
-
-                            <?php  if(!empty($mtechteam)) { ?>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class='col-sm-12'>
-                                        <h2 style="text-align: center;">M.Tech. Students</h2>
-                                    </div>
-                                    <div class="content">
-                                        <div class='col-sm-12'>
-                                        <?php $i=1; ?>
-                                                <?php foreach($mtechteam as $row) { ?>
-                                            <div class="col-sm-3 cstm_gllery">
-                                                <?php ?>
-                                                <img src="<?php echo base_url()?>uploads/our_team/thumb/<?php echo $row['team_image']?>"/>
-                                                <h3><?php echo $row['fname']?></h3>
-                                            </div>
-                                        <?php $i++; } ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
-
-                            <?php  if(!empty($btechteam)) { ?>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class='col-sm-12'>
-                                        <h2 style="text-align: center;">B.Tech. Students</h2>
-                                    </div>
-                                    <div class='col-sm-12'>
-                                        <table id="example" class="table table-striped" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sl No.</th>
-                                                    <th>Name</th>
-                                                    <th>Year</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            <?php $i=1; ?>
-                                                <?php foreach($btechteam as $row) { ?>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><h3><?php echo $row['fname']?></h3></td>
-                                                    <td><h3><?php echo $row['admssnyear']?></h3></td>
-                                                </tr>
-                                                <?php $i++; } ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php } ?>
-
-                            <!-- <div class="col-12">
-                                <div class='col-sm-12'>
-                                    <h2 style="text-align: center;">Alumni</h2>
-                                </div>
-                                <div class="row">
-                                    <div class='col-sm-12'>
-                                        <h2 style="text-align: center;">Ph.D.</h2>
-                                    </div>
-                                    <div class='col-sm-12'>
-                                        <table id="example" class="table table-striped" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sl No.</th>
-                                                    <th>Name</th>
-                                                    <th>Thesis title</th>
-                                                    <th>Year</th>
-                                                    <th>Current Position</th>
-                                                    <th>Link</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>
-                                                        <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class='col-sm-12'>
-                                        <h2 style="text-align: center;">M.Tech. (R)</h2>
-                                    </div>
-                                    <div class='col-sm-12'>
-                                        <table id="example" class="table table-striped" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sl No.</th>
-                                                    <th>Name</th>
-                                                    <th>Thesis title</th>
-                                                    <th>Year</th>
-                                                    <th>Current Position</th>
-                                                    <th>Link</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>
-                                                        <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class='col-sm-12'>
-                                        <h2 style="text-align: center;">M.Tech</h2>
-                                    </div>
-                                    <div class='col-sm-12'>
-                                        <table id="example" class="table table-striped" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sl No.</th>
-                                                    <th>Name</th>
-                                                    <th>Thesis title</th>
-                                                    <th>Year</th>
-                                                    <th>Current Position</th>
-                                                    <th>Link</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>Demo</td>
-                                                    <td>
-                                                        <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                        <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- Lab Member End --> 
+                                <tbody>
+                                <?php if(!empty($publication)) { 
+                                    $i=1; ?>
+                                    <?php foreach($publication as $row) { ?>
+                                    <tr>
+                                        <td><?php echo $i ?></td>
+                                        <td><?php echo $row['author_name'].", ".$row['paper_title'].", ".$row['journal_name'].", ".$row['conference_name'].", ".$row['book_name'].", ".$row['publish_date'].", ".$row['patient_number'].", ".$row['publisher'].", ".$row['location'].", ".$row['external_Link'].", ".$row['editors'].", ".$row['page_number']?></td>
+                                        <?php if ($this->session->userdata('user_id') != '') { ?>
+                                        <td>
+                                            <a href="#" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            <a href="##" class="btn waves-effect waves-light tooltips td_class" data-placement="top" data-toggle="tooltip" data-original-title="Delete" onclick="return confirm('Are you sure you want to delete this record?')"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </td>
+                                        <?php } else { ?>
+                                            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">View More</button></td>
+                                        <?php } ?>
+                                    </tr>
+                                <?php $i++; } } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section><!-- End Portfolio Details Section -->
+    </section>
+    <!-- End Portfolio Details Section -->
 </main><!-- End #main -->
 <div class="modal fade bd-example-modal-lg1 about_data" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="background: #000000b0;">
     <div class="modal-dialog modal-lg" style="margin-top: 5%; width: 100%;">

@@ -54,9 +54,11 @@ echo $header;
                         <div class="row">
                             <div class="col-12 profile_menu" style="text-align:center">
                                 <!-- Tab navs -->
-                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary">Home</button></a>
+                                <a href="<?php echo base_url()?>faculty/dashboard/<?php echo $uid?>"><button type="button" class="btn btn-primary active">Home</button></a>
                                 <a href="<?php echo base_url()?>faculty/research/<?php echo $uid?>"><button type="button" class="btn btn-primary">Research</button></a>
+                                <?php if(!empty($publications)) { ?>
                                 <a href="<?php echo base_url()?>faculty/publication/<?php echo $uid?>"><button type="button" class="btn btn-primary">Publication</button></a>
+                                <?php } ?>
                                 <?php if(!empty($project)) { ?>
                                 <a href="<?php echo base_url()?>faculty/projects/<?php echo $uid?>"><button type="button" class="btn btn-primary">Projects</button></a>
                                 <?php } ?>
@@ -80,6 +82,7 @@ echo $header;
                                 <button type="button" class="btn btn-primary awrd_add_btn" data-toggle="modal" data-target=".bd-example-modal-lg5">Add New Record</button>
                             </div>
                             <?php } ?>
+                            <?php if(!empty($publications)) { ?>
                             <div class="col-12">
                                 <div class="row">
                                     <div class='col-sm-12'>
@@ -244,6 +247,7 @@ echo $header;
                                     </div>
                                 </div>
                             </div>
+                            <?php } ?>
                             <!-- Research Publication End -->
                         </div>
                     </div>

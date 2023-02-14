@@ -174,7 +174,7 @@
                   </li>
                   <li class="menu-item menu-item--expanded">
                     <div class="submenu-toggle__wrapper primary-nav__top-link">
-                      <a href="#" data-drupal-link-system-path="node/2343">Publications<span class="primary-nav__submenu-indicator"></span>
+                      <a href="<?php echo base_url()?>pages/publications" data-drupal-link-system-path="node/2343">Publications<span class="primary-nav__submenu-indicator"></span>
                       </a>
                       <button class="submenu-toggle" aria-label="Toggle Submenu"><span class="submenu-toggle__icon"></span></button>
                     </div>
